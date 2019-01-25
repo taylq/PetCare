@@ -1,0 +1,12 @@
+vi:
+  app_name: "PetCare"
+  application:
+    language:
+      en: "Tiếng Anh"
+      vi: "Tiếng Việt"
+  layouts:
+    top_nav:
+      profile: "Hồ sơ"
+      log_out: "Đăng xuất"
+    footer:
+      content: "© 2017 By TayLQ - Human Development Division - Education Section - Đăng ký bản quyền."

@@ -34,3 +34,13 @@ config/credentials.yml.enc
 
 # Ignore application configuration
 /config/application.yml
+public/assets/
+public/uploads/*
+test/
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+.idea/
+public/javascripts/i18n.js
+app/assets/javascripts/i18n/translations.js

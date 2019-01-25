@@ -19,6 +19,18 @@ gem "kaminari"
 gem "rails-i18n"
 gem "figaro"
 gem "devise"
+gem "gentelella-rails"
+gem "activerecord-import"
+gem "config"
+gem "carrierwave"
+gem "i18n-js"
+gem "jquery-datatables-rails", "~> 3.4.0"
+gem "momentjs-rails"
+gem "pnotify-rails"
+gem "fullcalendar-rails"
+gem "font-awesome-sass", "~> 4.7.0"
+gem "bootstrap3-datetimepicker-rails", "~> 4.17.47"
+gem "icheck-rails"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]

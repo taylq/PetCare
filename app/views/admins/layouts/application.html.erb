@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><%= full_title yield :title %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "admin/application", media: "all" %>
+    <%= javascript_include_tag "admin/application" %>
+    <script>
+      I18n.locale = '<%= I18n.locale %>';
+    </script>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+          <%= render "admins/layouts/sidebar" %>
+          <%= render "admins/layouts/top_nav" %>
+          <%= yield %>
+        <%= render "admins/layouts/footer" %>
+      </div>
+    </div>
+  </body>
+</html>
