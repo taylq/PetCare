@@ -1,0 +1,2 @@
+class Secretary < User
+end
