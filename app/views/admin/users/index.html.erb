@@ -1,0 +1,57 @@
+<% provide :title, t("users.index") %>
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <%= render 'layouts/admin/flash' %>
+      <div class="title_left">
+        <h3><%= t "users.index" %></h3>
+      </div>
+      <div class="title_right">
+        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+          <%= form_tag admin_users_path, method: :get do %>
+            <div class="input-group">
+              <%= text_field_tag :search, params[:search], class: "form-control", placeholder: t("search.users") %>
+              <span class="input-group-btn">
+                <%= submit_tag t("books.search"), class: "btn btn-default" %>
+              </span>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-sm-2 pull-right">
+          <%= link_to t("users.create"), new_admin_user_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_content">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th><%= t "users.new.name" %></th>
+                  <th><%= t "sessions.new.email" %></th>
+                  <th><%= t "users.role" %></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <%= render @users %>
+              </tbody>
+            </table>
+            <div class="col-sm-8 col-sm-offset-3">
+              <%= paginate @users, theme: "twitter-bootstrap-3" %>
+            </div>
+          </div>
+          <div>
+            <%= t "export.download" %>
+            <%= link_to t("export.csv"), admin_users_path(format: "csv", search: params[:search]) %> |
+            <%= link_to t("export.excel"), admin_users_path(format: "xls", search: params[:search]) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

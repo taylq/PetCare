@@ -1,0 +1,60 @@
+<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
+    <div class="container">
+      <div class="navbar-translate">
+        <%= link_to t("app.name"), root_path, id: "logo", class: "navbar-brand" %>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="dropdown nav-item">
+              <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                <%= t ".account" %>
+              </a>
+              <div class="dropdown-menu dropdown-with-icons">
+                <%= link_to t(".profile"), current_user, class: "dropdown-item" %>
+                <%= link_to t(".settings"), "#", class: "dropdown-item" %>
+                <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'pets', new_user_pet_path(current_user), class: "nav-link" %>
+            </li>
+            <% if current_user.admin? %>
+              <li class="nav-item">
+                <%= link_to t(".manage"), admin_users_path, class: "nav-link", data: { turbolinks: false } %></li>
+              <li class="nav-item">
+                <%= link_to t(".users"), users_path, class: "nav-link" %></li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to t(".users"), users_path, class: "nav-link" %>
+              </li>
+            <% end %>
+          <% else %>
+            <li class="nav-item"><%= link_to t(".login"), new_user_session_path, class: "nav-link" %></li>
+          <% end %>
+          <li class="dropdown nav-item">
+            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+              <%= t "languages.language" %>
+            </a>
+            <div class="dropdown-menu dropdown-with-icons">
+              <%= link_to t("languages.en"), url_for(locale:"en"), class: "dropdown-item" %>
+              <%= link_to t("languages.vi"), url_for(locale:"vi"), class: "dropdown-item" %>
+            </div>
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('http://recruit.framgia.vn/wp-content/uploads/2016/06/recruit.framgia.jpg');">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto mr-auto">
+          <div class="brand">
+            <h1><%= t("app.name") %></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
