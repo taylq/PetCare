@@ -1,0 +1,33 @@
+<% provide :title, @user.name %>
+<div class="main main-raised">
+  <div class="section section-basic custom-background">
+    <div class="container">
+      <%= render "layouts/flash" %>
+      <div class="row">
+        <aside class="col-md-12">
+          <section class="user_info">
+            <%= image_tag @user.gravatar_url, alt: @user.name, class: "avata col-sm-4" %>
+            <h1 class="col-sm-8 user-name">
+              <%= @user.name %>
+            </h1>
+            <section class="stats col-sm-9">
+              <%= render "shared/stats" %>
+            </section>
+          </section>
+          <section class="col-sm-2">
+            <%= render "follow_form", inactive_relationships: @inactive_relationships, active_relationships: @active_relationships if user_signed_in? %>
+          </section>
+        </aside>
+      </div>
+        <div class="flat-projects">
+          <ul class="projects-filter style1">
+            <li class="active"><a data-filter="*" href="#"><%= t "books.all" %></a></li>
+          </ul>
+          <div class="projects-items book_items">
+          </div>
+          <div class="col-sm-6 offset-sm-4">
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

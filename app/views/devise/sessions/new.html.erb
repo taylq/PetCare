@@ -1,0 +1,47 @@
+<div class="section section-signup page-header" style="background-image: url('./assets/img/city.jpg'); margin-top: -250px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+        <div class="card card-login">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <div class="card-header card-header-primary text-center">
+              <h4 class="card-title"><%= t "layouts.header.login" %></h4>
+            </div>
+            <div class="card-body">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons"><%= t ".email" %></i>
+                  </span>
+                </div>
+                <%= f.text_field :login, class: "form-control" %>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons"><%= t ".password" %></i>
+                  </span>
+                </div>
+                <%= f.password_field :password, class: "form-control" %>
+              </div>
+              <div class="input-group">
+                <% if devise_mapping.rememberable? -%>
+                  <%= f.check_box :remember_me %>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="material-icons"><%= t ".remember_me" %></i>
+                    </span>
+                  </div>
+                <% end -%>
+              </div>
+            </div>
+            <div class="footer text-center">
+              <%= f.submit t("layouts.header.login"), class: "btn btn-primary btn-wd btn-lg" %>
+            </div>
+          <% end %>
+        </div>
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

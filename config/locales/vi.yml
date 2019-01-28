@@ -1,0 +1,154 @@
+vi:
+  languages:
+    language: "Ngôn ngữ"
+    en: "Tiếng Anh"
+    vi: "Tiếng Việt"
+  app:
+    name: "Thư viện"
+    return_book: "Trả sách"
+    disapproved_request: "Không chấp nhận yêu cầu mượn sách"
+  layouts:
+    header:
+      help: "Giúp đỡ"
+      login: "Đăng nhập"
+      home: "Trang chủ"
+      account: "Tài khoản"
+      profile: "Hồ sơ"
+      settings: "Cài đặt"
+      log_out: "Đăng xuất"
+      users: "Người dùng"
+      books: "Sách"
+      read_all: "Đánh dấu tất cả đã đọc"
+    footer:
+      about: "Về chúng tôi"
+      contact: "Liên lạc"
+      help: "Giúp đỡ"
+  static_pages:
+    home:
+      title: "Trang chủ"
+      content: "Chào mừng đến với website của tôi"
+      button: "Đăng ký ngay"
+    about:
+      title: "Về chúng tôi"
+      content: "Đây là trang giới thiệu về chúng tôi"
+    contact:
+      title: "Liên lạc"
+      content: "Đây là trang liên lạc với chúng tôi"
+    help:
+      title: "Giúp đỡ"
+      content: "Bận cần sự giúp đỡ của chúng tôi ?"
+  users:
+    please_login: "Hãy đăng nhập trước!"
+    update_success: "Cập nhật thành công!"
+    update_fail: "Cập nhật thất bại!"
+    delete_success: "Xóa thành công!"
+    delete_fail: "Xóa thất bại!"
+    following: "Đang theo dõi"
+    followers: "Người theo dõi"
+    view_profile: "Xem trang cá nhân của tôi"
+    unfollow: "Bỏ theo dõi"
+    follow: "Theo dõi"
+    search: "Tìm kiếm"
+    index: "Quản lý người dùng"
+    role: "Vai trò"
+    like: "Thích"
+    dislike: "Bỏ thích"
+    find_fail: "Không tìm thấy người dùng."
+    likers: "Người thích"
+    edit: "Chỉnh sửa"
+    new:
+      title: "Đăng ký"
+      content: "Đây là trang đăng ký"
+      name: "Tên"
+      password: "Mật khẩu"
+      password_confirmation: "Nhập lại mật khẩu"
+      sign_up: "Đăng ký"
+      sign_in_now: "Đăng nhập ngay!"
+    welcome: "Chào mừng bạn đã đến với Thư viện!"
+  sessions:
+    invalid: "Email hoặc mật khẩu không hợp lệ"
+    new:
+      email: "Email"
+      password: "Mật khẩu"
+      new_user?: "Chưa có tài khoản?"
+      sign_up_now: "Đăng ký ngay!"
+  shared:
+    error_messages:
+      form_err: "Có"
+  admins:
+    welcome: "Chào,"
+    menu: "Menu"
+    users: "Quản lý người dùng"
+    borows: "Quản lý mượn sách"
+    books: "Quản lý sách"
+  views:
+    pagination:
+      first: "Trang đầu"
+      last: "Trang cuối"
+      next: "Trang sau"
+      previous: "Trang trước"
+  footer:
+    footer: "2019, Phát triển bởi Lê Quang Tây"
+  books:
+    create_fail: "Thêm mới sách thất bại!"
+    created: "Thêm mới sách thành công!"
+    ready: "Có thể mượn"
+    borrowed: "Không thể mượn"
+    all: "Tất cả"
+    search: "Tìm kiếm"
+    find_fail: "Không tìm thấy sách!"
+    publisher: "Nhà xuất bản: "
+    author: "Tác giả: "
+    borrow: "Mượn sách"
+    started_at: "Ngày mượn"
+    finished_at: "Ngày trả"
+    close: "Đóng"
+    quick_view: "Xem nhanh"
+    name: "Tên sách"
+    image: "Ảnh bìa"
+    category_name: "Danh mục"
+    publisher_name: "Nhà xuất bản"
+    number_of_page: "Số trang"
+    create: "Thêm mới sách"
+    content: "Nội dung"
+  datetime:
+    format: "DD/MM/YYYY HH:mm"
+  borrows:
+    request: "%{user_name} muốn mượn sách"
+    status: "Trạng thái"
+    change: "Thay đổi"
+    already_exist: "Bạn đã gửi yêu cầu mượn sách này rồi, vui lòng đợi phản hồi từ admin."
+    created: "Mượn sách thành công!"
+    created_fail: "Mượn sách thất bại!"
+    index: "Quản lý yêu cầu mượn sách"
+  waiting: "Đang đợi"
+  approved: "Chấp nhận"
+  disapproved: "Không chấp nhận"
+  done: "Đã trả sách"
+  mailer:
+    hi: "Chào"
+    content: "Ngày mai là đến hạn trả sách, bạn vui lòng mang sách đến trả lại cho thư viện, Cảm ơn bạn."
+    disapproved_request: "Yêu cầu mượn sách của bạn không được chấp nhận vì nó đã được người khác mượn, vui lòng mượn nó vào lúc khác. Cảm ơn bạn."
+  export:
+    download: "Tải xuống:"
+    csv: "CSV"
+    excel: "Excel"
+  comments:
+    delete: "Xóa"
+    you_sure: "Bạn chắc chắn muốn xóa?"
+    comment: "Bình luận"
+    ago: "trước."
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%H:%M - %d/%m/%y"
+  publishers:
+    phone: "SĐT: "
+    address: "Địa chỉ: "
+  search:
+    users: "Tìm kiếm ..."
+  submit: "Lưu"
+  user: "Người dùng"
+  admin: "Quản trị viên"

@@ -1,0 +1,154 @@
+en:
+  languages:
+    language: "Language"
+    en: "English"
+    vi: "Vietnamese"
+  app:
+    name: "Pet Care"
+    return_book: "Return Book"
+    disapproved_request: "Disapproved request borrow book"
+  layouts:
+    header:
+      help: "Help"
+      login: "Login"
+      home: "Home"
+      account: "Account"
+      profile: "Profile"
+      settings: "Setting"
+      log_out: "Logout"
+      users: "Users"
+      books: "Books"
+      read_all: "Mark all read"
+    footer:
+      about: "About"
+      contact: "Contact"
+      help: "Help"
+  static_pages:
+    home:
+      title: "HomePage"
+      content: "Welcome to SampleApp !"
+      button: "Signup now"
+    about:
+      title: "AboutPage"
+      content: "This is about page"
+    contact:
+      title: "ContactPage"
+      content: "This is contact page"
+    help:
+      title: "HelpPage"
+      content: "This is help page"
+  users:
+    please_login: "Please login first!"
+    update_success: "Update successfully!"
+    update_fail: "Update fail!"
+    delete_success: "Delete successfully!"
+    delete_fail: "Delete fail!"
+    following: "Following"
+    followers: "Followers"
+    view_profile: "View my profile"
+    unfollow: "Unfollow"
+    follow: "Follow"
+    search: "Search"
+    index: "Manage users"
+    role: "Role"
+    like: "Like"
+    dislike: "Dislike"
+    find_fail: "User not found."
+    likers: "Like"
+    edit: "Edit"
+    new:
+      title: "Sign Up"
+      content: "This is sign up page"
+      name: "Name"
+      password: "Password"
+      password_confirmation: "Confirmation"
+      sign_up: "Sign up"
+      sign_in_now: "Login now!"
+    welcome: "Welcome to the Library System!"
+  sessions:
+    invalid: "Invalid email/password combination"
+    new:
+      email: "Email"
+      password: "Password"
+      new_user?: "New user?"
+      sign_up_now: "Signup now!"
+  shared:
+    error_messages:
+      form_err: "The form contains"
+  admin:
+    welcome: "Welcome,"
+    menu: "Menu"
+    users: "Manage users"
+    borows: "Manage borrows"
+    books: "Manage books"
+  views:
+    pagination:
+      first: "First"
+      last: "Last"
+      next: "Next"
+      previous: "Previous"
+  footer:
+    footer: "2019, made with favorite by TayLQ"
+  books:
+    create_fail: "Book create fail!"
+    created: "Book create successfully!"
+    ready: "Ready"
+    borrowed: "Borrowed"
+    all: "All"
+    search: "Search"
+    find_fail: "Book not found!"
+    publisher: "Publisher: "
+    author: "Author: "
+    borrow: "Borrow"
+    started_at: "Started at"
+    finished_at: "Finished at"
+    close: "Close"
+    quick_view: "Quick View"
+    name: "Name"
+    image: "Image"
+    category_name: "Category"
+    publisher_name: "Publisher"
+    number_of_page: "Pages"
+    create: "Add a book"
+    content: "Content"
+  datetime:
+    format: "DD/MM/YYYY HH:mm"
+  borrows:
+    request: "%{user_name} send request to borrow book"
+    status: "Status"
+    change: "Change"
+    already_exist: "Your request already exist!"
+    created: "Borrow book successfully!"
+    created_fail: "Borrow book fail!"
+    index: "Manage borrows request "
+  waiting: "Waiting"
+  approved: "Approved"
+  disapproved: "Disapproved"
+  done: "Done"
+  mailer:
+    hi: "Hi"
+    content: "Tomorrow is the book return term, please return the book to the library. Thanks you!"
+    disapproved_request: "Your borrow book request is not accepted because it has been borrowed by someone else, please borrow it at another time. Thanks you!"
+  export:
+    download: "Download:"
+    csv: "CSV"
+    excel: "Excel"
+  comments:
+    delete: "Delete"
+    you_sure: "You sure?"
+    comment: "Comment"
+    ago: "ago."
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%H:%M - %d/%m/%y"
+  publishers:
+    phone: "Phone: "
+    address: "Address: "
+  search:
+    users: "Search ..."
+  submit: "Submit"
+  user: "User"
+  admin: "Admin"
