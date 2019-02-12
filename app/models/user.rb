@@ -2,6 +2,8 @@ class User < ApplicationRecord
   attr_writer :login
   devise :database_authenticatable, :registerable, :rememberable, :validatable,
     :omniauthable, omniauth_providers: [:google_oauth2], authentication_keys: [:login]
+  has_many :blogs, dependent: :destroy
+
   before_save :email_downcase
   enum role: %i(member admin doctor nurse director secretary)
 
@@ -24,6 +26,10 @@ class User < ApplicationRecord
   default_scope -> {order(created_at: :desc)}
   scope :select_attr, ->{select(:id, :name, :email, :role)}
   scope :search_scope, ->(search){where "name like '%#{search}%' or email like '%#{search}%'"}
+
+  def feed
+    Blog.where "user_id = ?", id
+  end
 
   def gravatar_url options = {size: 50}
     gravatar_id = Digest::MD5.hexdigest email.downcase
@@ -91,16 +97,6 @@ class User < ApplicationRecord
         end
       end
     end
-  end
-
-  def feed
-    Book.where "category_id IN (SELECT category_id FROM books JOIN follow_books
-      ON books.id = follow_books.book_id WHERE follow_books.user_id = ?)", id
-  end
-
-  def categories_of_feed
-    Category.where "id IN (SELECT category_id FROM books JOIN follow_books
-      ON books.id = follow_books.book_id WHERE follow_books.user_id = ?)", id
   end
 
   def follow other_user

@@ -1,0 +1,19 @@
+<%= form_for @blog do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class="field">
+    <div class="avatar-upload col-sm-3">
+      <div class="avatar-edit">
+        <%= f.file_field :image, id: "imageUpload" %>
+        <label for="imageUpload"></label>
+      </div>
+      <div class="avatar-preview">
+        <div id="imagePreview"></div>
+      </div>
+    </div>
+    <div class="col-sm-5 offset-sm-2">
+      <%= f.text_field :title, placeholder: "Title" %>
+      <%= f.text_area :content, placeholder: "Compose new blog..." %>
+    </div>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
