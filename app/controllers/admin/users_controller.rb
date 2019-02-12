@@ -32,9 +32,8 @@ module Admin
       binding.pry
       @user = User.new user_params
       if @user.save
-        log_in @user
         flash[:success] = t "users.welcome"
-        redirect_to @user
+        redirect_to admin_users_path
       else
         render :new
       end
@@ -52,13 +51,13 @@ module Admin
     private
 
     def user_params
-      params.require(:user).permit :name, :email, :password, :password_confirmation, :role
+      params.require(:user).permit :name, :email, :password, :password_confirmation, :role, :username
     end
 
     def find_user
       return if @user = User.find_by(id: params[:id])
       flash[:danger] = t "books.find_fail"
-      redirect_to users_path
+      redirect_to admin_users_path
     end
   end
 end
