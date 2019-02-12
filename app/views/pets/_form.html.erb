@@ -1,0 +1,24 @@
+<%= form_for [:user, @pet], class: "form" do |f| %>
+  <div class="avatar-upload col-sm-3">
+    <div class="avatar-edit">
+      <%= f.file_field :image, id: "imageUpload" %>
+      <label for="imageUpload"></label>
+    </div>
+    <div class="avatar-preview">
+      <div id="imagePreview"></div>
+    </div>
+  </div>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <i class="material-icons"><%= t ".name" %></i>
+      </span>
+    </div>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+  <%= f.select :type_pet, type_choice, selected: @pet.type_pet, class: "form-control" %>
+  <%= f.select :gender, gender_choice, selected: @pet.gender, class: "form-control" %>
+  <div class="footer text-center">
+    <%= f.submit t(".sign_up"), class: "btn btn-primary btn-wd btn-lg" %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<% provide :title, t("users.index") %>
+<div class="main main-raised">
+  <div class="section section-basic custom-background">
+    <div class="container style-container">
+      <div class="row">
+        <div class="pull-right search-form col-sm-4 offset-sm-8">
+          <div class="col-sm-2 pull-right">
+            <%= link_to t("users.create"), new_user_pet_path(current_user), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <div class="right_col" role="main">
+        <div>
+          <div class="row top_tiles margin10">
+            <div class="col-md-12 col-sm-12 col-xs-12 tile">
+              <ul class="users">
+                <table class="table">
+                  <tr>
+                    <th><%= t "users.new.name" %></th>
+                    <th><%= t "sessions.new.type" %></th>
+                    <th><%= t "sessions.new.gender" %></th>
+                  </tr>
+                  <%= render @pets %>
+                </table>
+              </ul>
+              <div class="col-sm-8 col-sm-offset-3">
+                <%= paginate @pets, theme: "twitter-bootstrap-3" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

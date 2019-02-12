@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2019_02_12_073659) do
     t.string "name"
     t.string "image"
     t.integer "gender"
-    t.integer "type"
+    t.integer "type_pet"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
