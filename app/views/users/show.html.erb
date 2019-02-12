@@ -5,14 +5,25 @@
       <div class="flat-projects">
         <% if user_signed_in? %>
           <div class="row">
-            <aside class="col-md-4">
-              <section class="user_info">
-                <%= render "shared/user_info" %>
-              </section>
-            </aside>
-            <section class="blog_form col-md-8">
-              <%= render "shared/blog_form" %>
+            <aside class="col-md-12">
+          <section class="user_info">
+            <%= image_tag @user.gravatar_url, alt: @user.name, class: "avata col-sm-4" %>
+            <h1 class="col-sm-8 user-name">
+              <%= @user.name %>
+            </h1>
+            <section class="stats col-sm-9">
+              <%= render "shared/stats" %>
             </section>
+          </section>
+          <section class="col-sm-2">
+            <%= render "follow_form", inactive_relationships: @inactive_relationships, active_relationships: @active_relationships if user_signed_in? %>
+          </section>
+        </aside>
+            <% if current_user == @user %>
+              <section class="blog_form col-md-8">
+                <%= render "shared/blog_form" %>
+              </section>
+            <% end %>
             <div class="">
               <h3>Blog Feed</h3>
               <%= render "shared/feed" %>
