@@ -5,7 +5,7 @@ class CreatePets < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :image
       t.integer :gender
-      t.integer :type
+      t.integer :type_pet
 
       t.timestamps
     end
