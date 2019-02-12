@@ -2,14 +2,34 @@
 <div class="main main-raised">
   <div class="section section-basic custom-background">
     <div class="container">
-        <div class="flat-projects">
-          <ul class="projects-filter style1 margin60">
-          </ul>
-          <div class="projects-items book_items">
+      <div class="flat-projects">
+        <% if user_signed_in? %>
+          <div class="row">
+            <aside class="col-md-4">
+              <section class="user_info">
+                <%= render "shared/user_info" %>
+              </section>
+            </aside>
+            <section class="blog_form col-md-8">
+              <%= render "shared/blog_form" %>
+            </section>
+            <div class="">
+              <h3>Blog Feed</h3>
+              <%= render "shared/feed" %>
+            </div>
           </div>
-          <div class="col-sm-6 offset-sm-4">
+        <% else %>
+          <div class="center jumbotron">
+            <h1>Welcome to the Sample App</h1>
+            <h2>
+              This is the home page for the
+              <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
+              sample application.
+            </h2>
+            <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
           </div>
-        </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

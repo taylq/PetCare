@@ -10,6 +10,14 @@
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
+        <i class="material-icons"><%= t ".user_name" %></i>
+      </span>
+    </div>
+    <%= f.text_field :username, class: "form-control" %>
+  </div>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
         <i class="material-icons"><%= t ".email" %></i>
       </span>
     </div>
