@@ -1,5 +1,7 @@
 class User < ApplicationRecord
   attr_writer :login
+  acts_as_voter
+
   devise :database_authenticatable, :registerable, :rememberable, :validatable,
     :omniauthable, omniauth_providers: [:google_oauth2], authentication_keys: [:login]
   has_many :blogs, dependent: :destroy
@@ -29,7 +31,10 @@ class User < ApplicationRecord
   scope :search_scope, ->(search){where "name like '%#{search}%' or email like '%#{search}%'"}
 
   def feed
-    Blog.where "user_id = ?", id
+    following_ids = "SELECT followed_id FROM relationships
+      WHERE  follower_id = :user_id"
+    Blog.where "user_id IN (#{following_ids}) OR user_id = :user_id",
+      user_id: id
   end
 
   def gravatar_url options = {size: 50}

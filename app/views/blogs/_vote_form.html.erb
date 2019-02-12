@@ -1,0 +1,14 @@
+<div id="vote_form">
+  <% if user_signed_in? %>
+    <% if (current_user.voted_down_on? blog) || (!ActsAsVotable::Vote.where(voter_id: current_user,votable_id: blog.id).present?) %>
+      <%= link_to blog_votes_path(blog), method: :post, remote: true do %>
+        <span class="glyphicon glyphicon-heart-empty"></span>
+      <% end %>
+    <% else %>
+      <%= link_to blog_vote_path(blog,0), method: :delete, remote: true do %>
+        <span class="glyphicon glyphicon-heart"></span>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= t "blogs.show.like" %> <%= blog.get_upvotes.size %>
+</div>
