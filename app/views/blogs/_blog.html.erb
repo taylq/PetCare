@@ -1,5 +1,4 @@
 <li id="blog-<%= blog.id %>">
-  <td><%= image_tag blog.image.url if blog.image %></td>
   <span class="title"><%= blog.title %></span>
   <span class="content"><%= blog.content %></span>
   <span class="timestamp">
@@ -10,3 +9,11 @@
     <% end %>
   </span>
 </li>
+<% if user_signed_in? %>
+  <div id="load_comment-<%= blog.id %>">
+    <%= render "comments/comment", blog: blog %>
+  </div>
+  <div id="comment_form">
+    <%= render "comments/form", blog: blog, user: blog.user %>
+  </div>
+<% end %>

@@ -12,6 +12,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @blogs = @user.blogs.page(params[:page]).per(Settings.per_page)
+    @comment = current_user.comments.build
+    if current_user.member?
+      @blog  = current_user.blogs.build
+      @feed_items = @user.feed.page(params[:page]).per(Settings.per_page)
+    end
   end
 
   def following

@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     end
 
     resources :relationships, only: [:create, :destroy]
-    resources :blogs, only: [:create, :destroy]
+    resources :blogs
+    resources :comments, only: [:create, :destroy]
 
     namespace :admin do
       resources :users
