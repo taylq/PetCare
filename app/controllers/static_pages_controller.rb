@@ -5,6 +5,11 @@ class StaticPagesController < ApplicationController
       @blog  = current_user.blogs.build
       @comment = current_user.comments.build
       @feed_items = current_user.feed.page(params[:page]).per(Settings.per_page)
+      session[:conversations] ||= []
+
+      @users = User.all.where.not(id: current_user)
+      @conversations = Conversation.includes(:recipient, :messages)
+        .find(session[:conversations])
     end
   end
 

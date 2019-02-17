@@ -15,6 +15,12 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :conversations, only: [:create] do
+      member do
+        post :close
+      end
+      resources :messages, only: [:create]
+    end
     resources :relationships, only: [:create, :destroy]
     resources :blogs do
       resources :votes, only: [:create, :destroy]
