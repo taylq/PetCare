@@ -1,60 +1,144 @@
-<nav class="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg" color-on-scroll="100" id="sectionsNav">
-    <div class="container">
-      <div class="navbar-translate">
-        <%= link_to t("app.name"), root_path, id: "logo", class: "navbar-brand" %>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <% if user_signed_in? %>
-            <li class="dropdown nav-item">
-              <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                <%= t ".account" %>
-              </a>
-              <div class="dropdown-menu dropdown-with-icons">
-                <%= link_to t(".profile"), current_user, class: "dropdown-item" %>
-                <%= link_to t(".settings"), "#", class: "dropdown-item" %>
-                <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-              </div>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'pets', user_pets_path(current_user), class: "nav-link" %>
-            </li>
-            <% if current_user.admin? %>
-              <li class="nav-item">
-                <%= link_to t(".manage"), admin_users_path, class: "nav-link", data: { turbolinks: false } %></li>
-              <li class="nav-item">
-                <%= link_to t(".users"), users_path, class: "nav-link" %></li>
-            <% else %>
-              <li class="nav-item">
-                <%= link_to t(".users"), users_path, class: "nav-link" %>
-              </li>
-            <% end %>
-          <% else %>
-            <li class="nav-item"><%= link_to t(".login"), new_user_session_path, class: "nav-link" %></li>
-          <% end %>
-          <li class="dropdown nav-item">
-            <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-              <%= t "languages.language" %>
-            </a>
-            <div class="dropdown-menu dropdown-with-icons">
-              <%= link_to t("languages.en"), url_for(locale:"en"), class: "dropdown-item" %>
-              <%= link_to t("languages.vi"), url_for(locale:"vi"), class: "dropdown-item" %>
+<!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-1 pull-left">
+                        <div class="logo">
+                            <a href="index.html"><img alt="Logo" src="assets/img/logo.png" width="56" height="50"></a>
+                        </div>
+                    </div>
+                    <div class="col-md-11">
+                        <div class="navbar-collapse collapse" id="navbar">
+                            <ul class="nav navbar-nav main-nav pull-right navbar-right">
+                                <li class="<%= current_class? root_path %>"><a href="<%= root_path %>"><%= t "app.home" %></a></li>
+                                <li class="<%= current_class? about_path %>"><a href="<%= about_path %>"><%= t "app.about" %></a></li>
+                                <li><a href="departments.html">Departments</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="doctors.html">Doctors</a></li>
+                                <li><a href="<%= blogs_path %>">Blog</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><%= t "languages.language" %> <b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><%= link_to t("languages.en"), url_for(locale:"en"), class: "dropdown-item" %></li>
+                                        <li><%= link_to t("languages.vi"), url_for(locale:"vi"), class: "dropdown-item" %></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact-us.html">Contact Us</a></li>
+                                <li><a class="btn btn-primary appoint-btn appointment" href="appointment.html">Appointment</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle settings-icon appointment" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <% if user_signed_in? %>
+                                            <li><%= link_to t(".profile"), current_user, class: "dropdown-item" %></li>
+                                            <li><%= link_to t(".settings"), "#", class: "dropdown-item" %></li>
+                                            <li><%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                                        <% else%>
+                                            <li><%= link_to t(".login"), new_user_session_path, class: "nav-link" %></li>
+                                            <li><%= link_to t("users.new.sign_up"), new_user_registration_path, class: "nav-link" %></li>
+                                        <% end %>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <%= search_form_for @q, url: search_path do |f| %>
+                                        <%= f.search_field :symptom_cont, class: "search-bar ml-3",
+                                            placeholder: "Search...",
+                                            data: { behavior: "autocomplete" },
+                                            autocomplete: :off, required: true %>
+                                        <%= f.select :pet_type, type_choice, class: "form-control" %>
+                                        <%= f.submit do  %>
+                                        <i class="fa fa-search"></i>
+                                        <% end %>
+                                    <% end %>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <div class="page-header header-filter clear-filter purple-filter" data-parallax="true" style="background-image: url('http://recruit.framgia.vn/wp-content/uploads/2016/06/recruit.framgia.jpg');">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 ml-auto mr-auto">
-          <div class="brand">
-            <h1><%= t("app.name") %></h1>
-          </div>
         </div>
-      </div>
+    </header>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="panel-control-left"><a class="toggle-menu" href="#side_menu"><i class="fa fa-bars"></i></a></div>
+        <div class="page_title">
+            <a href="index.html"><img src="assets/img/logo.png" alt="Logo" class="img-responsive" width="60" height="60"></a>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="sidebar sidebar-menu" id="side_menu">
+        <div class="sidebar-inner slimscroll">
+            <a id="close_menu" href="#"><i class="fa fa-close"></i></a>
+            <ul class="mobile-menu-wrapper" style="display: block;">
+                <li class="active">
+                    <div class="mobile-menu-item clearfix">
+                        <a href="index.html">Home</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="about-us.html">About Us</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="departments.html">Departments</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="services.html">Services</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="doctors.html">Doctors</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="">Blog <i class="fa fa-chevron-down menu-toggle"></i></a>
+                    </div>
+                    <ul class="mobile-submenu-wrapper" style="display: none;">
+                        <li><a href="blog.html">Right Sidebar</a></li>
+                        <li><a href="blog-left-sidebar.html">Left Sidebar</a></li>
+                        <li><a href="blog-full-width.html">Full Width</a></li>
+                        <li><a href="blog-grid.html">Blog Grid</a></li>
+                        <li><a href="blog-details.html">Blog Details</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="contact-us.html">Contact Us</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="appointment.html">Appointment</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="login.html">Login</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="register.html">Register</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="forgot-password.html">Forgot Password</a>
+                    </div>
+                </li>
+                <li>
+                    <div class="mobile-menu-item clearfix">
+                        <a href="404.html">404</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-  </div>

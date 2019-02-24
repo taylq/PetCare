@@ -5,6 +5,9 @@ en:
     vi: "Vietnamese"
   app:
     name: "Pet Care"
+    login: "Username or Email"
+    home: "Home"
+    about: "About Us"
     return_book: "Return Book"
     disapproved_request: "Disapproved request borrow book"
   layouts:
@@ -59,7 +62,7 @@ en:
     new:
       title: "Sign Up"
       content: "This is sign up page"
-      name: "Name"
+      full_name: "Full name"
       password: "Password"
       password_confirmation: "Confirmation"
       sign_up: "Sign up"
@@ -68,6 +71,7 @@ en:
   sessions:
     invalid: "Invalid email/password combination"
     new:
+      user_name: "Username"
       email: "Email"
       password: "Password"
       new_user?: "New user?"

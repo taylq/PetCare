@@ -4,15 +4,11 @@
     <title><%= full_title yield :page_title %></title>
     <%= render "layouts/admin/default" %>
   </head>
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <%= render "layouts/admin/menu" %>
+  <body>
+    <div class="main-wrapper">
         <%= render "layouts/admin/header" %>
+        <%= render "layouts/admin/menu" %>
         <%= yield %>
-        <%= render "layouts/admin/footer" %>
-      </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gentelella/1.4.0/js/custom.js"></script>
   </body>
 </html>

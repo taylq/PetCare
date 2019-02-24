@@ -1,16 +1,8 @@
 class StaticPagesController < ApplicationController
-  def home
-    @feed_items = Blog.all.page(params[:page]).per(Settings.per_page)
-    if user_signed_in?
-      @blog  = current_user.blogs.build
-      @comment = current_user.comments.build
-      @feed_items = current_user.feed.page(params[:page]).per(Settings.per_page)
-      session[:conversations] ||= []
+  before_action :check_info
 
-      @users = User.all.where.not(id: current_user)
-      @conversations = Conversation.includes(:recipient, :messages)
-        .find(session[:conversations])
-    end
+  def home
+
   end
 
   def help; end
@@ -18,4 +10,10 @@ class StaticPagesController < ApplicationController
   def about; end
 
   def contact; end
+
+  private
+
+  def check_info
+    redirect_to edit_user_registration_path(current_user) if user_signed_in? && current_user.dob.blank? && current_user.address.blank? && current_user.phone.blank?
+  end
 end

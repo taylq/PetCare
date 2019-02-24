@@ -2,6 +2,20 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
   before_action :correct_user, only: :destroy
 
+  def index
+    @feed_items = Blog.all.page(params[:page]).per(Settings.per_page)
+    if user_signed_in?
+      @blog  = current_user.blogs.build
+      @comment = current_user.comments.build
+      @feed_items = current_user.feed.page(params[:page]).per(Settings.per_page)
+      session[:conversations] ||= []
+
+      @users = User.all.where(role: 5)
+      @conversations = Conversation.includes(:recipient, :messages)
+        .find(session[:conversations])
+    end
+  end
+
   def create
     @blog = current_user.blogs.build blog_params
     if @blog.save

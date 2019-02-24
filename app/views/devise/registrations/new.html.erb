@@ -1,62 +1,40 @@
-<div class="section section-signup page-header" style="background-image: url('./assets/img/city.jpg');">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-        <div class="card card-login">
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <div class="card-header card-header-primary text-center">
-              <h4 class="card-title"><%= t "users.new.sign_up" %></h4>
+<div class="main-content account-content">
+        <div class="content">
+            <div class="container">
+                <div class="account-box">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <div class="account-title">
+                            <h3><%= t "users.new.sign_up" %></h3>
+                        </div>
+                        <%= devise_error_messages! %>
+                        <div class="form-group">
+                            <%= f.label :full_name, t("users.new.full_name") %>
+                            <%= f.text_field :name, class: "form-control", placeholder: t("users.new.full_name") %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :username, t("sessions.new.user_name") %>
+                            <%= f.text_field :username, class: "form-control", placeholder: t("sessions.new.user_name") %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :email, t("sessions.new.email") %>
+                            <%= f.email_field :email, class: "form-control", placeholder: t("sessions.new.email") %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :password, t("users.new.password") %>
+                            <%= f.password_field :password, class: "form-control", placeholder: t("users.new.password") %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :password_confirmation, t("users.new.password_confirmation") %>
+                            <%= f.password_field :password_confirmation, class: "form-control", placeholder: t("users.new.password_confirmation") %>
+                        </div>
+                        <div class="form-group text-center">
+                            <%= f.submit t("users.new.sign_up"), class: "btn btn-primary account-btn" %>
+                        </div>
+                        <div class="text-center login-link">
+                            <%= render "devise/shared/links" %>
+                        </div>
+                  <% end %>
+                </div>
             </div>
-            <%= devise_error_messages! %>
-            <div class="card-body">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons"><%= t "users.new.full_name" %></i>
-                  </span>
-                </div>
-              <%= f.text_field :name, class: "form-control" %>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons"><%= t "sessions.new.user_name" %></i>
-                  </span>
-                </div>
-                <%= f.text_field :username, class: "form-control" %>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons"><%= t "sessions.new.email" %></i>
-                  </span>
-                </div>
-                <%= f.email_field :email, class: "form-control" %>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons"><%= t "users.new.password" %></i>
-                  </span>
-                </div>
-                <%= f.password_field :password, class: "form-control" %>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons"><%= t "users.new.password_confirmation" %></i>
-                  </span>
-                </div>
-                <%= f.password_field :password_confirmation, class: "form-control" %>
-              </div>
-            </div>
-            <div class="footer text-center">
-              <%= f.submit t("users.new.sign_up"), class: "btn btn-primary btn-wd btn-lg" %>
-            </div>
-          <% end %>
         </div>
-        <%= render "devise/shared/links" %>
-      </div>
     </div>
-  </div>
-</div>

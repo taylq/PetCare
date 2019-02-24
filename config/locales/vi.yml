@@ -4,6 +4,9 @@ vi:
     en: "Tiếng Anh"
     vi: "Tiếng Việt"
   app:
+    home: "Trang Chủ"
+    about: "Về chúng tôi"
+    login: "Tên đăng nhập hoặc Email"
     name: "Thư viện"
     return_book: "Trả sách"
     disapproved_request: "Không chấp nhận yêu cầu mượn sách"
@@ -59,7 +62,7 @@ vi:
     new:
       title: "Đăng ký"
       content: "Đây là trang đăng ký"
-      name: "Tên"
+      full_name: "Họ và Tên"
       password: "Mật khẩu"
       password_confirmation: "Nhập lại mật khẩu"
       sign_up: "Đăng ký"
@@ -68,6 +71,7 @@ vi:
   sessions:
     invalid: "Email hoặc mật khẩu không hợp lệ"
     new:
+      user_name: "Tên đăng nhập"
       email: "Email"
       password: "Mật khẩu"
       new_user?: "Chưa có tài khoản?"

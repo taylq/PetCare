@@ -1,19 +1,18 @@
 //= require jquery
-//= require popper.min
 //= require rails-ujs
-//= require material-kit
-//= require core/bootstrap-material-design.min
-//= require imagesloaded.min
-//= require jquery.isotope.min
-//= require plugins/moment.min
-//= require plugins/bootstrap-datetimepicker
+//= require bootstrap
+//= require owl.carousel.min
+//= require moment.min
+//= require bootstrap-datetimepicker.min
+//= require theme
 //= require i18n
 //= require i18n.js
 //= require i18n/translations
 //= require activestorage
 //= require turbolinks
-//= require main
 //= require custom
+//= require jquery-ui/widgets/autocomplete
+
 $(document).click(function () {
   $('.checkbox2').change(function () {
     for (var i = 1; i <= $('#length').data('length'); i++) {

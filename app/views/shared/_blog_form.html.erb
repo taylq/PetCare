@@ -1,3 +1,5 @@
+<div class="blog-form">
+<p style="background: #f5f6f7">create a blog</p>
 <%= form_for @blog do |f| %>
   <%= render "shared/error_messages", object: f.object %>
   <div class="field">
@@ -17,3 +19,4 @@
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
+</div>
