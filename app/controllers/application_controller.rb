@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_locale
+  before_action :set_locale, :search_desease
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_locale
@@ -12,8 +12,12 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def search_desease
+    @q = Desease.ransack(symptom_cont: params[:q])
+  end
+
   def configure_permitted_parameters
-    added_attrs = [:username, :name, :email, :password, :password_confirmation, :remember_me]
+    added_attrs = [:username, :name, :email, :password, :password_confirmation, :remember_me, :address, :phone, :dob]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end

@@ -5,6 +5,8 @@
     <%= render "blogs/vote_form", blog: blog %>
   <span class="timestamp">
     Posted <%= time_ago_in_words blog.created_at %> ago.
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-<%= blog.id %>">
+      <%= t "blogs.edit" %></button>
     <% if current_user == blog.user %>
       <%= link_to "delete", blog, method: :delete,
         data: {confirm: "You sure?"} %>
@@ -19,3 +21,34 @@
     <%= render "comments/form", blog: blog, user: blog.user %>
   </div>
 <% end %>
+<div class="modal fade bs-example-modal-lg-<%= blog.id %>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel"><%= t "categories.edit_category" %></h4>
+      </div>
+      <%= form_for blog do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <div class="field">
+          <div class="avatar-upload col-sm-3">
+            <div class="avatar-edit">
+              <%= f.file_field :image, id: "imageUpload" %>
+              <label for="imageUpload"></label>
+            </div>
+            <div class="avatar-preview">
+              <div id="imagePreview"></div>
+            </div>
+          </div>
+          <div class="col-sm-5 offset-sm-2">
+            <%= f.text_field :title, placeholder: "Title" %>
+            <%= f.text_area :content, placeholder: "Compose new blog..." %>
+          </div>
+        </div>
+        <%= f.submit "Post", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

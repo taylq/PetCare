@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_info
   before_action :find_user, except: %i(index new create)
   before_action :status_relationship, only: %i(show following followers)
 
@@ -48,5 +49,9 @@ class UsersController < ApplicationController
     return unless user_signed_in?
     @active_relationships = current_user.active_relationships.build
     @inactive_relationships = current_user.active_relationships.find_by(followed_id: @user.id)
+  end
+
+  def check_info
+    redirect_to edit_user_registration_path(current_user) if user_signed_in? && current_user.dob.blank? && current_user.address.blank? && current_user.phone.blank?
   end
 end

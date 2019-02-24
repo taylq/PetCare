@@ -1,9 +1,15 @@
 //= require jquery
-//= require bootstrap
+//= require admin/popper.min
+//= require admin/bootstrap.min
+//= require admin/jquery.slimscroll
+//= require admin/select2.min
+//= require admin/moment.min
+//= require admin/bootstrap-datetimepicker.min
+//= require admin/Chart.bundle
+//= require admin/app
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require admin/custom
 $(document).click(function () {
   $('.checkbox2').change(function () {
     for (var i = 1; i <= $('#length').data('length'); i++) {

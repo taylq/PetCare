@@ -1,69 +1,20 @@
-<% provide :page_title, t(".title") %>
-<div class="main main-raised">
-  <div class="section section-basic custom-background">
-    <div class="container">
-      <div class="flat-projects">
-        <% if user_signed_in? %>
-          <div class="row">
-            <aside class="col-md-4">
-              <section class="user_info">
-                <%= render "shared/user_info" %>
-              </section>
-            </aside>
-            <section class="blog_form col-md-8">
-              <%= render "shared/blog_form" %>
-            </section>
-
-
-
-
-            <div class="row">
-  <div class="col-md-9">
-    <ul id="conversations-list">
-      <% @conversations.each do |conversation| %>
-        <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
-      <% end %>
-    </ul>
-  </div>
-
-  <div class="col-md-3">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">User list</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-          <% @users.each do |user| %>
-            <li><%= link_to user.email, conversations_path(user_id: user), remote: true, method: :post %></li>
-
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-            <div class="">
-              <h3>Blog Feed</h3>
-              <%= render "shared/feed" %>
+<div class="main-content">
+        <section class="section home-banner row-middle">
+            <div class="inner-bg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9 col-sm-9">
+                        <div class="banner-content">
+                            <h1>Clean Medical Template</h1>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua.</p>
+                            <a title="Consult" class="btn btn-primary consult-btn" href="appointment.html">Consult</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        <% else %>
-          <div class="center jumbotron">
-            <h1>Welcome to the Sample App</h1>
-            <h2>
-              This is the home page for the
-              <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-              sample application.
-            </h2>
-            <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-          </div>
-        <% end %>
-      </div>
+        </section>
+
+
+
     </div>
-  </div>
-</div>

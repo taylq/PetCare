@@ -1,47 +1,33 @@
-<div class="section section-signup page-header" style="background-image: url('./assets/img/city.jpg');">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-        <div class="card card-login">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="card-header card-header-primary text-center">
-              <h4 class="card-title"><%= t "layouts.header.login" %></h4>
-            </div>
-            <div class="card-body">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons"><%= t ".email" %></i>
-                  </span>
+<div class="main-content account-content">
+        <div class="content">
+            <div class="container">
+                <div class="account-box">
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                        <div class="account-title">
+                            <h3><%= t "layouts.header.login" %></h3>
+                        </div>
+                        <div class="form-group">
+                            <label><%= t "app.login" %></label>
+                            <%= f.text_field :login, class: "form-control", placeholder: t("app.login") %>
+                        </div>
+                        <div class="form-group">
+                            <label><%= t("users.new.password") %></label>
+                            <%= f.password_field :password, class: "form-control", placeholder: t("users.new.password") %>
+                        </div>
+                        <div class="form-group text-right">
+                            <% if devise_mapping.rememberable? -%>
+                              <%= f.check_box :remember_me %>
+                                  <i class="material-icons" style="padding-left: 10px"><%= t ".remember_me" %></i>
+                            <% end -%>
+                        </div>
+                        <div class="form-group text-center">
+                            <%= f.submit t("layouts.header.login"), class: "btn btn-primary account-btn" %>
+                        </div>
+                        <div class="text-center register-link">
+                            <%= render "devise/shared/links" %>
+                        </div>
+                    <% end %>
                 </div>
-                <%= f.text_field :login, class: "form-control" %>
-              </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="material-icons"><%= t ".password" %></i>
-                  </span>
-                </div>
-                <%= f.password_field :password, class: "form-control" %>
-              </div>
-              <div class="input-group">
-                <% if devise_mapping.rememberable? -%>
-                  <%= f.check_box :remember_me %>
-                  <div class="input-group-prepend">
-                    <span class="input-group-text">
-                      <i class="material-icons"><%= t ".remember_me" %></i>
-                    </span>
-                  </div>
-                <% end -%>
-              </div>
             </div>
-            <div class="footer text-center">
-              <%= f.submit t("layouts.header.login"), class: "btn btn-primary btn-wd btn-lg" %>
-            </div>
-          <% end %>
         </div>
-        <%= render "devise/shared/links" %>
-      </div>
     </div>
-  </div>
-</div>

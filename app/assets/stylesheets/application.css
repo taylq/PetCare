@@ -1,7 +1,10 @@
 /*
- *= require font-awesome
  *= require custom
+ *= require font-awesome
+ *= require owl.carousel
+ *= require owl.theme.default.min
  *= require style
- *= require material-kit
+ *= require bootstrap-datetimepicker.min
+ *= require jquery-ui/datepicker
  *= require_self
  */

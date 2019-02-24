@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_17_134625) do
+ActiveRecord::Schema.define(version: 2019_02_23_011530) do
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image"
@@ -37,6 +37,17 @@ ActiveRecord::Schema.define(version: 2019_02_17_134625) do
     t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
     t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
     t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
+  create_table "deseases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "pet_type"
+    t.string "name"
+    t.text "symptom"
+    t.text "reason"
+    t.text "treatment"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -74,6 +85,9 @@ ActiveRecord::Schema.define(version: 2019_02_17_134625) do
     t.string "email"
     t.string "password"
     t.integer "role", default: 0
+    t.string "address"
+    t.string "phone"
+    t.date "dob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
