@@ -42,10 +42,8 @@
                                 <li>
                                     <%= search_form_for @q, url: search_path do |f| %>
                                         <%= f.search_field :symptom_cont, class: "search-bar ml-3",
-                                            placeholder: "Search...",
-                                            data: { behavior: "autocomplete" },
-                                            autocomplete: :off, required: true %>
-                                        <%= f.select :pet_type, type_choice, class: "form-control" %>
+                                            placeholder: "Search...", id: "search-custom" %>
+                                        <%#= f.select :pet_type, type_choice, class: "form-control" %>
                                         <%= f.submit do  %>
                                         <i class="fa fa-search"></i>
                                         <% end %>
@@ -142,3 +140,16 @@
             </ul>
         </div>
     </div>
+    <script>
+
+$.getJSON("/search.json", function(data){
+    var availableTags = new Array();
+    $.each(data.items, function(i, val){
+        availableTags.push(val.symptom);
+    });
+
+    $("#search-custom").autocomplete({
+    source: availableTags
+    });
+});
+</script>

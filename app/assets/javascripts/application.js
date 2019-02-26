@@ -1,5 +1,6 @@
 //= require jquery
-//= require rails-ujs
+//= require jquery_ujs
+//= require jquery-ui
 //= require bootstrap
 //= require owl.carousel.min
 //= require moment.min
@@ -11,7 +12,6 @@
 //= require activestorage
 //= require turbolinks
 //= require custom
-//= require jquery-ui/widgets/autocomplete
 
 $(document).click(function () {
   $('.checkbox2').change(function () {
