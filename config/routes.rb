@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
 
+    resources :deseases
     resources :relationships, only: [:create, :destroy]
     get "search(/:search)", to: "searches#index", as: :search
     resources :blogs do
