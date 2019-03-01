@@ -1,0 +1,45 @@
+<% provide :title, t("users.index") %>
+<div class="page-wrapper">
+  <div class="content">
+    <div class="row">
+      <%= render 'layouts/doctor/flash' %>
+        <div class="col-sm-4 col-3">
+            <h4 class="page-title"><%= t "users.index" %></h4>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <div>
+            <%= t "export.download" %>
+            <%= link_to t("export.csv"), doctor_users_path(format: "csv", search: params[:search]) %> |
+            <%= link_to t("export.excel"), doctor_users_path(format: "xls", search: params[:search]) %>
+          </div>
+          <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th><%= t "users.new.name" %></th>
+                <th><%= t "sessions.new.email" %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render @users %>
+            </tbody>
+          </table>
+          <div class="col-sm-8 col-sm-offset-3">
+            <%= paginate @users, theme: "twitter-bootstrap-3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <script>
+		$(document).ready(function() {
+    $('#example').DataTable({
+responsive: true
+    });
+} );
+	</script>
