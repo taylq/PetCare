@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_27_093327) do
     t.integer "pet_id"
     t.integer "doctor_id"
     t.text "result"
-    t.integer "status"
+    t.integer "status", default: 0
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
