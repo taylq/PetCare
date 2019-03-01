@@ -38,6 +38,11 @@ Rails.application.routes.draw do
     namespace :doctor do
       get "/dashboard", to: "base#dashboard"
       resources :deseases
+      resources :users do
+        resources :pets do
+          resources :medical_records
+        end
+      end
     end
   end
 end

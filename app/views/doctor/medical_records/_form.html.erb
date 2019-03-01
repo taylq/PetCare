@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <%= form_for [:doctor, user, pet, medical_record], class: "form" do |f| %>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <%= f.hidden_field :pet_id, value: pet.id %>
+                        <%= f.hidden_field :doctor_id, value: current_user.id %>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Symptom <span class="text-danger">*</span></label>
+                        <%= f.text_area :result, class: "form-control" %>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <%= f.text_area :description, class: "form-control" %>
+                    </div>
+                </div>
+                <!--
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Role</label>
+                        <select class="select">
+                            <option>Admin</option>
+                            <option>Doctor</option>
+                            <option>Nurse</option>
+                            <option>Laboratorist</option>
+                            <option>Pharmacist</option>
+                            <option>Accountant</option>
+                            <option>Receptionist</option>
+                        </select>
+                    </div>
+                </div>
+                -->
+                <div class="form-group" data-length="<%= services.length %>" id="length">
+                  <%= f.label :service, t("medical_records.service"), class: "control-label col-sm-3" %>
+                  <div class="col-sm-9">
+                    <% services.each do |service| %>
+                      <%= f.fields_for :medical_records_services,
+                        service.service_ids_of_medical_record(medical_record) ||
+                        medical_record.medical_records_services.build do |ap| %>
+                        <div class="col-sm-6 ">
+                          <%= f.label service.name %>
+                          <%= ap.check_box :service_id, {id: "checkbox_check#{service.id}",
+                            class: "flat"}, service.id, 0 %>
+                          <%= ap.hidden_field :_destroy, id: "data-form-prepend#{service.id}" %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+            </div>
+            <div class="m-t-20 text-center">
+                <%= f.submit "Save", class: "btn btn-primary submit-btn" %>
+            </div>
+        <% end %>
+    </div>
+</div>

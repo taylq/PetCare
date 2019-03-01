@@ -1,0 +1,32 @@
+<div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Employee</h4>
+                    </div>
+                </div>
+                <div class="row filter-row">
+                  <%= @pet.name %>
+                  <%= @pet.user.name %>
+                  <%= @pet.type_pet %>
+                  <%= @pet.gender %>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+						<div class="table-responsive">
+                <div class="col-sm-2 pull-right">
+          <%= link_to "create MR", new_doctor_user_pet_medical_record_path(@pet.user, @pet.id), class: "btn btn-primary" %>
+        </div>
+						</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <% @pet.medical_records.each do |mr| %>
+                        Result: <%= mr.result %> </br>
+                        Description: <%= mr.description %>
+                    <% end %>
+                </div>
+            </div>
+
+        </div>
+
