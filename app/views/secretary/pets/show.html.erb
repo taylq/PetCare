@@ -1,0 +1,34 @@
+<div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-4 col-3">
+                        <h4 class="page-title">Employee</h4>
+                    </div>
+                </div>
+                <div class="row filter-row">
+                  <%= @pet.name %>
+                  <%= @pet.user.name %>
+                  <%= @pet.type_pet %>
+                  <%= @pet.gender %>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+						<div class="table-responsive">
+						</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <% @pet.medical_records.each do |mr| %>
+                        Result: <%= link_to mr.result, secretary_user_pet_medical_record_path(mr.pet.user, mr.pet, mr) %> </br>
+                        Description: <%= mr.description %>
+                <div class="col-sm-2 pull-right">
+          <%#= link_to "create Bill", new_secretary_user_pet_medical_record_bill_path(@pet.user, @pet.id, mr.id), class: "btn btn-primary" %>
+          <%#= link_to t("export.csv"), secretary_user_pet_path(format: "csv", search: params[:search]) %> |
+            <%#= link_to t("export.excel"), doctor_users_path(format: "xls", search: params[:search]) %>
+        </div>
+                    <% end %>
+                </div>
+            </div>
+
+        </div>
+

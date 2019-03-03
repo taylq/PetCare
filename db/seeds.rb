@@ -1,8 +1,11 @@
 puts "1. Seeding Admin"
   User.create!(name: "admin", email: "admin@gmail.com", password: "123456", role: 1, username: "admin", phone: "123456", address: "qwe", dob: DateTime.now)
 
-  puts "2. Seeding Doctor"
+puts "2. Seeding Doctor"
   User.create!(name: "doctor", email: "doctor@gmail.com", password: "123456", role: 2, username: "doctor", phone: "123456", address: "qwe", dob: DateTime.now)
+
+puts "2. Seeding Secretary"
+  User.create!(name: "secretary", email: "secretary@gmail.com", password: "123456", role: 5, username: "secretary", phone: "123456", address: "qwe", dob: DateTime.now)
 
 puts "2. Seeding User"
 20.times do |i|

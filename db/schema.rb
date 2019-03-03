@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_27_093327) do
+ActiveRecord::Schema.define(version: 2019_03_02_024625) do
+
+  create_table "bills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "medical_record_id"
+    t.decimal "total", precision: 10
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image"
@@ -54,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_02_27_093327) do
     t.integer "pet_id"
     t.integer "doctor_id"
     t.text "result"
-    t.integer "status"
+    t.integer "status", default: 0
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
