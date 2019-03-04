@@ -31,6 +31,8 @@ gem "omniauth-oauth2", "~> 1.3.1"
 gem "acts_as_votable", "~> 0.10.0"
 gem "ransack"
 gem 'jquery-ui-rails'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]

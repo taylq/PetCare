@@ -7,7 +7,6 @@ module Doctor
     end
 
     def create
-      binding.pry
       @medical_record = MedicalRecord.new medical_record_params
       if @medical_record.save
         flash[:success] = "create successfull"
@@ -26,7 +25,7 @@ module Doctor
     end
 
     def medical_record_params
-      params.require(:medical_record).permit :doctor_id, :pet_id, :result, :description, :status, medical_records_services_attributes: %i(id medical_record_id service_id _destroy)
+      params.require(:medical_record).permit :doctor_id, :pet_id, :result, :description, :status, medical_records_services_attributes: %i(id medical_record_id service_id quantity _destroy)
     end
   end
 end

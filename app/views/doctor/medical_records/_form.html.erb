@@ -49,6 +49,7 @@
                           <%= f.label service.name %>
                           <%= ap.check_box :service_id, {id: "checkbox_check#{service.id}",
                             class: "flat"}, service.id, 0 %>
+                            <%= ap.number_field :quantity %>
                           <%= ap.hidden_field :_destroy, id: "data-form-prepend#{service.id}" %>
                         </div>
                       <% end %>

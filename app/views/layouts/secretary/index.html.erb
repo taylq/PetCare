@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield :page_title %></title>
+    <%= render "layouts/secretary/default" %>
+  </head>
+  <body>
+    <div class="main-wrapper">
+        <%= render "layouts/secretary/header" %>
+        <%= render "layouts/secretary/menu" %>
+        <%= yield %>
+    </div>
+  </body>
+</html>

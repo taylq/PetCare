@@ -44,5 +44,16 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    namespace :secretary do
+      get "/dashboard", to: "base#dashboard"
+      resources :users do
+        resources :pets do
+          resources :medical_records do
+            resources :bills
+          end
+        end
+      end
+    end
   end
 end
