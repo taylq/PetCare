@@ -12,6 +12,7 @@
 //= require activestorage
 //= require turbolinks
 //= require custom
+//= require_tree ./channels
 
 $(document).click(function () {
   $('.checkbox2').change(function () {
