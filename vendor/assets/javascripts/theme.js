@@ -1,7 +1,7 @@
-$(document).ready(function() {
-	
+$(document).on('turbolinks:load', function() {
+
 	// Mobile menu overlay
-	
+
 	$(".toggle-menu").on("click", function() {
 		var $target = $($(this).attr("href"));
 		if ($target.length) {
@@ -11,7 +11,7 @@ $(document).ready(function() {
 			$(".sidebar-overlay").attr("data-reff", $(this).attr("href"));
 		}
 	});
-	
+
 	$(".sidebar-overlay").on("click", function() {
 		var $target = $($(this).attr("data-reff"));
 		if ($target.length) {
@@ -20,16 +20,16 @@ $(document).ready(function() {
 			$(this).removeClass("opened");
 		}
 	});
-	
+
 	// Mobile Menu
-	
+
 	$('.menu-toggle').on("click", function() {
 		$(this).parents('li').children('.mobile-submenu-wrapper').slideToggle(300);
 		return false;
 	});
-	
+
 	// Testimonial Carousel
-	
+
 	if($('#testimonial_slider').length > 0 ){
 		$("#testimonial_slider").owlCarousel({
 			autoPlay: false,
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
+
 	// Doctor Carousel
 
 	if($('#our_doctor').length > 0 ){
@@ -75,7 +75,7 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
+
 	// Header menu dropdown
 
 	if($('.header .dropdown').length > 0 ){
@@ -87,15 +87,15 @@ $(document).ready(function() {
 				$(this).removeClass('open');
 		});
 	}
-		
+
 	// Date Time Picker
-		
+
 	if($('.datetimepicker').length > 0 ){
 		$('.datetimepicker').datetimepicker({
 			format: 'DD/MM/YYYY'
 		});
 	}
-	
+
 	// Select2
 
 	if($('.select').length > 0 ){

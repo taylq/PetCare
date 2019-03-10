@@ -1,22 +1,20 @@
-<div class="blog-form">
-<p style="background: #f5f6f7">create a blog</p>
+<div class="blog-form col-sm-12 col-sm-offset-1">
+<p class="create-blog">create a blog</p>
 <%= form_for @blog do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <div class="field">
-    <div class="avatar-upload col-sm-3">
-      <div class="avatar-edit">
-        <%= f.file_field :image, id: "imageUpload" %>
-        <label for="imageUpload"></label>
-      </div>
-      <div class="avatar-preview">
-        <div id="imagePreview"></div>
-      </div>
+    <div class="col-sm-12">
+      <%= f.text_field :title, placeholder: "Title", class: "col-sm-12" %>
+      <%= f.text_area :content, placeholder: "Compose new blog...", class: "col-sm-12" %>
+    <img id='img-upload'/>
+    <div class="input-group col-sm-10 pull-left">
+        <span class="input-group-btn">
+            <span class="btn btn-default btn-file">
+                Browse… <%= f.file_field :image, id: "imgInp" %>
+            </span>
+        </span>
+        <input type="text" class="form-control" readonly>
     </div>
-    <div class="col-sm-5 offset-sm-2">
-      <%= f.text_field :title, placeholder: "Title" %>
-      <%= f.text_area :content, placeholder: "Compose new blog..." %>
+      <%= f.submit "Post", class: "btn btn-primary col-sm-2 " %>
     </div>
-  </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
 </div>

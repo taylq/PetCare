@@ -5,18 +5,34 @@
                 <div class="row">
                     <div class="col-md-1 pull-left">
                         <div class="logo">
-                            <a href="index.html"><img alt="Logo" src="assets/img/logo.png" width="56" height="50"></a>
+                            <a href="<%= root_path %>">
+                                <%= image_tag 'logo.png', size: 56 %>
+                            </a>
                         </div>
                     </div>
-                    <div class="col-md-11">
+                    <div class="col-md-11 pull-left">
                         <div class="navbar-collapse collapse" id="navbar">
                             <ul class="nav navbar-nav main-nav pull-right navbar-right">
                                 <li class="<%= current_class? root_path %>"><a href="<%= root_path %>"><%= t "app.home" %></a></li>
-                                <li class="<%= current_class? about_path %>"><a href="<%= about_path %>"><%= t "app.about" %></a></li>
-                                <li><a href="departments.html">Departments</a></li>
-                                <li><a href="services.html">Services</a></li>
-                                <li><a href="doctors.html">Doctors</a></li>
-                                <li><a href="<%= blogs_path %>">Blog</a></li>
+
+
+                                <li class="<%= current_class? doctors_path %>"><a href="<%= doctors_path %>">Bác sĩ</a></li>
+                                <li class="<%= current_class? deseases_path %>"><a href="<%= deseases_path %>">Chẩn đoán</a></li>
+                                <li class="<%= current_class? blogs_path %>"><a href="<%= blogs_path %>">Bài viết</a></li>
+                                <% if user_signed_in? %>
+                                <li class="<%= current_class? user_pets_path(current_user) %>"><a href="<%= user_pets_path(current_user) %>">Thú cưng</a></li>
+                                <% end %>
+                                    <li class="search-widget">
+                                    <%= search_form_for @q, url: search_path, class: "search-form" do |f| %>
+                                    <div class="input-group" style="width: 200px">
+                                        <%= f.search_field :symptom_cont, class: "form-control",
+                                            placeholder: "Search...", id: "search-custom", style: "width: 38%; position: relative; z-index: 100" %>
+                                        <%#= f.select :pet_type, type_choice, class: "form-control" %>
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button></div>
+                                    <% end %>
+
+                                    </li>
+
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown"><%= t "languages.language" %> <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -24,30 +40,29 @@
                                         <li><%= link_to t("languages.vi"), url_for(locale:"vi"), class: "dropdown-item" %></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact-us.html">Contact Us</a></li>
                                 <li><a class="btn btn-primary appoint-btn appointment" href="appointment.html">Appointment</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle settings-icon appointment" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
                                     <ul class="dropdown-menu">
+                                    <% if user_signed_in? && current_user.admin? %>
+                    <li><%= link_to "Quản lý", admin_dashboard_path, class: "dropdown-item", data:{turbolink: true} %></li>
+                    <% end %>
+                    <% if user_signed_in? && current_user.doctor? %>
+                    <li><%= link_to "Quản lý", doctor_dashboard_path, class: "dropdown-item", data:{turbolink: true} %></li>
+                    <% end %>
+                    <% if user_signed_in? && current_user.secretary? %>
+                    <li><%= link_to "Quản lý", (secretary_dashboard_path if current_user.secretary?), class: "dropdown-item", data:{turbolink: true} %></li>
+                    <% end %>
+
                                         <% if user_signed_in? %>
                                             <li><%= link_to t(".profile"), current_user, class: "dropdown-item" %></li>
-                                            <li><%= link_to t(".settings"), "#", class: "dropdown-item" %></li>
+                                            <li><%= link_to t(".settings"), edit_user_registration_path, class: "dropdown-item" %></li>
                                             <li><%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
                                         <% else%>
                                             <li><%= link_to t(".login"), new_user_session_path, class: "nav-link" %></li>
                                             <li><%= link_to t("users.new.sign_up"), new_user_registration_path, class: "nav-link" %></li>
                                         <% end %>
                                     </ul>
-                                </li>
-                                <li>
-                                    <%= search_form_for @q, url: search_path do |f| %>
-                                        <%= f.search_field :symptom_cont, class: "search-bar ml-3",
-                                            placeholder: "Search...", id: "search-custom" %>
-                                        <%#= f.select :pet_type, type_choice, class: "form-control" %>
-                                        <%= f.submit do  %>
-                                        <i class="fa fa-search"></i>
-                                        <% end %>
-                                    <% end %>
                                 </li>
                             </ul>
                         </div>
@@ -61,7 +76,9 @@
     <header class="mobile-header">
         <div class="panel-control-left"><a class="toggle-menu" href="#side_menu"><i class="fa fa-bars"></i></a></div>
         <div class="page_title">
-            <a href="index.html"><img src="assets/img/logo.png" alt="Logo" class="img-responsive" width="60" height="60"></a>
+            <a href="<%= root_path %>">
+                                <%= image_tag 'logo.png', size: 56 %>
+                            </a>
         </div>
     </header>
 

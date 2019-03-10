@@ -1,7 +1,6 @@
 <div class="header">
             <div class="header-left">
                 <a href="index.html" class="logo">
-                    <img src="assets/img/Logo_Hospital.png" width="35" height="35" alt="">
                 </a>
             </div>
             <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
@@ -19,7 +18,6 @@
                                     <a href="activities.html">
                                         <div class="media">
                                             <span class="avatar">
-                                                <img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">John Doe</span> added
@@ -112,7 +110,7 @@
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                         <a class="dropdown-item" href="settings.html">Settings</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                     </div>
                 </li>
             </ul>
@@ -123,7 +121,7 @@
                     <a class="dropdown-item" href="profile.html">My Profile</a>
                     <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                     <a class="dropdown-item" href="settings.html">Settings</a>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 </div>
             </div>
         </div>

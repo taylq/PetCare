@@ -1,54 +1,27 @@
-<li id="blog-<%= blog.id %>">
-  <td><%= image_tag blog.image.url if blog.image.present? %></td>
-  <span class="title"><%= blog.title %></span>
-  <span class="content"><%= blog.content %></span>
-    <%= render "blogs/vote_form", blog: blog %>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words blog.created_at %> ago.
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg-<%= blog.id %>">
-      <%= t "blogs.edit" %></button>
-    <% if current_user == blog.user %>
-      <%= link_to "delete", blog, method: :delete,
-        data: {confirm: "You sure?"} %>
-    <% end %>
-  </span>
-</li>
-<% if user_signed_in? %>
-  <div id="load_comment-<%= blog.id %>">
-    <%= render "comments/comment", blog: blog %>
-  </div>
-  <div id="comment_form">
-    <%= render "comments/form", blog: blog, user: blog.user %>
-  </div>
-<% end %>
-<div class="modal fade bs-example-modal-lg-<%= blog.id %>" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title" id="myModalLabel"><%= t "categories.edit_category" %></h4>
-      </div>
-      <%= form_for blog do |f| %>
-        <%= render "shared/error_messages", object: f.object %>
-        <div class="field">
-          <div class="avatar-upload col-sm-3">
-            <div class="avatar-edit">
-              <%= f.file_field :image, id: "imageUpload" %>
-              <label for="imageUpload"></label>
-            </div>
-            <div class="avatar-preview">
-              <div id="imagePreview"></div>
-            </div>
-          </div>
-          <div class="col-sm-5 offset-sm-2">
-            <%= f.text_field :title, placeholder: "Title" %>
-            <%= f.text_area :content, placeholder: "Compose new blog..." %>
-          </div>
-        </div>
-        <%= f.submit "Post", class: "btn btn-primary" %>
-      <% end %>
+<article class="blog">
+                            <h3 class="blog-title"><a href="<%= blog_path(blog) %>"><%= blog.title %></a>
+                            </h3>
+                            <div class="blog-info clearfix">
+                                <div class="post-left">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>
+                                          <span><%= blog.created_at.strftime("%d/%m/%Y") %></span></a></li>
+                                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>
+                                          <span><%= blog.user.name %></span></a></li>
+                                        <li><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>
+                                                <span><%= blog.comments.count %></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="blog-image">
+                                <div class="image">
+                                    <%= image_tag blog.image_url, size: 700 %>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <p><%= blog.content %></p>
+                                <%= render "blogs/vote_form", blog: blog %>
+                            </div>
+                            <a href="blog-details.html" class="btn btn-primary read-more">Read More</a>
+                        </article>
 
-    </div>
-  </div>
-</div>

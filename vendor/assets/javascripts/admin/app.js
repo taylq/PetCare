@@ -29,14 +29,14 @@
 }(window.jQuery),
 
 
-$(document).ready(function($) {
-	
+$(document).on('turbolinks:load', function($) {
+
 	// Sidebar Initiate
-	
+
 	$.Sidemenu.init();
 
     // Sidebar overlay
-	
+
     var $sidebarOverlay = $(".sidebar-overlay");
     $("#mobile_btn, .task-chat").on("click", function(e) {
         var $target = $($(this).attr("href"));
@@ -59,7 +59,7 @@ $(document).ready(function($) {
         }
         e.preventDefault();
     });
-	
+
     // Select 2
 
     if ($('.select').length > 0) {
@@ -224,16 +224,16 @@ $(document).ready(function($) {
             selector: 'a'
         });
     }
-	
+
     if ($('#lightgallery').length > 0) {
         $('#lightgallery').lightGallery({
 			thumbnail: true,
 			selector: 'a'
 		});
     }
-	
+
 	// Incoming call popup
-	
+
     if ($('#incoming_call').length > 0) {
 		$(window).on('load',function(){
 			$('#incoming_call').modal('show');
@@ -287,9 +287,9 @@ $(document).ready(function($) {
             }
         });
     }
-	
+
 	/* Custom Modal */
-	
+
 	if ($('.custom-modal').length > 0) {
 		$(".custom-modal .modal-content").prepend('<button data-dismiss="modal" class="close" type="button">×</button>');
 	}
@@ -309,7 +309,7 @@ $(document).ready(function($) {
 
     var notificationTimeout;
 
-    //Shows updated notification popup 
+    //Shows updated notification popup
     var updateNotification = function(task, notificationText, newClass) {
         var notificationPopup = $('.notification-popup ');
         notificationPopup.find('.task').text(task);
@@ -327,7 +327,7 @@ $(document).ready(function($) {
         }, 3000);
     };
 
-    // Adds a new Task to the todo list 
+    // Adds a new Task to the todo list
     var addTask = function() {
         // Get the new task entered by user
         var newTask = $('#new-task').val();
@@ -371,7 +371,7 @@ $(document).ready(function($) {
         }
     };
 
-    // Initalizes HTML template for a given task 
+    // Initalizes HTML template for a given task
     //var taskTemplate = $($('#task-template').html());
     var taskTemplate = '<li class="task"><div class="task-container"><span class="task-action-btn task-check"><span class="action-circle large complete-btn" title="Mark Complete"><i class="material-icons">check</i></span></span><span class="task-label" contenteditable="true"></span><span class="task-action-btn task-btn-right"><span class="action-circle large" title="Assign"><i class="material-icons">person_add</i></span> <span class="action-circle large delete-btn" title="Delete Task"><i class="material-icons">delete</i></span></span></div></li>';
     // Shows panel for entering new tasks
@@ -483,7 +483,7 @@ $(document).ready(function($) {
         }
 
     }
-	
+
     // Coming Soon
 
     function getTimeRemaining(endtime) {
@@ -530,7 +530,7 @@ $(document).ready(function($) {
         initializeClock('countdown', deadline);
 
     // Chart
-	
+
     if ($("#areaChart, #bar-example, #donutChart, #area-chart").length > 0) {
         var colors = [
             '#E94B3B',
