@@ -1,0 +1,26 @@
+<div class="main main-raised">
+  <div class="section section-basic custom-background">
+    <div class="container">
+      <div class="flat-projects">
+        <% if user_signed_in? %>
+          <div class="row">
+            <aside class="col-md-12">
+          <section class="user_info">
+            <%= image_tag @pet.image_url, alt: @pet.name, class: "col-sm-2" %>
+            <h3 class="col-sm-8 user-name">
+            <i class="fa fa-user"></i> Thông tin cơ bản:
+            </h3>
+            <%= link_to 'Chỉnh sửa profile', edit_user_registration_path, class: "col-sm-2 btn btn-primary" %>
+            <section class="stats col-sm-9">
+              <p>Tên Pet: <%= @pet.name %></p>
+              <p>Chủng loại: <%= @pet.type_pet %></p>
+              <p>Giới tính: <%= @pet.gender %></p>
+            </section>
+          </section>
+        </aside>
+        <hr>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

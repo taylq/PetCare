@@ -1,0 +1,170 @@
+<div class="main-content">
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="blog-view">
+                            <article class="blog blog-single-post">
+                                <div class="blog-image">
+                                    <a href="#"><img alt="" src="assets/img/1200x800.jpg" class="img-responsive"></a>
+                                </div>
+                                <h3 class="blog-title"><%= @blog.title %></h3>
+                                <div class="blog-info clearfix">
+                                    <div class="post-left">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> <span>Dec 6, 2017</span></a></li>
+                                            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> <span>By Andrew Dawis</span></a></li>
+                                            <li><a href="#"><i class="fa fa-comment" aria-hidden="true"></i> <span>1</span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    <%= @blog.content %>
+                                </div>
+                            </article>
+                            <div class="widget blog-share clearfix">
+                                <h3>Share the post</h3>
+                                <ul class="social-share">
+                                    <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="widget author-widget clearfix">
+                                <h3>About author</h3>
+                                <div class="about-author">
+                                    <div class="about-author-img">
+                                        <div class="author-img-wrap">
+                                            <img class="img-responsive img-circle" alt="" src="assets/img/750x750.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="author-details">
+                                        <span class="blog-author-name">Linda Barrett</span>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget blog-comments clearfix">
+                                <h3>Comments (3)</h3>
+                                <% if user_signed_in? %>
+                                  <div id="load_comment-<%= @blog.id %>">
+                                    <%= render "comments/comment", blog: @blog %>
+                                  </div>
+
+                            </div>
+                            <!-- NEW COMMENT -->
+                            <div class="widget new-comment clearfix">
+                                <h3>Leave Comment</h3>
+                                <div id="comment_form">
+                                    <%= render "comments/form", blog: @blog, user: @blog.user %>
+                                  </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="col-sm-4 sidebar-right">
+
+                        <!-- Search-->
+
+
+                        <!-- Latest Posts -->
+                        <div class="widget post-widget">
+                            <h5>Latest Posts</h5>
+                            <ul class="latest-posts">
+                                <li>
+                                    <div class="post-thumb">
+                                        <a href="blog-details.html">
+                                            <img class="img-responsive" src="assets/img/80x65.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-info">
+                                        <h4>
+											<a href="blog-details.html">Our Definitive Guide to Reduce the Cold and Flu</a>
+										</h4>
+                                        <p><i aria-hidden="true" class="fa fa-calendar"></i> Dec 6, 2017</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="post-thumb">
+                                        <a href="blog-details.html">
+                                            <img class="img-responsive" src="assets/img/80x65.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-info">
+                                        <h4>
+											<a href="blog-details.html">Our Definitive Guide to Reduce the Cold and Flu</a>
+										</h4>
+                                        <p><i aria-hidden="true" class="fa fa-calendar"></i> Dec 6, 2017</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="post-thumb">
+                                        <a href="blog-details.html">
+                                            <img class="img-responsive" src="assets/img/80x65.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-info">
+                                        <h4>
+											<a href="blog-details.html">Our Definitive Guide to Reduce the Cold and Flu</a>
+										</h4>
+                                        <p><i aria-hidden="true" class="fa fa-calendar"></i> Dec 6, 2017</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="post-thumb">
+                                        <a href="blog-details.html">
+                                            <img class="img-responsive" src="assets/img/80x65.jpg" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="post-info">
+                                        <h4>
+											<a href="blog-details.html">Our Definitive Guide to Reduce the Cold and Flu</a>
+										</h4>
+                                        <p><i aria-hidden="true" class="fa fa-calendar"></i> Dec 6, 2017</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Categories -->
+                        <div class="widget category-widget">
+                            <h5>Blog Categories</h5>
+                            <ul class="categories">
+                                <li><a href="#">Cancer Diseases</a></li>
+                                <li><a href="#">Children's Health Problems</a></li>
+                                <li><a href="#">Kid's Health Questions & Answers</a></li>
+                                <li><a href="#">Cancer Diseases</a></li>
+                                <li><a href="#">Children's Health Problems</a></li>
+                                <li><a href="#">Kid's Health Questions & Answers</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Tags -->
+                        <div class="widget tags-widget">
+                            <h5>Tags</h5>
+                            <ul class="tags">
+                                <li><a href="#" class="tag">Children</a></li>
+                                <li><a href="#" class="tag">Diseases</a></li>
+                                <li><a href="#" class="tag">Health</a></li>
+                                <li><a href="#" class="tag">Kids</a></li>
+                                <li><a href="#" class="tag">Family</a></li>
+                                <li><a href="#" class="tag">Tips</a></li>
+                                <li><a href="#" class="tag">Injection</a></li>
+                                <li><a href="#" class="tag">Treatment</a></li>
+                                <li><a href="#" class="tag">Rooms</a></li>
+                                <li><a href="#" class="tag">Health Care</a></li>
+                                <li><a href="#" class="tag">Clinic</a></li>
+                                <li><a href="#" class="tag">Consult</a></li>
+                                <li><a href="#" class="tag">Doctors</a></li>
+                                <li><a href="#" class="tag">Neurology</a></li>
+                                <li><a href="#" class="tag">Dentists</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>

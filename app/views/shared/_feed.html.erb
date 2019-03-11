@@ -1,5 +1,6 @@
+
 <% if @feed_items.any? %>
-  <ol class="blogs">
+  <ol class="blogs col-sm-12 col-sm-offset-1" style="list-style-type: none;">
     <%= render @feed_items %>
   </ol>
   <%= paginate @feed_items %>

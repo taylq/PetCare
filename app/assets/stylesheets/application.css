@@ -6,8 +6,6 @@
  *= require style
  *= require bootstrap-datetimepicker.min
  *= require jquery-ui/datepicker
- *= require easy-autocomplete
- *= require easy-autocomplete.themes
  *= require_self
  */
 .messages-list {

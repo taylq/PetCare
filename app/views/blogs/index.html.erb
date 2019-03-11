@@ -1,53 +1,48 @@
-<div style="background-color: #e9ebee;">
-
-  <div class="container">
-    <div class="flat-projects">
+<div class="main-content">
       <% if user_signed_in? %>
-        <div class="row">
-          <section class="blog_form col-md-8">
-            <%= render "shared/blog_form" %>
-          </section>
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="page-title">
+                              <%= render "shared/blog_form" %>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-          <div class="col-md-9">
-            <ul id="conversations-list">
-              <% @conversations.each do |conversation| %>
-                <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
-              <% end %>
-            </ul>
-          </div>
+          <ul id="conversations-list">
+            <% @conversations.each do |conversation| %>
+              <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+            <% end %>
+          </ul>
+        <div class="content" style="background: #f6f6f6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <!-- Blog Post -->
+                          <%= render "shared/feed" %>
 
-          <div class="col-md-3">
-            <div class="panel panel-primary">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary list-user">
               <div class="panel-heading">
                 <h3 class="panel-title">User list</h3>
               </div>
               <div class="panel-body">
-                <ul>
+                <ul class="overflow">
                   <% @users.each do |user| %>
-                    <li><%= link_to user.email, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <li style="list-style-type: none;"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
 
                   <% end %>
                 </ul>
               </div>
             </div>
           </div>
+        <% end %>
         </div>
-        <div class="row">
-          <h3>Blog Feed</h3>
-          <%= render "shared/feed" %>
-        </div>
-      <% else %>
-        <div class="center jumbotron">
-          <h1>Welcome to the Sample App</h1>
-          <h2>
-            This is the home page for the
-            <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-            sample application.
-          </h2>
-          <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>

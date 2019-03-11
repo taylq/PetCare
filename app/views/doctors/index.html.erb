@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="page-title">
-                            <span>My Pet</span>
+                            <span>Our Doctors</span>
                         </div>
                     </div>
                 </div>
@@ -18,26 +18,30 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="section-header text-center">
-                            <h3 class="header-title">My Pet Lists</h3>
+                            <h3 class="header-title">Our Physician Lists</h3>
 							<div class="line"></div>
-                            <%= link_to 'Thêm mới pet', new_user_pet_path(current_user), class: "pull-right btn btn-primary" %>
                         </div>
                     </div>
                 </div>
                 <div class="row doctors-list">
-                <% @pets.each do |pet| %>
+                <% @doctors.each do |doctor| %>
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="doctor-list">
                             <div class="doctor-inner">
-                                <%= image_tag pet.image_url , alt: pet.name, width: 400 %>
+                                <%= image_tag doctor.gravatar_url, alt: doctor.name, width: 400 %>
                                 <div class="doctor-details">
                                     <div class="doctor-info">
-                                        <h4 class="doctor-name"><a href="doctor-details.html"><%= pet.name %></a></h4>
-                                        <p><span class="depart"><%= pet.type_pet %></span>
-                                        - <span class="depart"><%= pet.gender %></span></p>
+                                        <h4 class="doctor-name"><a href="doctor-details.html">Dr. <%= doctor.name %></a></h4>
+                                        <p><span class="depart">Physical Therapist</span></p>
                                     </div>
+                                    <ul class="social-list">
+                                        <li><a class="facebook" href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a class="twitter" href="#"><i class="fab fa-facebook"></i></a></li>
+                                        <li><a class="linkedin" href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a class="g-plus" href="#"><i class="fab fa-google-plus"></i></a></li>
+                                    </ul>
                                     <div class="view-profie">
-                                        <a href="<%= user_pet_path(current_user, pet) %>">View Profile</a>
+                                        <a href="doctor-details.html">View Profile</a>
                                     </div>
                                 </div>
                             </div>

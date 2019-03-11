@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
 
     resources :deseases
+    resources :doctors
     resources :relationships, only: [:create, :destroy]
     get "search(/:search)", to: "searches#index", as: :search
     resources :blogs do
