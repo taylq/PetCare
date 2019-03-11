@@ -1,8 +1,7 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gem "rails", "~> 5.2.2"
 gem "bootstrap-sass", "3.3.7"
-gem "mysql2", ">= 0.4.4", "< 0.6.0"
 gem "puma", "~> 3.11"
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
@@ -30,9 +29,11 @@ gem "omniauth-google-oauth2"
 gem "omniauth-oauth2", "~> 1.3.1"
 gem "acts_as_votable", "~> 0.10.0"
 gem "ransack"
-gem 'jquery-ui-rails'
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem "jquery-ui-rails"
+gem "wicked_pdf"
+gem "wkhtmltopdf-binary"
+gem "pg"
+gem "redis"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]
@@ -41,6 +42,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "mysql2", ">= 0.4.4", "< 0.6.0"
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "spring"
