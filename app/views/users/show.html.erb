@@ -1,54 +1,127 @@
-<div class="main main-raised">
-  <div class="section section-basic custom-background">
-    <div class="container">
-      <div class="flat-projects">
-        <% if user_signed_in? %>
-          <div class="row">
-            <aside class="col-md-12">
-          <section class="user_info">
-            <%= image_tag @user.gravatar_url, alt: @user.name, class: "col-sm-2" %>
-            <h3 class="col-sm-8 user-name">
-            <i class="fa fa-user"></i> Thông tin cơ bản:
-            </h3>
-            <%= link_to 'Chỉnh sửa profile', edit_user_registration_path, class: "col-sm-2 btn btn-primary" %>
-            <section class="stats col-sm-9">
-              <p>Họ và tên: <%= @user.name %></p>
-              <p>Email: <%= @user.email %></p>
-              <p>Sinh nhật: <%= @user.dob %></p>
-              <p>Số điện thoại: <%= @user.phone %></p>
-              <p>Địa chỉ: <%= @user.address %></p>
-            </section>
-            <section class="pull-left">
-              <%= render "shared/stats" %>
-            </section>
-          </section>
-          <section class="col-sm-2">
-            <%= render "follow_form", inactive_relationships: @inactive_relationships, active_relationships: @active_relationships if user_signed_in? %>
-          </section>
-        </aside>
-        <hr>
-        <% if current_user == @user %>
-              <section class="blog_form col-md-8">
-              <h3 class="offset-sm-4"><i class="fa fa-blog"></i> Bài viết của tôi</h3>
-                <%= render "shared/blog_form" %>
-              </section>
-            <% end %>
-            <div class="">
-              <%= render "shared/feed" %>
+<div class="main-content">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="page-title">
+                            <span>Thông tin người dùng</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        <% else %>
-          <div class="center jumbotron">
-            <h1>Welcome to the Sample App</h1>
-            <h2>
-              This is the home page for the
-              <a href="http://www.railstutorial.org/">Ruby on Rails Tutorial</a>
-              sample application.
-            </h2>
-            <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-          </div>
-        <% end %>
-      </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 doctor-sidebar">
+                        <div class="doctor-list doctor-view">
+                            <div class="doctor-inner">
+                                <%= image_tag @user.gravatar_url, class: "img-responsive", size: 750 %>
+                                <div class="doctor-details">
+                                    <div class="doctor-info">
+                                        <h2><%= @user.name %></h2>
+										<table class="table">
+											<tr>
+												<td>
+													<h3><%= @user.blogs.count %></h3>
+												</td>
+												<td>
+													<h3>10</h3>
+												</td>
+												<td>
+													<h3>10</h3>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<a href="#" class="badge badge-primary" style="background-color: #009efb ">Bài viết</a>
+												</td>
+												<td>
+													<a href="#" class="badge badge-primary" style="background-color: #009efb ">Đang theo dõi</a>
+												</td>
+												<td>
+													<a href="#" class="badge badge-primary" style="background-color: #009efb ">Người theo dõi</a>
+												</td>
+											</tr>
+										</table>
+										<tr>
+											<td>
+												<a href="<%= edit_user_registration_path(current_user) %>" class="btn btn-danger">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>
+											</td>
+											<td>
+												<a href="chat.html" class="btn btn-danger">Tin nhắn  <span class="fa fa-envelope"></span></a>
+											</td>
+										</tr>
+										<br><br>
+										<table class="table">
+											<tr>
+												<td style="text-align: right"><h4>Họ và tên :<h4></td>
+												<td style="text-align: left"><h4>Lại Thành Hưng<h4></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h4>Số điện thoại :<h4></td>
+												<td style="text-align: left"><h4>0936848698<h4></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h4>Email :<h4></td>
+												<td style="text-align: left"><h4>hung@gmail.com<h4></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h4>Ngày sinh :<h4></td>
+												<td style="text-align: left"><h4>13/12/1996<h4></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h4>Địa chỉ :<h4></td>
+												<td style="text-align: left"><h4>KTX Đại học FPT<h4></td>
+											</tr>
+										</table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="about-doctor">
+                            <textarea class="form-control" rows="5" placeholder="Bạn có vấn đề gì ?"></textarea>
+							<br>
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+							</div>
+							<br>
+							<button type="button" class="btn btn-success btn-block">Gửi</button>
+                        </div>
+                        <div class="experience-widget">
+                            <h3 class="sub-title">Danh sách thú cưng</h3>
+							<table class="table">
+								<tr>
+									<td>
+										<center><img width="170" height="170" src="assets/img/750x750.jpg" style="border-radius: 50%"></center>
+									</td>
+									<td>
+										<center><img width="170" height="170" src="assets/img/750x750.jpg" style="border-radius: 50%"></center>
+									</td>
+									<td>
+										<center><button style="padding: 76px; border-radius: 50%" class="fa fa-plus" src="assets/img/750x750.jpg" ></button></center>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h3><center>Mimi</center></h3>
+									</td>
+									<td>
+										<h3><center>Momo</center></h3>
+									</td>
+									<td>
+										<h3><center>Thêm mới</center></h3>
+									</td>
+								</tr>
+							</table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>

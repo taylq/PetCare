@@ -1,0 +1,12 @@
+/*
+ *= require admin/bootstrap.min
+ *= require font-awesome
+ *= require admin/fullcalendar.min
+ *= require admin/dataTables.bootstrap4.min
+ *= require admin/select2.min
+ *= require admin/bootstrap-datetimepicker.min
+ *= require admin/morris
+ *= require admin/style
+ *= require_tree .
+ *= require_self
+ */

@@ -107,7 +107,7 @@
                         <span>Admin</span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<%= admin_user_path(current_user) %>">My Profile</a>
+                        <a class="dropdown-item" href="<%= director_user_path(current_user) %>">My Profile</a>
                         <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                         <a class="dropdown-item" href="settings.html">Settings</a>
                          <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
