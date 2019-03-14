@@ -57,5 +57,27 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    namespace :nurse do
+      get "/dashboard", to: "base#dashboard"
+      resources :users do
+        resources :pets do
+          resources :medical_records do
+            resources :bills
+          end
+        end
+      end
+    end
+
+    namespace :director do
+      get "/dashboard", to: "base#dashboard"
+      resources :users do
+        resources :pets do
+          resources :medical_records do
+            resources :bills
+          end
+        end
+      end
+    end
   end
 end

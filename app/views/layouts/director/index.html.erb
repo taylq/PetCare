@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title yield :page_title %></title>
+    <%= render "layouts/director/default" %>
+  </head>
+  <body>
+    <div class="main-wrapper">
+        <%= render "layouts/director/header" %>
+        <%= render "layouts/director/menu" %>
+        <%= yield %>
+    </div>
+  </body>
+</html>

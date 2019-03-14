@@ -53,6 +53,12 @@
                     <% if user_signed_in? && current_user.secretary? %>
                     <li><%= link_to "Quản lý", (secretary_dashboard_path if current_user.secretary?), class: "dropdown-item", data:{turbolink: true} %></li>
                     <% end %>
+                    <% if user_signed_in? && current_user.director? %>
+                    <li><%= link_to "Quản lý", (director_dashboard_path if current_user.director?), class: "dropdown-item", data:{turbolink: true} %></li>
+                    <% end %>
+                    <% if user_signed_in? && current_user.nurse? %>
+                    <li><%= link_to "Quản lý", (nurse_dashboard_path if current_user.nurse?), class: "dropdown-item", data:{turbolink: true} %></li>
+                    <% end %>
 
                                         <% if user_signed_in? %>
                                             <li><%= link_to t(".profile"), current_user, class: "dropdown-item" %></li>

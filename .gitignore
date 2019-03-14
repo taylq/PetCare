@@ -51,9 +51,6 @@ build-iPhoneSimulator/
 
 /log/
 /storage/
-/config/master.key
-config/database.yml
-config/storage.yml
 /test/
 
 # Ignore application configuration
@@ -63,3 +60,5 @@ config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
 /public/javascripts/translations.js
+
+# Ignore master key for decrypting credentials and more.
