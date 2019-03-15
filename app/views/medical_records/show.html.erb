@@ -1,0 +1,120 @@
+<div class="main-content">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="page-title">
+                            <span>Thông tin bệnh án</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 doctor-sidebar">
+                        <div class="doctor-list doctor-view">
+                            <div class="doctor-inner">
+
+                                <%= image_tag @pet.image_url, size: 750, class: "img-responsive", style:"border-radius: 50%" %>
+                                <div class="doctor-details">
+                                    <div class="doctor-info">
+                                        <h2><%= @pet.name %></h2>
+                                        <a href="edit-profile.html" class="btn btn-primary">Chỉnh sửa thông tin <span
+                                                class="fa fa-edit"></span></a>
+                                        <br><br>
+                                        <table class="table">
+                                            <tr>
+                                                <td style="text-align: right">
+                                                    <h4>Chủ nhân :<h4>
+                                                </td>
+                                                <td style="text-align: left"><a href="#">
+                                                        <h4 style="color: #66a3ff"><%= @user.name %><h4>
+                                                    </a></td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right">
+                                                    <h4>Loài :<h4>
+                                                </td>
+                                                <td style="text-align: left">
+                                                    <h4><%= @pet.type_pet %><h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right">
+                                                    <h4>Tuổi :<h4>
+                                                </td>
+                                                <td style="text-align: left">
+                                                    <h4>3 tháng<h4>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: right">
+                                                    <h4>Giới tính :<h4>
+                                                </td>
+                                                <td style="text-align: left">
+                                                    <h4><%= @pet.gender %><h4>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="about-doctor">
+                            <h2>Chi Tiết Bệnh Án</h2>
+                            <div>
+                                <h3 class="sub-title">Bác Sĩ Chính: <a href="#" style="color: #66a3ff"><%= User.find_by(id: @medical_record.doctor_id).name %></h3>
+                            </div>
+                            <div>
+                                <h4>Triệu chứng bệnh: <%= @medical_record.result %>.</h4>
+                                <h4>Chuẩn đoán: <%= @medical_record.description %>.</h4>
+                                <hr />
+                                <h3>Hướng điều trị</h3>
+                                <table class="table">
+                                    <thead style="background-color: #66a3ff">
+                                        <tr style="color: white">
+                                            <th scope="col">STT</th>
+                                            <th scope="col">Tên thuốc</th>
+                                            <th scope="col">Số lượng</th>
+                                            <th scope="col">Hướng dẫn dùng thuốc</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Timolol Maleate</td>
+                                            <td>1 Hộp</td>
+                                            <td><a href="#">Ngày nhỏ 2 lần sáng, tối<a></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Thuốc tẩy giun Exotral</td>
+                                            <td>2 hộp</td>
+                                            <td><a href="#">4 tháng uống 1 viên</a></td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Men tiêu hoá Enterogermina</td>
+                                            <td>3 Hộp</td>
+                                            <td><a href="#">Ngày nhỏ 2 lần sáng, tối</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

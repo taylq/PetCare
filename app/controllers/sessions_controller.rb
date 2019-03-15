@@ -41,6 +41,8 @@ class SessionsController < Devise::SessionsController
       @referer_url = nurse_dashboard_path
     elsif current_user.director?
       @referer_url = director_dashboard_path
+    elsif current_user.secretary?
+      @referer_url = secretary_dashboard_path
     else
       @referer_url = root_path
     end
