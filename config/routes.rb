@@ -12,7 +12,11 @@ Rails.application.routes.draw do
         member do
           get :following, :followers
         end
-        resources :pets
+        resources :pets do
+          resources :medical_records do
+            resources :bills
+          end
+        end
       end
     end
 
