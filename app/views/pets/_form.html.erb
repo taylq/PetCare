@@ -1,4 +1,4 @@
-<%= form_for [:user, @pet], class: "form" do |f| %>
+<%= form_for [user, pet], class: "form" do |f| %>
   <div class="input-group">
     <img id='img-upload'/>
     <div class="input-group col-sm-10 pull-left">
@@ -17,6 +17,7 @@
       </span>
     </div>
     <%= f.text_field :name, class: "form-control" %>
+    <%#= f.hidden_field :user_id, value: user.id %>
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
@@ -24,7 +25,7 @@
         <i class="material-icons"><%= t "Loại thú" %></i>
       </span>
     </div>
-    <%= f.select :type_pet, type_choice, selected: @pet.type_pet, class: "form-control" %>
+    <%= f.select :type_pet, type_choice, selected: pet.type_pet, class: "form-control" %>
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
@@ -32,7 +33,7 @@
         <i class="material-icons"><%= t "Giới tính" %></i>
       </span>
     </div>
-    <%= f.select :gender, gender_choice, selected: @pet.gender, class: "form-control" %>
+    <%= f.select :gender, gender_choice, selected: pet.gender, class: "form-control" %>
   </div>
   <div class="footer text-center">
     <%= f.submit "Lưu", class: "btn btn-primary btn-wd btn-lg" %>
