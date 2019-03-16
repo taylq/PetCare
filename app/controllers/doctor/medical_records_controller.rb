@@ -9,10 +9,10 @@ module Doctor
     def create
       @medical_record = MedicalRecord.new medical_record_params
       if @medical_record.save
-        flash[:success] = "create successfull"
+        flash[:success] = "Create successfull"
         redirect_to doctor_user_pet_path(@user, @pet)
       else
-        flash[:danger] = "create fail"
+        flash[:danger] = "Create fail"
         render :new
       end
     end

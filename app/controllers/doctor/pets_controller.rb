@@ -12,9 +12,9 @@ module Doctor
     def create
       @pet = Pet.new pet_params.merge(user_id: params[:user_id])
       if @pet.save
-        flash[:success] = "success"
+        flash[:success] = "Success"
       else
-        flash[:danger] = "fail"
+        flash[:danger] = "Fail"
       end
       redirect_to user_pets_path(current_user)
     end
@@ -29,7 +29,7 @@ module Doctor
     end
 
     def pet_params
-      params.require(:pet).permit :user_id, :name, :image, :gender, :type_pet
+      params.require(:pet).permit :user_id, :name, :image, :gender, :type_pet, :dob
     end
   end
 end

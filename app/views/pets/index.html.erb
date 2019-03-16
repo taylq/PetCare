@@ -29,7 +29,7 @@
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="doctor-list">
                             <div class="doctor-inner">
-                                <%= image_tag pet.image_url , alt: pet.name, width: 400 %>
+                                <%= link_to image_tag(pet.image_url, width: 400), user_pet_path(current_user, pet)  %>
                                 <div class="doctor-details">
                                     <div class="doctor-info">
                                         <h4 class="doctor-name"><a href="doctor-details.html"><%= pet.name %></a></h4>

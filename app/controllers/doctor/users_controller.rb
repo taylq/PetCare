@@ -13,6 +13,8 @@ module Doctor
 
     def show
       @pets = @user.pets
+      @conversations = Conversation.includes(:recipient, :messages)
+      .find(session[:conversations])
     end
 
     private

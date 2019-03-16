@@ -5,6 +5,11 @@
                         <h4 class="page-title">My Profile</h4>
                     </div>
                 </div>
+                <ul id="conversations-list">
+            <% @conversations.each do |conversation| %>
+              <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+            <% end %>
+          </ul>
                 <div class="card-box profile-header">
                     <div class="row">
                         <div class="col-md-12">
@@ -44,7 +49,7 @@
 														</div>
 													</div>
 													<br>
-                        <% if current_user %>
+                        <% if @user == current_user %>
 													<div class="row">
 														<div class="col-sm">
 															<h2><a href="<%= edit_doctor_user_path(current_user) %>" class="btn btn-danger">Chỉnh sửa thông tin <span class="fa fa-edit"></span></a></h2>

@@ -10,6 +10,8 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require toastr
+
 $(document).click(function () {
   $('.checkbox2').change(function () {
     for (var i = 1; i <= $('#length').data('length'); i++) {

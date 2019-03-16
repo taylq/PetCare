@@ -9,7 +9,7 @@ puts "3. Seeding Secretary"
 
 puts "4. Seeding User"
 20.times do |i|
-  User.create!(name: FFaker::Name.unique.name, email: FFaker::Internet.email, password: FFaker::Internet.password, role: 0, username: "user#{i}")
+  User.create!(name: FFaker::Name.unique.name, email: FFaker::Internet.email, password: FFaker::Internet.password, role: 0, username: "user#{i}", phone: "123456", address: "KTX Đại học FPT, Hòa Lạc", dob: DateTime.now)
 end
 puts "5. Seeding Director"
   User.create!(name: "director", email: "director@gmail.com", password: "123456", role: 4, username: "director", phone: "123456", address: "KTX Đại học FPT, Hòa Lạc", dob: DateTime.now)
@@ -34,6 +34,6 @@ random = Random.new
 puts "9. Seeding Pet"
 User.all.each do |user|
   5.times do
-    Pet.create!(user_id: user.id, name: FFaker::Name.unique.name, image: FFaker::Image.url, gender: random.rand(0..1), type_pet: random.rand(0..1))
+    Pet.create!(user_id: user.id, name: FFaker::Name.unique.name, image: "/app/assets/images/150x150.jpg", gender: random.rand(0..1), type_pet: random.rand(0..1), dob: DateTime.now)
   end
 end

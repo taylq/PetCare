@@ -26,11 +26,11 @@
                             <div class="widget blog-share clearfix">
                                 <h3>Share the post</h3>
                                 <ul class="social-share">
-                                    <li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                    <li><a href="#" title="Google Plus"><i class="fa fa-google-plus"></i></a></li>
-                                    <li><a href="#" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                                    <li><a href="#" title="Facebook"><i class="fab fa-facebook"></i></a></li>
+                                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="#" title="Google Plus"><i class="fab fa-google-plus"></i></a></li>
+                                    <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
                             </div>
                             <div class="widget author-widget clearfix">
@@ -49,7 +49,6 @@
                             </div>
                             <div class="widget blog-comments clearfix">
                                 <h3>Comments (3)</h3>
-                                <% if user_signed_in? %>
                                   <div id="load_comment-<%= @blog.id %>">
                                     <%= render "comments/comment", blog: @blog %>
                                   </div>
@@ -58,6 +57,7 @@
                             <!-- NEW COMMENT -->
                             <div class="widget new-comment clearfix">
                                 <h3>Leave Comment</h3>
+                                <% if user_signed_in? %>
                                 <div id="comment_form">
                                     <%= render "comments/form", blog: @blog, user: @blog.user %>
                                   </div>

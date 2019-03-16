@@ -31,7 +31,7 @@
                                 <%= image_tag doctor.gravatar_url, alt: doctor.name, width: 400 %>
                                 <div class="doctor-details">
                                     <div class="doctor-info">
-                                        <h4 class="doctor-name"><a href="doctor-details.html">Dr. <%= doctor.name %></a></h4>
+                                        <h4 class="doctor-name"><a href="<%= user_path(doctor)%>">Dr. <%= doctor.name %></a></h4>
                                         <p><span class="depart">Physical Therapist</span></p>
                                     </div>
                                     <ul class="social-list">
@@ -41,7 +41,7 @@
                                         <li><a class="g-plus" href="#"><i class="fab fa-google-plus"></i></a></li>
                                     </ul>
                                     <div class="view-profie">
-                                        <a href="doctor-details.html">View Profile</a>
+                                        <a href="<%= user_path(doctor)%>">View Profile</a>
                                     </div>
                                 </div>
                             </div>
