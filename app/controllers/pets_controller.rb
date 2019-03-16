@@ -1,7 +1,8 @@
 class PetsController < ApplicationController
-  before_action :find_pet, only: :show
+  before_action :find_pet, only: [:show, :edit, :update, :destroy]
   def new
-    @pet = Pet.new
+    @user = User.find_by id: params[:user_id]
+    @pet = @user.pets.new
   end
 
   def index
@@ -19,7 +20,31 @@ class PetsController < ApplicationController
     else
       flash[:danger] = "fail"
     end
-    redirect_to user_pets_path(current_user)
+    redirect_to user_path(current_user)
+  end
+
+  def edit
+    # binding.pry
+  end
+
+  def update
+    if @pet.update pet_params
+      flash[:success] = "update_success"
+      redirect_to user_pet_path @user, @pet
+    else
+      flash[:danger] = "update_fail"
+      render :edit
+    end
+  end
+
+  def destroy
+    # binding.pry
+    if @pet.destroy
+      flash[:success] = "destroy_succsess"
+    else
+      flash[:danger] = "destroy_fail"
+    end
+    redirect_to user_path(current_user)
   end
 
   private

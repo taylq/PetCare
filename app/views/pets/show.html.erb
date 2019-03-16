@@ -25,7 +25,11 @@
                                     <div class="doctor-info">
                                         <h2><%= @pet.name %></h2>
                     <% if @user == current_user %>
-										<a href="edit-profile.html" class="btn btn-primary">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>
+										<a href="<%= edit_user_pet_path(current_user, @pet) %>" class="btn btn-primary">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>
+										<%= link_to user_pet_path(current_user),method: :delete,
+                      data: {confirm: t("comments.you_sure")}, class: "btn btn-danger" do %>
+                      Xóa Pet <span class="fa fa-trash"></span>
+                      <% end %>
                     <% end %>
 										<br><br>
 										<table class="table">

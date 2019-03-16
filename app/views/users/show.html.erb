@@ -90,7 +90,7 @@
                     <% @user.pets.each do |pet| %>
                       <div class="col-sm-3">
                         <center>
-                          <%= image_tag pet.image_url, size: 170, style: "border-radius: 50%" %>
+						  <%= link_to image_tag(pet.image_url, size: 170, style: "border-radius: 50%"), user_pet_path(@user, pet)  %>
                         </center>
                         <h5><center><%= pet.name %></center></h5>
                       </div>
