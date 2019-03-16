@@ -47,7 +47,7 @@
                         <% if current_user %>
 													<div class="row">
 														<div class="col-sm">
-															<h2><a href="<%= edit_doctor_user_path(current_user) %>" class="btn btn-danger">Chỉnh sửa thông tin <span class="fa fa-edit"></span></a></h2>
+															<h2><a href="<%= edit_nurse_user_path(current_user) %>" class="btn btn-danger">Chỉnh sửa thông tin <span class="fa fa-edit"></span></a></h2>
 														</div>
 														<div class="col-sm">
 															<h2>
@@ -111,7 +111,7 @@
                       <% @user.pets.each do |pet| %>
 												<div class="col-sm">
 													<div class="profile-img">
-														<a href="<%= doctor_user_pet_path(@user, pet) %>">
+														<a href="#">
                               <%= image_tag pet.image_url, class: "avatar" %>
                             </a>
 													</div>

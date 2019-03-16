@@ -107,7 +107,7 @@
                         <span>Doctor</span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <%= link_to "My Profile", user_path(current_user), class: "dropdown-item", data:{turbolink: true} %>
                         <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                         <a class="dropdown-item" href="settings.html">Settings</a>
                          <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>

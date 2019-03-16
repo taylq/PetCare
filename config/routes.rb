@@ -12,7 +12,11 @@ Rails.application.routes.draw do
         member do
           get :following, :followers
         end
-        resources :pets
+        resources :pets do
+          resources :medical_records do
+            resources :bills
+          end
+        end
       end
     end
 
@@ -48,6 +52,28 @@ Rails.application.routes.draw do
     end
 
     namespace :secretary do
+      get "/dashboard", to: "base#dashboard"
+      resources :users do
+        resources :pets do
+          resources :medical_records do
+            resources :bills
+          end
+        end
+      end
+    end
+
+    namespace :nurse do
+      get "/dashboard", to: "base#dashboard"
+      resources :users do
+        resources :pets do
+          resources :medical_records do
+            resources :bills
+          end
+        end
+      end
+    end
+
+    namespace :director do
       get "/dashboard", to: "base#dashboard"
       resources :users do
         resources :pets do

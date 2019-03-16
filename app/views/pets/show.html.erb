@@ -1,26 +1,83 @@
-<div class="main main-raised">
-  <div class="section section-basic custom-background">
-    <div class="container">
-      <div class="flat-projects">
-        <% if user_signed_in? %>
-          <div class="row">
-            <aside class="col-md-12">
-          <section class="user_info">
-            <%= image_tag @pet.image_url, alt: @pet.name, class: "col-sm-2" %>
-            <h3 class="col-sm-8 user-name">
-            <i class="fa fa-user"></i> Thông tin cơ bản:
-            </h3>
-            <%= link_to 'Chỉnh sửa profile', edit_user_registration_path, class: "col-sm-2 btn btn-primary" %>
-            <section class="stats col-sm-9">
-              <p>Tên Pet: <%= @pet.name %></p>
-              <p>Chủng loại: <%= @pet.type_pet %></p>
-              <p>Giới tính: <%= @pet.gender %></p>
-            </section>
-          </section>
-        </aside>
-        <hr>
-      </div>
-      <% end %>
+<div class="main-content">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="page-title">
+                            <span>Thông tin pet</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 doctor-sidebar">
+                        <div class="doctor-list doctor-view">
+                            <div class="doctor-inner">
+                                <%# <img class="img-responsive" alt="" src="assets/img/750x750.jpg" style="border-radius: 50%"> %>
+                                <%= image_tag @pet.image_url, class: "img-responsive", size: 750, style: "border-radius: 50%" %>
+                                <div class="doctor-details">
+                                    <div class="doctor-info">
+                                        <h2><%= @pet.name %></h2>
+                    <% if @user == current_user %>
+										<a href="edit-profile.html" class="btn btn-primary">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>
+                    <% end %>
+										<br><br>
+										<table class="table">
+											<tr>
+												<td style="text-align: right"><h4>Chủ nhân :<h4></td>
+												<td style="text-align: left"><a href="#"><h4 style="color: #66a3ff"><%= @user.name %><h4></a></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h4>Loài :<h4></td>
+												<td style="text-align: left"><h4><%= @pet.type_pet %><h4></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h4>Tuổi :<h4></td>
+												<td style="text-align: left"><h4>3 tháng<h4></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h4>Giới tính :<h4></td>
+												<td style="text-align: left"><h4><%= @pet.gender %><h4></td>
+											</tr>
+										</table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="experience-widget">
+                            <h3 class="sub-title">Bệnh Án</h3>
+							<table class="table">
+							  <thead style="background-color: #66a3ff">
+								<tr style="color: white">
+								  <th scope="col">STT</th>
+								  <th scope="col">Ngày khám</th>
+								  <th scope="col">Bác sĩ</th>
+								  <th scope="col"></th>
+								</tr>
+							  </thead>
+							  <tbody>
+								<tr>
+                  <% @pet.medical_records.each_with_index do |mr, index| %>
+                    <th scope="row"><%= index + 1 %></th>
+                    <td><%= mr.created_at %></td>
+                    <td><%= User.find_by(id: mr.doctor_id).name %></td>
+                    <td><a href="<%= user_pet_medical_record_path(@user, @pet, mr) %>">Chi tiết<a></td>
+                  <% end %>
+								</tr>
+
+							  </tbody>
+							</table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
