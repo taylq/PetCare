@@ -35,7 +35,7 @@ gem "wkhtmltopdf-binary"
 gem 'toastr-rails'
 gem "redis"
 gem 'hiredis'
-# gem "pg"
+gem "pg"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]
