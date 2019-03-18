@@ -37,8 +37,13 @@
               <div class="panel-body">
                 <ul class="overflow">
                   <% @users.each do |user| %>
-                    <li style="list-style-type: none;"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <% if user.online? %>
 
+                    <li style="color: green"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <% else %>
+                    <li style="list-style-type:none"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+
+                  <% end %>
                   <% end %>
                 </ul>
               </div>

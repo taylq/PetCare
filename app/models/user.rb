@@ -50,6 +50,10 @@ class User < ApplicationRecord
     @login || self.username || self.email
   end
 
+  def online?
+    $redis_onlines.exists( self.id )
+  end
+
   class << self
     def digest string
       cost =

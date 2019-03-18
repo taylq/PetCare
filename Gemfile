@@ -33,8 +33,9 @@ gem "jquery-ui-rails"
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
 gem 'toastr-rails'
-gem "pg"
-# gem "redis"
+gem "redis"
+gem 'hiredis'
+# gem "pg"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]
