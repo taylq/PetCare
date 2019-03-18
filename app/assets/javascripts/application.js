@@ -13,6 +13,7 @@
 //= require turbolinks
 //= require custom
 //= require_tree ./channels
+//= require toastr
 
 $(document).click(function () {
   $('.checkbox2').change(function () {

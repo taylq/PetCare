@@ -1,9 +1,9 @@
-module Admin
+module Director
   class UsersController < BaseController
     before_action :find_user, except: %i(index new create)
 
     def index
-      @users = User.select_attr.page(params[:page]).per(10).search params[:search]
+      @users = User.where(role: :doctor)
       respond_to do |format|
         format.html {}
         format.csv { send_data User.search(params[:search]).to_csv }

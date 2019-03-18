@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_03_02_024625) do
     t.string "image"
     t.integer "gender"
     t.integer "type_pet"
+    t.date "dob"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

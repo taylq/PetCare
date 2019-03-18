@@ -3,12 +3,7 @@ module Admin
     before_action :find_user, except: %i(index new create)
 
     def index
-      @users = User.select_attr.page(params[:page]).per(10).search params[:search]
-      respond_to do |format|
-        format.html {}
-        format.csv { send_data User.search(params[:search]).to_csv }
-        format.xls { send_data User.search(params[:search]).to_csv }
-      end
+      @users = User.all
     end
 
     def new
@@ -21,9 +16,9 @@ module Admin
 
     def update
       if @user.update_attributes user_params
-        flash[:success] = t "users.update_success"
+        flash[:success] = "User updated!"
       else
-        flash[:danger] = t "users.update_fail"
+        flash[:danger] = "User update fail!"
       end
       redirect_to admin_users_path
     end
@@ -31,10 +26,11 @@ module Admin
     def create
       @user = User.new user_params
       if @user.save
-        flash[:success] = t "users.welcome"
+        flash[:success] = "User created!"
         redirect_to admin_users_path
       else
-        render :new
+        flash[:error] = "User create fail!"
+        redirect_to new_admin_user_path
       end
     end
 

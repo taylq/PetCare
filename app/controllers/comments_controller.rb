@@ -5,20 +5,21 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build comment_params
     @blogs = current_user.feed.page(params[:page]).per(Settings.per_page)
     if @comment.save
-      flash[:success] = "comment created!"
+      flash[:success] = "Comment created!"
       respond_to do |format|
         format.html {redirect_to @comment}
         format.js
       end
     else
+      flash[:error] = "Comment create fail!"
       @feed_items = []
-      render "static_pages/home"
+      redirect_to root_path
     end
   end
 
   def destroy
     @comment.destroy
-    flash[:success] = "comment deleted"
+    flash[:success] = "Comment deleted"
     respond_to do |format|
       format.html {redirect_to request.referrer || root_url}
       format.js

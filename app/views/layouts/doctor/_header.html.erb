@@ -104,7 +104,7 @@
                             <%= image_tag current_user.gravatar_url, class: "rounded-circle", size: "24" %>
                             <span class="status online"></span>
                         </span>
-                        <span>Doctor</span>
+                        <span><%= current_user.name %></span>
                     </a>
                     <div class="dropdown-menu">
                         <%= link_to "My Profile", user_path(current_user), class: "dropdown-item", data:{turbolink: true} %>

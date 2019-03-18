@@ -1,5 +1,6 @@
 <%= form_for [user, pet], class: "form" do |f| %>
   <div class="input-group">
+          <label>Avatar:</label>
     <img id='img-upload'/>
     <div class="input-group col-sm-10 pull-left">
         <span class="input-group-btn">
@@ -13,7 +14,7 @@
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
-        <i class="material-icons"><%= t "Tên" %></i>
+        <label>Tên:</label>
       </span>
     </div>
     <%= f.text_field :name, class: "form-control" %>
@@ -22,20 +23,28 @@
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
-        <i class="material-icons"><%= t "Loại thú" %></i>
+        <label>Loại thú: </label>
       </span>
     </div>
-    <%= f.select :type_pet, type_choice, selected: pet.type_pet, class: "form-control" %>
+    <%= f.select :type_pet, type_choice, {selected: pet.type_pet}, class: "form-control" %>
   </div>
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
-        <i class="material-icons"><%= t "Giới tính" %></i>
+        <label>Giới tính:</label>
       </span>
     </div>
-    <%= f.select :gender, gender_choice, selected: pet.gender, class: "form-control" %>
+    <%= f.select :gender, gender_choice, {selected: pet.gender}, class: "form-control" %>
   </div>
-  <div class="footer text-center">
-    <%= f.submit "Lưu", class: "btn btn-primary btn-wd btn-lg" %>
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">
+        <label>Ngày sinh:</label>
+      </span>
+    </div>
+   <%= f.text_field :dob, class: "form-control datetimepicker", placeholder: "Day Of Birth" %>
+  </div>
+  <div class="footer text-center" style="margin-top: 30px">
+    <%= f.submit "Lưu", class: "btn btn-primary btn-wd btn-lg", style: "margin-top: 30px" %>
   </div>
 <% end %>

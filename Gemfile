@@ -32,8 +32,10 @@ gem "ransack"
 gem "jquery-ui-rails"
 gem "wicked_pdf"
 gem "wkhtmltopdf-binary"
-# gem "mysql2"
-# gem "redis"
+gem 'toastr-rails'
+gem "redis"
+gem 'hiredis'
+# gem "pg"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]

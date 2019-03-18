@@ -1,5 +1,6 @@
 class PetsController < ApplicationController
   before_action :find_pet, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   def new
     @user = User.find_by id: params[:user_id]
     @pet = @user.pets.new
@@ -16,9 +17,9 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new pet_params.merge(user_id: params[:user_id])
     if @pet.save
-      flash[:success] = "success"
+      flash[:success] = "Pet created successfully!"
     else
-      flash[:danger] = "fail"
+      flash[:error] = "Pet create fail!"
     end
     redirect_to user_path(current_user)
   end
@@ -29,10 +30,10 @@ class PetsController < ApplicationController
 
   def update
     if @pet.update pet_params
-      flash[:success] = "update_success"
+      flash[:success] = "Pet updated!"
       redirect_to user_pet_path @user, @pet
     else
-      flash[:danger] = "update_fail"
+      flash[:error] = "Pet update fail!"
       render :edit
     end
   end
@@ -40,9 +41,9 @@ class PetsController < ApplicationController
   def destroy
     # binding.pry
     if @pet.destroy
-      flash[:success] = "destroy_succsess"
+      flash[:success] = "Pet delete successfully!"
     else
-      flash[:danger] = "destroy_fail"
+      flash[:error] = "Pet delete fail!"
     end
     redirect_to user_path(current_user)
   end
@@ -52,11 +53,11 @@ class PetsController < ApplicationController
   def find_pet
     @user = User.find_by id: params[:user_id]
     return if @pet = @user.pets.find_by(id: params[:id])
-    flash[:danger] = t "users.find_fail"
+    flash[:error] = "Can't found user"
     redirect_to user_path(@user)
   end
 
   def pet_params
-    params.require(:pet).permit :user_id, :name, :image, :gender, :type_pet
+    params.require(:pet).permit :user_id, :name, :image, :gender, :type_pet, :dob
   end
 end

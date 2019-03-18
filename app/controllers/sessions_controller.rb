@@ -1,4 +1,7 @@
 class SessionsController < Devise::SessionsController
+  before_action :clear_from_signed_in_touch, only: :destroy
+  before_action :clear_from_anonymous_in_touch, only: :create
+
   def new
     get_pre_login_url
     super
@@ -26,6 +29,14 @@ class SessionsController < Devise::SessionsController
   end
 
   private
+
+  def clear_from_anonymous_in_touch
+    $redis_onlines.del( "ip:#{request.remote_ip}" )
+  end
+
+  def clear_from_signed_in_touch
+    $redis_onlines.del( "user:#{session[:user_id]}" )
+  end
 
   def get_pre_login_url
     @referer_url = root_path

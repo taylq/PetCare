@@ -1,7 +1,42 @@
-<div class="main main-raised">
-  <div class="section section-basic">
+<div class="content">
+            <div class="container">
+                <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 doctor-sidebar">
+                        <div class="doctor-list doctor-view">
+                            <div class="doctor-inner">
+                                <%= image_tag current_user.gravatar_url, size: 550, class: "img-responsive", style: "border-radius: 50%" %>
+                                <div class="doctor-details">
+                                    <div class="doctor-info">
+                                        <h2><%= current_user.name %></h2>
+										<!-- <a href="edit-profile.html" class="btn btn-primary">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>													 -->
+										<br><br>
+										<table class="table">
+											<tr>
+												<td style="text-align: right"><h5>Email:<h5></td>
+												<td style="text-align: left"><h5><%= current_user.email %><h5></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h5>Ngày sinh:<h5></td>
+												<td style="text-align: left"><h5><%= current_user.dob %><h5></td>
+											</tr>
+											<tr>
+												<td style="text-align: right"><h5>Địa chỉ:<h5></td>
+												<td style="text-align: left"><h5><%= current_user.address %><h5></td>
+											</tr>
+										</table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                        <div class="experience-widget">
+                            <h3 class="sub-title">Thêm mới pet</h3>
     <div class="container">
 <%= render 'form', pet: @pet, user: @user %>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>

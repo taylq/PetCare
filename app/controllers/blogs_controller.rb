@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
   before_action :check_info
-  before_action :authenticate_user!
-  before_action :correct_user, only: :destroy
+  before_action :correct_user, only: [:destroy, :update]
 
   def index
     @feed_items = Blog.all.page(params[:page]).per(Settings.per_page)
@@ -20,11 +19,12 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build blog_params
     if @blog.save
-      flash[:success] = "blog created!"
+      flash[:success] = "Post created!"
       redirect_to blogs_url
     else
+      flash[:error] = "Post create fail!"
       @feed_items = []
-      render "static_pages/home"
+      redirect_to root_path
     end
   end
 
@@ -35,8 +35,18 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    flash[:success] = "blog deleted"
+    flash[:success] = "Post deleted"
     redirect_to request.referrer || root_url
+  end
+
+  def update
+    if @blog.update blog_params
+      flash[:success] = "Post updated"
+      redirect_to blogs_path
+    else
+      flash[:danger] = "Post update fail"
+      redirect_to blogs_path
+    end
   end
 
   private
