@@ -1,0 +1,15 @@
+<%= form_for [:director, @event], remote: true do |f| %>
+  <%= f.label :doctor %>
+  <%= f.select :doctor_id, User.where(role: :doctor), class:"form-control" %>
+  <%= f.label :start_date %>
+  <%= f.date_field :start_date, class:"form-control"  %>
+  <%= f.label :end_date %>
+  <%= f.date_field :end_date, class:"form-control"  %>
+  <%= f.button :submit, class:"btn btn-primary" %>
+  <%= link_to 'Delete',
+              event,
+              method: :delete,
+              class: 'btn btn-danger',
+              data: { confirm: 'Are you sure?' },
+              remote: true unless @event.new_record? %>
+<% end %>

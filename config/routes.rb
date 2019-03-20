@@ -82,6 +82,7 @@ Rails.application.routes.draw do
           end
         end
       end
+      resources :events
     end
   end
 end
