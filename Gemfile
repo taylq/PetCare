@@ -36,8 +36,6 @@ gem 'toastr-rails'
 gem "redis"
 gem 'hiredis'
 # gem "pg"
-gem "fullcalendar-rails"
-gem "momentjs-rails"
 
 group :development, :test do
   gem "pry", platforms: [:mri, :mingw, :x64_mingw]

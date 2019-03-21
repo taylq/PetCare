@@ -10,9 +10,8 @@
 //= require admin/bootstrap-datetimepicker.min
 //= require admin/Chart.bundle
 //= require admin/app
-//= require fullcalendar
-//= require bootstrap-sprockets
 //= require toastr
+
 $(document).click(function () {
   $('.checkbox2').change(function () {
     for (var i = 1; i <= $('#length').data('length'); i++) {
@@ -38,50 +37,4 @@ $(document).click(function () {
   $("#imageUpload").change(function () {
     readURL(this);
   });
-});
-var initialize_calendar;
-initialize_calendar = function() {
-  $('.calendar').each(function(){
-    var calendar = $(this);
-    calendar.fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month,agendaWeek,agendaDay'
-      },
-      selectable: true,
-      selectHelper: true,
-      editable: true,
-      eventLimit: true,
-      events: '/director/events',
-
-      select: function(start, end) {
-        $.getScript('/director/events/new', function() {});
-
-        calendar.fullCalendar('unselect');
-      },
-
-      eventDrop: function(event, delta, revertFunc) {
-        event_data = {
-          event: {
-            id: event.id,
-            start: event.start.format(),
-            end: event.end.format()
-          }
-        };
-        $.ajax({
-            url: event.update_url,
-            data: event_data,
-            type: 'PATCH'
-        });
-      },
-
-      eventClick: function(event, jsEvent, view) {
-        $.getScript(event.edit_url, function() {});
-      }
-    });
-  })
-};
-$(document).ready(function(){
-  initialize_calendar();
 });
