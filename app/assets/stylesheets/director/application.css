@@ -6,12 +6,8 @@
  *= require admin/select2.min
  *= require admin/bootstrap-datetimepicker.min
  *= require admin/morris
- *= require fullcalendar
  *= require admin/style
  *= require toastr
  *= require_tree .
  *= require_self
  */
-.fade:not(.show) {
-    opacity: 1;
-}
