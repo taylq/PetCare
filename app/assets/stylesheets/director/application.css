@@ -4,11 +4,15 @@
  *= require admin/fullcalendar.min
  *= require admin/dataTables.bootstrap4.min
  *= require admin/select2.min
+ *= require fullcalendar
  *= require admin/bootstrap-datetimepicker.min
  *= require admin/morris
- *= require fullcalendar
  *= require admin/style
  *= require toastr
  *= require_tree .
  *= require_self
  */
+body {
+    height: 0% !important;
+    overflow: visible;
+}

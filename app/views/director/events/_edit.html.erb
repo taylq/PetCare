@@ -2,13 +2,22 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+        <h4 class="modal-title">Edit Event</h4>
         <button type="button" class="close" data-dismiss="modal"
                 aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Edit Event</h4>
       </div>
       <div class="modal-body">
         <%= render 'form', event: @event %>
+        <%= link_to "Xóa", director_event_path, method: :delete, class: "btn btn-danger"  %>
       </div>
     </div>
   </div>
 </div>
+<script>
+    <%
+      start_time =  @event.start_date.strftime('%d/%m/%Y %H:%M')
+      end_time = @event.end_date.strftime('%d/%m/%Y %H:%M')
+    %>
+    $('#event_start_date').val("<%= start_time %>");
+    $('#event_end_date').val("<%= end_time %>");
+</script>

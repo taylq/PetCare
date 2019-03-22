@@ -1,24 +1,24 @@
 <div class="modal-body">
   <%= form_for [:director, event],html: {class: "form-horizontal form-event"} do |f| %>
     <div class="form-group">
-      <label class="col-sm-2 control-label label-event">
-        <%= t "events.doctor" %>:
+      <label class="col-sm-6 control-label label-event">
+        <%= "Bác sĩ" %>:
       </label>
       <div class="col-sm-10">
-        <%= f.select :doctor_id, User.where(role: :doctor).pluck(:name, :id), class: "form-control input-event" %>
+        <%= f.select :doctor_id, User.where(role: :doctor).pluck(:name, :id), {}, class: "form-control input-event" %>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label label-event">
-        <%= t "start_time" %>:
+      <label class="col-sm-6 control-label label-event">
+        <%= "Thời gian bắt đầu làm việc" %>:
       </label>
       <div class="col-sm-10">
         <%= f.text_field :start_date, class: "form-control start-date" %>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-sm-2 control-label label-event">
-        <%= t "end_time" %>:
+      <label class="col-sm-6 control-label label-event">
+        <%= "Thời gian kết thúc làm việc" %>:
       </label>
       <div class="col-sm-10">
         <%= f.text_field :end_date, class: "form-control end-date" %>
@@ -31,3 +31,11 @@
     </div>
   <% end %>
 </div>
+<script>
+  $('#event_start_date').datetimepicker({
+      format: "DD/MM/YYYY HH:mm"
+  });
+  $('#event_end_date').datetimepicker({
+      format: "DD/MM/YYYY HH:mm"
+  });
+</script>
