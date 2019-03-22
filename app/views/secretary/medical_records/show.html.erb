@@ -1,4 +1,88 @@
 <div class="page-wrapper">
+  <div class="content">
+    <div class="row">
+      <div class="col-sm-6">
+        <img class="img-fluid" style="width: 170px; height: 170px" src="assets/img/logo.png" alt="">
+      </div>
+      <div class="col-sm-6">
+        <br>
+        <h3>Trung tâm khám chữa và chăm sóc thú cưng</h3>
+        <h5><center>65 Tân Mai, Hoàng Mai, Hà Nội</center></h5>
+        <h5><center>0936848698</center></h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form>
+          <h1><center>Hóa đơn dịch vụ</center></h1>
+          <i><center>19/03/2019 20:07:59</center></i>
+          <br><br>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-group">
+                <h4>Thú cưng  :</h4>
+                <h4>Bác sĩ  :</h4>
+                <h4>Y tá  :</h4>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <h4><%= @pet.name %></h4>
+                <h4>Dr. <%= @doctor.name %>></h4>
+                <h4>Akali</h4>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+              <div class="table-responsive">
+                <table class="table table-hover table-white">
+                  <thead>
+                  <tr>
+                    <th style="width:20px">STT</th>
+                    <th>Dịch vụ</th>
+                    <th style="width:100px">Số lượng</th>
+                    <th style="width:100px">Đơn giá</th>
+                    <th style="width:100px">Thành tiền</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @medical_record.medical_records_services.each_with_index do |ms, index| %>
+
+                  <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= ms.service.name %></td>
+                    <td><%= ms.quantity %></td>
+                    <td><%= ms.service.price %> VND</td>
+                    <td><%= ms.service.price * ms.quantity %></td>
+                  </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-hover table-white">
+                  <tbody>
+                  <tr>
+                    <td colspan="5" style="text-align: right; font-weight: bold">
+                      Tổng tiền
+                    </td>
+                    <td style="text-align: right; font-weight: bold; font-size: 16px;width: 230px">
+                      <%= @medical_record.sub_total %>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="page-wrapper">
             <div class="content">
                 <div class="row">
                     <div class="col-sm-4 col-3">

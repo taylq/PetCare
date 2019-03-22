@@ -61,45 +61,30 @@
                         <tr>
                           <th scope="col" width="70px">STT</th>
                           <th scope="col">Loại dịch vụ/thuốc</th>
-                          <th scope="col" width="100px">Đơn vị</th>
                           <th scope="col" width="100px">Số lượng</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>
-                            <h4>1</h4>
-                          </td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <h4>2</h4>
-                          </td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <h4>3</h4>
-                          </td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <h4>4</h4>
-                          </td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                          <td><input type="text" class="form-control" /></td>
-                        </tr>
+                        <div data-length="<%= services.length %>" id="length">
+                          <% services.each_with_index do |service, index| %>
+                            <%= f.fields_for :medical_records_services, service.service_ids_of_medical_record(medical_record) || medical_record.medical_records_services.build do |ap| %>
+                              <tr>
+                                <td>
+                                  <h4><%= index + 1 %></h4>
+                                </td>
+                                <td><%= f.label service.name %>
+                                  <%= ap.check_box :service_id, {id: "checkbox_check#{service.id}",
+                                                                 class: "flat"}, service.id, 0 %>
+                                </td>
+                                <td><%= ap.number_field :quantity %></td>
+                                <%= ap.hidden_field :_destroy, id: "data-form-prepend#{service.id}" %>
+                              </tr>
+                            <% end %>
+                          <% end %>
+                        </div>
                       </tbody>
                     </table>
+                    <a class="btn btn-success" onclick="addRow('myTable')"><span class="fa fa-plus" style="color: white"></span></a>
                   </div>
                 </div>
               </div>
@@ -107,3 +92,4 @@
                 <%= f.submit "Save", class: "btn btn-primary submit-btn" %>
               </div>
         <% end %>
+        <%= link_to "create bill", secretary_user_pet_medical_record_path(format: "pdf") %>
