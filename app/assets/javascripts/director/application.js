@@ -14,7 +14,7 @@
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
-
+var gStart = null, gEnd = null;
 $(document).click(function () {
   $('.checkbox2').change(function () {
     for (var i = 1; i <= $('#length').data('length'); i++) {
@@ -68,17 +68,35 @@ initialize_calendar = function() {
             eventLimit: true,
             events: '/director/events',
 
+            eventRender: function(event, element) {
+                console.log(event);
+                element.find(".fc-title").remove();
+                element.find(".fc-time").remove();
+                var new_description =
+                    event.start.format("DD/MM/YYYY HH:mm") + ' - '
+                    + event.real_end
+
+                ;
+                element.append(new_description).css("color", "white");
+            },
+
+
             select: function(start, end) {
-                $.getScript('/director/events/new', function() {});
+                console.log(start);
+                gStart = start;
+                gEnd = end;
+                $.getScript('/director/events/new?start=' + start + "&end=" + end,
+                    function() {});
                 calendar.fullCalendar('unselect');
             },
 
             eventDrop: function(event, delta, revertFunc) {
+                console.log(event.id, event.start, event.end);
                 event_data = {
                     event: {
-                        id: event.id,
-                        start: event.start.format(),
-                        end: event.end.format()
+                        start_date: event.start.format(),
+                        end_date: event.end.format(),
+                        doctor_id: event.doctor_id
                     }
                 };
                 $.ajax({
@@ -95,6 +113,6 @@ initialize_calendar = function() {
     })
 };
 $(document).ready(function(){
-
     initialize_calendar();
 });
+

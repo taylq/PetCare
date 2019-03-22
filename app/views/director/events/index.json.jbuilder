@@ -1,10 +1,10 @@
 json.array! @events do |event|
-  date_format = '%Y-%m-%d'
-  json.id event.id
+  json.extract! event, :id
   json.doctor_id event.doctor_id
-  json.start event.start_date.strftime(date_format)
-  json.end event.end_date.strftime(date_format)
-  json.allDay true
+  json.start event.start_date + 2.hours
+  # json.end "Tue Mar 27 2019 09:00:00 GMT+0000"
+  json.end event.end_date.end_of_day
+  json.real_end event.end_date.strftime("%d/%m/%Y %H:%M")
   json.update_url director_event_path(event, method: :patch)
   json.edit_url edit_director_event_path(event)
 end

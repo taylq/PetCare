@@ -10,23 +10,63 @@ module Director
     end
 
     def new
-      @event = Event.new start_date: Time.at(params[:_].to_i/1000), end_date: Time.at(params[:_].to_i/1000)
+      @event = Event.new
     end
 
     def edit
     end
 
     def create
-      @event = Event.new event_params
-      @event.save
+      if  event_params[:start_date] <= event_params[:end_date]
+        if event_params[:start_date] >= DateTime.current
+          user_event = Event.where(doctor_id: 2).order(end_date: :asc).last
+          if user_event.nil? || user_event.end_date <= event_params[:start_date]
+            @event = Event.new event_params
+            if @event.save
+              flash[:success] = "Successfully"
+              redirect_to director_events_path
+            else
+              flash[:error] = "Create fail!"
+              redirect_to director_events_path
+            end
+          else
+            flash[:error] = "Bạn đã tạo lịch cho bác sĩ này rồi"
+            redirect_to director_events_path
+          end
+        else
+          flash[:error] = "Không được tạo lịch ở quá khứ!"
+          redirect_to director_events_path
+        end
+      else
+        flash[:error] = "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!"
+        redirect_to director_events_path
+      end
     end
 
     def update
-      @event.update_attributes event_params
+      if  event_params[:start_date] <= event_params[:end_date]
+        if event_params[:start_date] >= DateTime.current
+          if @event.update_attributes event_params
+            flash[:success] = "Update success!"
+            redirect_to director_events_path, turbolinks: false
+          else
+            flash[:error] = "Update fail!"
+            redirect_to director_events_path, turbolinks: false
+          end
+        else
+          flash[:error] = "Không được tạo lịch ở quá khứ!"
+          redirect_to director_events_path
+        end
+      else
+        flash[:error] = "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!"
+        redirect_to director_events_path
+      end
     end
 
     def destroy
       @event.destroy
+      flash[:notice] = "Xóa thành công!"
+      redirect_to director_events_path
     end
 
     private

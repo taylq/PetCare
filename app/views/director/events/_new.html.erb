@@ -11,3 +11,11 @@
     </div>
   </div>
 </div>
+<script>
+    <%
+      start_time =  Time.at(params[:start].to_f/1000).strftime('%d/%m/%Y %H:%M')
+      end_time = Time.at(params[:end].to_f/1000 - 60*60*24).strftime('%d/%m/%Y %H:%M')
+    %>
+    $('#event_start_date').val("<%= start_time %>");
+    $('#event_end_date').val("<%= end_time %>");
+</script>
