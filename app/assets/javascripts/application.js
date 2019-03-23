@@ -8,6 +8,10 @@
 //= require theme
 //= require i18n
 //= require i18n.js
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
+//= require scheduler
 //= require i18n/translations
 //= require activestorage
 //= require turbolinks
@@ -41,8 +45,8 @@ $(document).click(function () {
     readURL(this);
   });
 });
-(function() {
-  $(document).on('click', '.toggle-window', function(e) {
+(function () {
+  $(document).on('click', '.toggle-window', function (e) {
     e.preventDefault();
     var panel = $(this).parent().parent();
     var messages_list = panel.find('.messages-list');
@@ -56,38 +60,82 @@ $(document).click(function () {
     }
   });
 })();
-$(document).ready( function() {
-    	$(document).on('change', '.btn-file :file', function() {
-		var input = $(this),
-			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-		input.trigger('fileselect', [label]);
-		});
+$(document).ready(function () {
+  $(document).on('change', '.btn-file :file', function () {
+    var input = $(this),
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+  });
 
-		$('.btn-file :file').on('fileselect', function(event, label) {
+  $('.btn-file :file').on('fileselect', function (event, label) {
 
-		    var input = $(this).parents('.input-group').find(':text'),
-		        log = label;
+    var input = $(this).parents('.input-group').find(':text'),
+      log = label;
 
-		    if( input.length ) {
-		        input.val(log);
-		    } else {
-		        if( log ) alert(log);
-		    }
+    if (input.length) {
+      input.val(log);
+    } else {
+      if (log) alert(log);
+    }
 
-		});
-		function readURL(input) {
-		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
+  });
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-		        reader.onload = function (e) {
-		            $('#img-upload').attr('src', e.target.result);
-		        }
+      reader.onload = function (e) {
+        $('#img-upload').attr('src', e.target.result);
+      }
 
-		        reader.readAsDataURL(input.files[0]);
-		    }
-		}
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
 
-		$("#imgInp").change(function(){
-		    readURL(this);
-		});
-	});
+  $("#imgInp").change(function () {
+    readURL(this);
+  });
+});
+
+
+
+
+
+
+
+
+
+var initialize_calendar;
+initialize_calendar = function () {
+  $('#calendar').each(function () {
+    var calendar = $(this);
+    calendar.fullCalendar({
+      schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+      editable: true,
+      aspectRatio: 3,
+      slotLabelFormat: ['H:mm'],
+      minTime: "07:00",
+      maxTime: "22:00",
+      header: {
+        left: "today prev,next",
+        center: "title",
+        right: "timelineDay"
+      },
+      defaultView: "timelineDay",
+      resourceLabelText: "Bác sĩ",
+      resources: [
+        { id: "a", title: "Dr.  A" },
+        { id: "b", title: "Dr.  B" },
+        { id: "c", title: "Dr.  C" },
+        { id: 'e', title: 'Dr.  E' },
+        { id: 'f', title: 'Dr.  F' },
+        { id: 'g', title: 'Dr.  G' }
+      ],
+      events: '/bookings'
+
+    });
+  })
+};
+$(document).ready(function () {
+  initialize_calendar();
+});
+

@@ -4,6 +4,8 @@
  *= require owl.carousel
  *= require owl.theme.default.min
  *= require style
+ *= require fullcalendar
+ *= require scheduler
  *= require bootstrap-datetimepicker.min
  *= require jquery-ui/datepicker
  *= require_self
@@ -31,4 +33,8 @@
   margin: 5px 20px;
   padding: 10px;
   float: left;
+}
+
+.fc-resource-area {
+  width: 20% !important;
 }
