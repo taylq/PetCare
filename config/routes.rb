@@ -27,6 +27,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:create]
     end
 
+    resources :bookings
     resources :deseases
     resources :doctors
     resources :relationships, only: [:create, :destroy]
