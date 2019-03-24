@@ -38,3 +38,8 @@
 .fc-resource-area {
   width: 20% !important;
 }
+
+.required {
+  content:"*";
+  color:red;
+}

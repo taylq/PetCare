@@ -4,8 +4,8 @@
 //= require admin/bootstrap.min
 //= require admin/jquery.dataTables.min
 //= require admin/dataTables.bootstrap4.min
-//= require admin/app
 //= require admin/jquery.slimscroll
+//= require admin/app
 //= require admin/select2.min
 //= require admin/moment.min
 //= require admin/bootstrap-datetimepicker.min

@@ -1,5 +1,5 @@
 //= require jquery
-//= require rails-ujs
+//= require jquery_ujs
 //= require admin/popper.min
 //= require admin/bootstrap.min
 //= require admin/jquery.slimscroll

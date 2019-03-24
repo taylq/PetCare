@@ -14,7 +14,6 @@
 //= require scheduler
 //= require i18n/translations
 //= require activestorage
-//= require turbolinks
 //= require custom
 //= require_tree ./channels
 //= require toastr
