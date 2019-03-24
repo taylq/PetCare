@@ -8,6 +8,8 @@
 //= require admin/select2.min
 //= require admin/moment.min
 //= require admin/bootstrap-datetimepicker.min
+//= require admin/jquery.dataTables.min
+//= require admin/dataTables.bootstrap4.min
 //= require admin/Chart.bundle
 //= require admin/app
 //= require toastr
@@ -53,66 +55,66 @@ $(document).click(function () {
 
 
 var initialize_calendar;
-initialize_calendar = function() {
-    $('#calendar').each(function(){
-        var calendar = $(this);
-        calendar.fullCalendar({
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            selectable: true,
-            selectHelper: true,
-            editable: true,
-            eventLimit: true,
-            events: '/director/events',
+initialize_calendar = function () {
+  $('#calendar').each(function () {
+    var calendar = $(this);
+    calendar.fullCalendar({
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
+      selectable: true,
+      selectHelper: true,
+      editable: true,
+      eventLimit: true,
+      events: '/director/events',
 
-            eventRender: function(event, element) {
-                console.log(event);
-                element.find(".fc-title").remove();
-                element.find(".fc-time").remove();
-                var new_description =
-                    event.start.format("DD/MM/YYYY HH:mm") + ' - '
-                    + event.real_end
+      eventRender: function (event, element) {
+        console.log(event);
+        element.find(".fc-title").remove();
+        element.find(".fc-time").remove();
+        var new_description =
+          event.start.format("DD/MM/YYYY HH:mm") + ' - '
+          + event.real_end
 
-                ;
-                element.append(new_description).css("color", "white");
-            },
+          ;
+        element.append(new_description).css("color", "white");
+      },
 
 
-            select: function(start, end) {
-                console.log(start);
-                gStart = start;
-                gEnd = end;
-                $.getScript('/director/events/new?start=' + start + "&end=" + end,
-                    function() {});
-                calendar.fullCalendar('unselect');
-            },
+      select: function (start, end) {
+        console.log(start);
+        gStart = start;
+        gEnd = end;
+        $.getScript('/director/events/new?start=' + start + "&end=" + end,
+          function () { });
+        calendar.fullCalendar('unselect');
+      },
 
-            eventDrop: function(event, delta, revertFunc) {
-                console.log(event.id, event.start, event.end);
-                event_data = {
-                    event: {
-                        start_date: event.start.format(),
-                        end_date: event.end.format(),
-                        doctor_id: event.doctor_id
-                    }
-                };
-                $.ajax({
-                    url: event.update_url,
-                    data: event_data,
-                    type: 'PATCH'
-                });
-            },
-
-            eventClick: function(event, jsEvent, view) {
-                $.getScript(event.edit_url, function() {});
-            }
+      eventDrop: function (event, delta, revertFunc) {
+        console.log(event.id, event.start, event.end);
+        event_data = {
+          event: {
+            start_date: event.start.format(),
+            end_date: event.end.format(),
+            doctor_id: event.doctor_id
+          }
+        };
+        $.ajax({
+          url: event.update_url,
+          data: event_data,
+          type: 'PATCH'
         });
-    })
+      },
+
+      eventClick: function (event, jsEvent, view) {
+        $.getScript(event.edit_url, function () { });
+      }
+    });
+  })
 };
-$(document).ready(function(){
-    initialize_calendar();
+$(document).ready(function () {
+  initialize_calendar();
 });
 

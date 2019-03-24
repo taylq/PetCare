@@ -14,7 +14,6 @@
                                         <%= image_tag @pet.image_url, class: "avatar" %>
                                     </div>
                                 </div>
-                                <%= link_to "Tạo mới bệnh án", new_doctor_user_pet_medical_record_path(@pet.user, @pet.id), class: "btn btn-primary pull-right" %>
 								<div class="">
 									<center>
 										<table class="table" style="width: 500px">
@@ -60,7 +59,7 @@
 											  <th scope="col">Ngày khám</th>
 											  <th scope="col">Bác sĩ</th>
 											  <th scope="col">Chẩn đoán</th>
-											  <th scope="col"></th>
+											  <th scope="col">#(not yet)</th>
 											</tr>
 										  </thead>
 										  <tbody>
@@ -70,7 +69,7 @@
 											  <td><%= mr.created_at %></td>
 											  <td><%= User.find_by_id(mr.doctor_id).name %></td>
 											  <td><%= mr.description %></td>
-											  <td><%= link_to "Chi tiết", doctor_user_pet_medical_record_path(mr.pet.user, mr.pet, mr) %></td>
+											  <td><%= link_to "Chi tiết", "#" %></td>
 											</tr>
                     <% end %>
 										  </tbody>

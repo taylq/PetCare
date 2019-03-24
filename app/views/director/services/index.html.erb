@@ -1,0 +1,60 @@
+<div class="page-wrapper">
+            <div class="content">
+                <div class="row">
+                    <div class="col-sm-5 col-5">
+                        <h4 class="page-title">Holidays 2018</h4>
+                    </div>
+                    <div class="col-sm-7 col-7 text-right m-b-30">
+                        <a href="add-holiday.html" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#add">
+                          <i class="fa fa-plus"></i> Add Holiday
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped custom-table m-b-0 datatable" id="example">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tên dịch vụ</th>
+                                        <th>Giá tiền</th>
+                                        <th class="text-right">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <%= render @services %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div id="add" class="modal fade add-modal" role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body">
+						<%= form_for [:director, @service], class: "form" do |f| %>
+                            <div class="form-group">
+                                <label>Dịch vụ: <span class="text-danger">*</span></label>
+                                <%= f.text_field :name, class: "form-control" %>
+                            </div>
+                            <div class="form-group">
+                                <label>Giá tiền: <span class="text-danger">*</span></label>
+                                <%= f.number_field :price, class: "form-control" %>
+                            </div>
+                            <div class="m-t-20 text-center">
+                                <%= f.submit "Thêm mới dịch vụ", class: "btn btn-primary submit-btn" %>
+                            </div>
+                        <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<script>
+		$(document).ready(function() {
+    $('#example').DataTable();
+} );
+	</script>

@@ -1,6 +1,7 @@
 module Doctor
   class MedicalRecordsController < BaseController
     before_action :find_pet, only: %i(new create)
+    before_action :find_info, only: %i(show)
     def new
       @medical_record = MedicalRecord.new
       @services = Service.all
@@ -9,6 +10,7 @@ module Doctor
     def create
       @medical_record = MedicalRecord.new medical_record_params
       if @medical_record.save
+        Bill.create!(medical_record_id: @medical_record.id)
         flash[:success] = "Create successfull"
         redirect_to doctor_user_pet_path(@user, @pet)
       else
@@ -17,11 +19,22 @@ module Doctor
       end
     end
 
+    def show
+
+    end
+
     private
 
     def find_pet
       @user = User.find_by id: params[:user_id]
       @pet = @user.pets.find_by id: params[:pet_id]
+    end
+
+    def find_info
+      @user = User.find_by id: params[:user_id]
+      @pet = @user.pets.find_by id: params[:pet_id]
+      @medical_record = MedicalRecord.find_by id: params[:id]
+      @doctor = User.find_by_id @medical_record.doctor_id
     end
 
     def medical_record_params

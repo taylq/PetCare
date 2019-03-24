@@ -1,7 +1,7 @@
 module Director
   class EventsController < BaseController
     before_action :load_event, only: [:show, :edit, :update, :destroy]
-    after_action :create_booking, only: :create
+    # after_action :create_booking, only: :create
 
     def index
       @events = Event.all

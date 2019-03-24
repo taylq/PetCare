@@ -25,12 +25,15 @@
               </tr>
             </thead>
             <tbody>
-              <%= render @users %>
+            <% @users.each_with_index do |user, i| %>
+              <tr>
+  <td><%= i + 1 %></td>
+  <td><%= link_to user.name, secretary_user_path(user) %></td>
+  <td><%= user.email %></td>
+</tr>
+<% end %>
             </tbody>
           </table>
-          <div class="col-sm-8 col-sm-offset-3">
-            <%= paginate @users, theme: "twitter-bootstrap-3" %>
-          </div>
         </div>
       </div>
     </div>

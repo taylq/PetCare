@@ -1,30 +1,16 @@
 <div class="page-wrapper">
   <div class="content">
-
-    <div class="row">
-      <div class="col-md-12">
-        <form>
-          <h1><center>Chi tiết khám bệnh</center></h1>
-          <br><br>
-          <%= link_to "Tạo hóa đơn", secretary_user_pet_medical_record_path(format: "pdf"),
-            class: "btn btn-primary pull-right" %>
-          <div class="row">
-            <div class="col-sm-2">
-              <div class="form-group">
-                <h4>Thú cưng  :</h4>
-                <h4>Bác sĩ  :</h4>
-                <h4>Y tá  :</h4>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-                <h4><%= @pet.name %></h4>
-                <h4>Dr. <%= @doctor.name %>></h4>
-                <h4>Akali</h4>
-              </div>
-            </div>
-          </div>
-          <div class="row">
+  <div class="row">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-6">
+        <br>
+        <h3><center>Trung tâm khám chữa và chăm sóc thú cưng</center></h3>
+        <h5><center>65 Tân Mai, Hoàng Mai, Hà Nội</center></h5>
+        <h5><center>0936848698</center></h5>
+      </div>
+    </div>
+<div class="row">
             <div class="col-md-12 col-sm-12">
               <div class="table-responsive">
                 <table class="table table-hover table-white">
@@ -66,10 +52,6 @@
                 </table>
               </div>
             </div>
+            </div>
+            </div>
           </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-</div>

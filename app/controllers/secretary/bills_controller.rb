@@ -6,8 +6,7 @@ module Secretary
       @bill = Bill.new
     end
 
-    def create
-
+    def show
     end
 
     private
