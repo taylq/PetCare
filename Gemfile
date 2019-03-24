@@ -35,7 +35,7 @@ gem "wkhtmltopdf-binary"
 gem 'toastr-rails'
 gem "redis"
 gem 'hiredis'
-# gem "pg"
+gem "pg"
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
