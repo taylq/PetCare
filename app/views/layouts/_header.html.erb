@@ -30,7 +30,7 @@
                                     <a class="dropdown-toggle settings-icon appointment" data-toggle="dropdown"><i class="fa fa-cog"></i></a>
                                     <ul class="dropdown-menu">
                                     <% if user_signed_in? && current_user.admin? %>
-                    <li><%= link_to "Quản lý", admin_dashboard_path, class: "dropdown-item", data:{turbolink: false} %></li>
+                    <li><%= link_to "Quản lý", admin_dashboard_path, data:{turbolink: false} %></li>
                     <% end %>
                     <% if user_signed_in? && current_user.doctor? %>
                     <li><%= link_to "Quản lý", doctor_dashboard_path, class: "dropdown-item", data:{turbolink: false} %></li>

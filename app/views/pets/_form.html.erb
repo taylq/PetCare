@@ -14,10 +14,10 @@
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
-        <label>Tên:</label>
+        <label>Tên:</label><span class="required">*</span>
       </span>
     </div>
-    <%= f.text_field :name, class: "form-control" %>
+    <%= f.text_field :name, class: "form-control", required: true %>
     <%#= f.hidden_field :user_id, value: user.id %>
   </div>
   <div class="input-group">
@@ -39,10 +39,10 @@
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">
-        <label>Ngày sinh:</label>
+        <label>Ngày sinh:</label><span class="required">*</span>
       </span>
     </div>
-   <%= f.text_field :dob, class: "form-control datetimepicker", placeholder: "Day Of Birth" %>
+   <%= f.text_field :dob, class: "form-control datetimepicker", placeholder: "Day Of Birth", required: true %>
   </div>
   <div class="footer text-center" style="margin-top: 30px">
     <%= f.submit "Lưu", class: "btn btn-primary btn-wd btn-lg", style: "margin-top: 30px" %>

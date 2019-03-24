@@ -7,10 +7,12 @@
                             <a href="<%= secretary_dashboard_path %>"><i class="fa fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li class="<%= current_class? secretary_users_path %>">
-                            <a href="<%= secretary_users_path %>"><i class="fa fa-user-md"></i> Users</a>
+                            <a href="<%= secretary_users_path %>"><i class="fa fa-user-md"></i> Người dùng</a>
                         </li>
                         <li class="<%= current_class? root_path %>">
-                            <a href="<%= root_path %>"><i class="fa fa-home"></i>Home</a>
+                            <%= link_to root_path, data: { turbolinks: false } do %>
+                                <i class="fa fa-home"></i>Trang chủ
+                            <% end %>
                         </li>
                     </ul>
                 </div>

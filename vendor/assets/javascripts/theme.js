@@ -1,8 +1,8 @@
-$(document).on('turbolinks:load', function() {
+$(document).ready(function () {
 
 	// Mobile menu overlay
 
-	$(".toggle-menu").on("click", function() {
+	$(".toggle-menu").on("click", function () {
 		var $target = $($(this).attr("href"));
 		if ($target.length) {
 			$target.toggleClass("opened");
@@ -12,7 +12,7 @@ $(document).on('turbolinks:load', function() {
 		}
 	});
 
-	$(".sidebar-overlay").on("click", function() {
+	$(".sidebar-overlay").on("click", function () {
 		var $target = $($(this).attr("data-reff"));
 		if ($target.length) {
 			$target.removeClass("opened");
@@ -23,74 +23,74 @@ $(document).on('turbolinks:load', function() {
 
 	// Mobile Menu
 
-	$('.menu-toggle').on("click", function() {
+	$('.menu-toggle').on("click", function () {
 		$(this).parents('li').children('.mobile-submenu-wrapper').slideToggle(300);
 		return false;
 	});
 
 	// Testimonial Carousel
 
-	if($('#testimonial_slider').length > 0 ){
+	if ($('#testimonial_slider').length > 0) {
 		$("#testimonial_slider").owlCarousel({
 			autoPlay: false,
 			nav: true,
 			margin: 30,
-			pagination : false,
+			pagination: false,
 			loop: true,
-			navText :["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+			navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
 			responsive: {
-			  0: {
-				items: 1
-			  },
-			  768: {
-				items: 2
-			  },
-			  992: {
-				items: 3
-			  }
+				0: {
+					items: 1
+				},
+				768: {
+					items: 2
+				},
+				992: {
+					items: 3
+				}
 			}
 		});
 	}
 
 	// Doctor Carousel
 
-	if($('#our_doctor').length > 0 ){
+	if ($('#our_doctor').length > 0) {
 		$("#our_doctor").owlCarousel({
-			autoPlay:false,
+			autoPlay: false,
 			nav: true,
 			margin: 10,
-			pagination : false,
+			pagination: false,
 			loop: true,
-			navText :["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+			navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
 			responsive: {
-			  0: {
-				items: 1
-			  },
-			  768: {
-				items: 3
-			  },
-			  992: {
-				items: 6
-			  }
+				0: {
+					items: 1
+				},
+				768: {
+					items: 3
+				},
+				992: {
+					items: 6
+				}
 			}
 		});
 	}
 
 	// Header menu dropdown
 
-	if($('.header .dropdown').length > 0 ){
+	if ($('.header .dropdown').length > 0) {
 		$('.header .dropdown').hover(
-			function() {
+			function () {
 				$(this).addClass('open');
 			},
-			function() {
+			function () {
 				$(this).removeClass('open');
-		});
+			});
 	}
 
 	// Date Time Picker
 
-	if($('.datetimepicker').length > 0 ){
+	if ($('.datetimepicker').length > 0) {
 		$('.datetimepicker').datetimepicker({
 			format: 'DD/MM/YYYY'
 		});
@@ -98,7 +98,7 @@ $(document).on('turbolinks:load', function() {
 
 	// Select2
 
-	if($('.select').length > 0 ){
+	if ($('.select').length > 0) {
 		$('.select').select2({
 			minimumResultsForSearch: -1,
 			width: '100%'

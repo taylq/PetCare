@@ -1,6 +1,6 @@
 # $redis_onlines = Redis.new
 # it's the simplest way, but i'd recommend:
-$redis_onlines = Redis.new db: 15, driver: :hiredis
+$redis_onlines = Redis.new driver: :hiredis
 # => hiredis driver more fast
 # => use unix domain socket if it's possible
 # => default db is No.0, but it is better to use a specific database

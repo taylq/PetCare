@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label>Pet Type</label>
-                        <%= f.select :pet_type, type_choice, selected: desease.pet_type, class: "select" %>
+                        <%= f.select :pet_type, type_choice, {selected: desease.pet_type}, class: "select" %>
                     </div>
                 </div>
                 <div class="col-sm-6">

@@ -1,7 +1,6 @@
 //= require jquery
-//= require rails-ujs
+//= require jquery_ujs
 //= require activestorage
-//= require turbolinks
 //= require admin/popper.min
 //= require admin/bootstrap.min
 //= require admin/jquery.slimscroll

@@ -4,24 +4,24 @@
                 <div class="account-box">
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                         <div class="account-title">
-                            <h3><%= t "layouts.header.login" %></h3>
+                            <h3>Đăng nhập</h3>
                         </div>
                         <div class="form-group">
-                            <label><%= t "app.login" %></label>
-                            <%= f.text_field :login, class: "form-control", placeholder: t("app.login") %>
+                            <label>Tên đăng nhập hoặc Email</label><span class="required">*</span>
+                            <%= f.text_field :login, class: "form-control", placeholder: "Tên đăng nhập hoặc Email", required: true %>
                         </div>
                         <div class="form-group">
-                            <label><%= t("users.new.password") %></label>
-                            <%= f.password_field :password, class: "form-control", placeholder: t("users.new.password") %>
+                            <label>Mật khẩu</label><span class="required">*</span>
+                            <%= f.password_field :password, class: "form-control", placeholder: "Mật khẩu", required: true %>
                         </div>
                         <div class="form-group text-right">
                             <% if devise_mapping.rememberable? -%>
                               <%= f.check_box :remember_me %>
-                                  <i class="material-icons" style="padding-left: 10px"><%= t ".remember_me" %></i>
+                                  <i class="material-icons" style="padding-left: 10px">Ghi nhớ</i>
                             <% end -%>
                         </div>
                         <div class="form-group text-center">
-                            <%= f.submit t("layouts.header.login"), class: "btn btn-primary account-btn" %>
+                            <%= f.submit "Đăng nhập", class: "btn btn-primary account-btn" %>
                         </div>
                         <div class="text-center register-link">
                             <%= render "devise/shared/links" %>

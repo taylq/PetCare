@@ -16,7 +16,9 @@
                             <a href="<%= director_services_path %>"><i class="fa fa-stethoscope"></i>Dịch vụ</a>
                         </li>
                         <li class="<%= current_class? root_path %>">
-                            <a href="<%= root_path %>"><i class="fa fa-home"></i>Trang chủ</a>
+                            <%= link_to root_path, data: { turbolinks: false } do %>
+                                <i class="fa fa-home"></i>Trang chủ
+                            <% end %>
                         </li>
                     </ul>
                 </div>
