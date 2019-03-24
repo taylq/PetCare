@@ -65,6 +65,7 @@ Rails.application.routes.draw do
 
     namespace :nurse do
       get "/dashboard", to: "base#dashboard"
+      resources :pets
       resources :users do
         resources :pets do
           resources :medical_records do
@@ -84,6 +85,7 @@ Rails.application.routes.draw do
         end
       end
       resources :events
+      resources :services
     end
   end
 end

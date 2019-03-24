@@ -1,6 +1,6 @@
 module Secretary
   class MedicalRecordsController < BaseController
-    before_action :find_pet, only: %i(show)
+    before_action :find_pet, only: %i(show bill)
 
     def show
       # @medical_record.bill.create!(medical_record_id: @medical_record, total: )
@@ -8,12 +8,16 @@ module Secretary
         format.html
         format.pdf do
           render pdf: "#{@user.name}_#{Time.now.strftime("%Y-%m-%d %H:%M:%S")}",
-            template: "secretary/medical_records/show.html.erb",
+            template: "secretary/medical_records/bill.html.erb",
             disposition: "attachment",
             orientation: "Landscape",
             encoding: "UTF-8"
         end
       end
+    end
+
+    def bill
+
     end
 
     private

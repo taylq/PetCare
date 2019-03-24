@@ -3,6 +3,7 @@
 //= require admin/popper.min
 //= require admin/bootstrap.min
 //= require admin/jquery.dataTables.min
+//= require admin/dataTables.bootstrap4.min
 //= require admin/app
 //= require admin/jquery.slimscroll
 //= require admin/select2.min
@@ -40,7 +41,7 @@ $(document).click(function () {
   });
 
 });
-$(document).ready(function(){
+$(document).ready(function () {
   $("#form-role").change(function () {
     console.log("asda");
     this.form.submit();

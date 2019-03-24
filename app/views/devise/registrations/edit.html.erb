@@ -33,9 +33,9 @@
                 <%= f.number_field :phone, class: "form-control", placeholder: "Phone" %>
               </div>
 
-              <div class="form-group" style="margin-bottom: 10px">
+              <div class="form-group" style="margin-bottom: 10px; position: relative">
                 <%= f.label :dob, t("sessions.new.dob") %>
-                <%= f.text_field :dob, class: "form-control datetimepicker", placeholder: "Day Of Birth" %>
+                <%= f.text_field :dob, class: "form-control datetimepicker25", placeholder: "Day Of Birth" %>
               </div>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -68,3 +68,8 @@
             </div>
         </div>
     </div>
+<script>
+  $('.datetimepicker25').datetimepicker({
+    format: "DD/MM/YYYY"
+  });
+</script>

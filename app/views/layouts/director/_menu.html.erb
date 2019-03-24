@@ -4,16 +4,19 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li class="<%= current_class? director_dashboard_path %>">
-                            <a href="<%= director_dashboard_path %>"><i class="fa fa-dashboard"></i> Dashboard</a>
-                        </li>
-                        <li class="<%= current_class? director_users_path %>">
-                            <a href="<%= director_users_path %>"><i class="fa fa-user-md"></i> Doctors</a>
+                          <a href="<%= director_dashboard_path %>"><i class="fa fa-dashboard"></i>Dashboard</a>
                         </li>
                         <li class="<%= current_class? director_events_path %>">
-                          <a href="<%= director_events_path %>"><i class="fa fa-user-md"></i>Calendar</a>
+                          <a href="<%= director_events_path %>"><i class="fa fa-calendar"></i>Lịch làm việc</a>
+                        </li>
+                        <li class="<%= current_class? director_users_path %>">
+                            <a href="<%= director_users_path %>"><i class="fa fa-user-md"></i> Bác sĩ</a>
+                        </li>
+                        <li class="<%= current_class? director_services_path %>">
+                            <a href="<%= director_services_path %>"><i class="fa fa-stethoscope"></i>Dịch vụ</a>
                         </li>
                         <li class="<%= current_class? root_path %>">
-                            <a href="<%= root_path %>"><i class="fa fa-user-md"></i>Home</a>
+                            <a href="<%= root_path %>"><i class="fa fa-home"></i>Trang chủ</a>
                         </li>
                     </ul>
                 </div>

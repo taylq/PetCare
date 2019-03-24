@@ -1,10 +1,5 @@
 <div class="page-wrapper">
             <div class="content">
-                <div class="row">
-                    <div class="col-sm-7 col-4">
-                        <h4 class="page-title">My Profile</h4>
-                    </div>
-                </div>
                 <ul id="conversations-list">
             <% @conversations.each do |conversation| %>
               <%= render 'conversations/conversation', conversation: conversation, user: current_user %>

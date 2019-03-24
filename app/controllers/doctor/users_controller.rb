@@ -3,7 +3,7 @@ module Doctor
     before_action :find_user, except: %i(index new create)
 
     def index
-      @users = User.select_attr.page(params[:page]).per(10).search params[:search]
+      @users = User.select_attr.search params[:search]
       respond_to do |format|
         format.html {}
         format.csv { send_data User.search(params[:search]).to_csv }

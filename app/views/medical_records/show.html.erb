@@ -32,7 +32,7 @@
                                                 <td style="text-align: right">
                                                     <h4>Chủ nhân :<h4>
                                                 </td>
-                                                <td style="text-align: left"><a href="#">
+                                                <td style="text-align: left"><a href="<%= user_path(@user) %>">
                                                         <h4 style="color: #66a3ff"><%= @user.name %><h4>
                                                     </a></td>
                                             </tr>
@@ -70,7 +70,7 @@
                         <div class="about-doctor">
                             <h2>Chi Tiết Bệnh Án</h2>
                             <div>
-                                <h3 class="sub-title">Bác Sĩ Chính: <a href="#" style="color: #66a3ff"><%= User.find_by(id: @medical_record.doctor_id).name %></h3>
+                                <h3 class="sub-title">Bác Sĩ Chính: <a href="<%= user_path(User.find_by(id: @medical_record.doctor_id)) %>" style="color: #66a3ff"><%= User.find_by(id: @medical_record.doctor_id).name %></a></h3>
                             </div>
                             <div>
                                 <h4>Triệu chứng bệnh: <%= @medical_record.result %>.</h4>
@@ -83,27 +83,26 @@
                                             <th scope="col">STT</th>
                                             <th scope="col">Tên thuốc</th>
                                             <th scope="col">Số lượng</th>
-                                            <th scope="col">Hướng dẫn dùng thuốc</th>
+                                            <th scope="col">Đơn giá</th>
+                                            <th scope="col">Thành tiền</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <% @services.each_with_index do |service, index| %>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Timolol Maleate</td>
-                                            <td>1 Hộp</td>
-                                            <td><a href="#">Ngày nhỏ 2 lần sáng, tối<a></td>
+                                            <th scope="row"><%= index + 1 %></th>
+                                            <td><%= service.service.name %></td>
+                                            <td><%= service.quantity %></td>
+                                            <td><%= service.service.price %></td>
+                                            <td><%= service.quantity * service.service.price %></td>
                                         </tr>
+                                        <% end %>
                                         <tr>
-                                            <th scope="row">2</th>
-                                            <td>Thuốc tẩy giun Exotral</td>
-                                            <td>2 hộp</td>
-                                            <td><a href="#">4 tháng uống 1 viên</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Men tiêu hoá Enterogermina</td>
-                                            <td>3 Hộp</td>
-                                            <td><a href="#">Ngày nhỏ 2 lần sáng, tối</a></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><%= @medical_record.sub_total %></td>
                                         </tr>
                                     </tbody>
                                 </table>

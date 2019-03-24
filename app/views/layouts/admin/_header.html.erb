@@ -107,10 +107,8 @@
                         <span><%= current_user.name %></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<%= user_path(current_user) %>">My Profile</a>
-                        <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
-                        <a class="dropdown-item" href="settings.html">Settings</a>
-                         <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                        <a class="dropdown-item" href="<%= user_path(current_user) %>">Hồ sơ</a>
+                         <%= link_to "Đăng xuất", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                     </div>
                 </li>
             </ul>
@@ -121,7 +119,7 @@
                     <a class="dropdown-item" href="profile.html">My Profile</a>
                     <a class="dropdown-item" href="edit-profile.html">Edit Profile</a>
                     <a class="dropdown-item" href="settings.html">Settings</a>
-                     <%= link_to t(".log_out"), destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                     <%= link_to "Đăng xuất", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                 </div>
             </div>
         </div>
