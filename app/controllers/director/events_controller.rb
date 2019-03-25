@@ -1,7 +1,6 @@
 module Director
   class EventsController < BaseController
     before_action :load_event, only: [:show, :edit, :update, :destroy]
-    # after_action :create_booking, only: :create
 
     def index
       @events = Event.all
@@ -77,17 +76,6 @@ module Director
 
     def event_params
       params.require(:event).permit(:doctor_id, :start_date, :end_date)
-    end
-    def create_booking
-      # binding.pry
-      # index = (event_params[:end_date].to_time.to_i - event_params[:start_date].to_time.to_i) / 3600
-      # start_time = event_params[:start_date].to_time.to_i
-      # index.times do
-      #   start_time = start_time
-      #   end_time = start_time + 60*60
-      #   binding.pry
-      #   start_time = end_time
-      # end
     end
   end
 
