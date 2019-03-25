@@ -1,0 +1,21 @@
+<div class="modal fade" id="new_booking" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Đặt lịch</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', booking: @booking %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    <%
+      start_time =  Time.zone.local_to_utc(Time.at(params[:start].to_f/1000)).strftime('%d/%m/%Y %H:%M')
+      end_time = Time.zone.local_to_utc(Time.at(params[:end].to_f/1000)).strftime('%d/%m/%Y %H:%M')
+    %>
+    $('#booking_start_time').val("<%= start_time %>");
+    $('#booking_end_time').val("<%= end_time %>");
+</script>

@@ -70,7 +70,6 @@ initialize_calendar = function () {
       events: '/director/events',
 
       eventRender: function (event, element) {
-        console.log(event);
         element.find(".fc-title").remove();
         element.find(".fc-time").remove();
         var new_description =

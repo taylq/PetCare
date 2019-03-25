@@ -10,7 +10,6 @@
 //= require i18n.js
 //= require moment
 //= require fullcalendar
-//= require fullcalendar/locale-all
 //= require scheduler
 //= require i18n/translations
 //= require activestorage
@@ -107,9 +106,12 @@ var initialize_calendar;
 initialize_calendar = function () {
   $('#calendar').each(function () {
     var calendar = $(this);
-    calendar.fullCalendar({
+      calendar.fullCalendar({
       schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+      selectable: true,
+      selectHelper: true,
       editable: true,
+      eventLimit: true,
       aspectRatio: 3,
       slotLabelFormat: ['H:mm'],
       minTime: "07:00",
@@ -119,18 +121,38 @@ initialize_calendar = function () {
         center: "title",
         right: "timelineDay"
       },
+      nowIndicator: true,
       defaultView: "timelineDay",
       resourceLabelText: "Bác sĩ",
-      resources: [
-        { id: "a", title: "Dr.  A" },
-        { id: "b", title: "Dr.  B" },
-        { id: "c", title: "Dr.  C" },
-        { id: 'e', title: 'Dr.  E' },
-        { id: 'f', title: 'Dr.  F' },
-        { id: 'g', title: 'Dr.  G' }
-      ],
-      events: '/bookings'
+      resources: '/doctors',
+      events: '/bookings',
+      // dayClick: function(info) {
+      //   alert('Clicked on: '+ new Date(info.time()).getUTCHours() + ':' + new Date(info.time()).getUTCMinutes());
+      // },
+      select: function(start, end, listenerId, childrenByUid, resourceRowHash) {
+        console.log(start, end, resourceRowHash);
+          $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceRowHash.id, function () {});
+          calendar.fullCalendar('unselect');
+      },
 
+      eventDrop: function(event, delta, revertFunc) {
+          event_data = {
+              event: {
+                  id: event.id,
+                  start: event.start.format(),
+                  end: event.end.format()
+              }
+          };
+          $.ajax({
+              url: event.update_url,
+              data: event_data,
+              type: 'PATCH'
+          });
+      },
+
+      eventClick: function(event, jsEvent, view) {
+          $.getScript(event.edit_url, function() {});
+      }
     });
   })
 };
