@@ -125,32 +125,25 @@ initialize_calendar = function () {
       defaultView: "timelineDay",
       resourceLabelText: "Bác sĩ",
       resources: '/doctors',
-      events: '/bookings',
-      // dayClick: function(info) {
-      //   alert('Clicked on: '+ new Date(info.time()).getUTCHours() + ':' + new Date(info.time()).getUTCMinutes());
+      eventSources: ['/bookings', '/bookings/events'],
+      // eventReceive: function (event, view) {
+      //     var resourceId = event.resourceId;
       // },
-      select: function(start, end, listenerId, childrenByUid, resourceRowHash) {
-        console.log(start, end, resourceRowHash);
-          $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceRowHash.id, function () {});
+      //     dayClick: function(date, jsEvent, view, resourceObj) {
+      //
+      //         alert('Date: ' + date.format());
+      //         alert('Resource ID: ' + resourceObj.id);
+      //
+      //     },
+      select: function(start, end, jsEvent, view, resourceObj) {
+        // debugger;
+          console.log(resourceObj.id);
+          $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceObj.id, function () {});
           calendar.fullCalendar('unselect');
       },
 
-      eventDrop: function(event, delta, revertFunc) {
-          event_data = {
-              event: {
-                  id: event.id,
-                  start: event.start.format(),
-                  end: event.end.format()
-              }
-          };
-          $.ajax({
-              url: event.update_url,
-              data: event_data,
-              type: 'PATCH'
-          });
-      },
-
       eventClick: function(event, jsEvent, view) {
+          console.log(event);
           $.getScript(event.edit_url, function() {});
       }
     });

@@ -44,9 +44,20 @@
   color:red;
 }
 
-.fc-event {
-    border-bottom: 5px solid #42bc00 !important;
-    background: none !important;
-    border: none;
-    margin-top: -20px !important;
+.fc-event1 {
+    /*border-bottom: 5px solid #42bc00 !important;*/
+    /*background: none !important;*/
+    /*border: none;*/
+    /*margin-top: -14px !important;*/
+    height: 5px;
+}
+
+.fc-event2 {
+    /*border-bottom: 5px solid #42bc00 !important;*/
+    /*background: none !important;*/
+    /*border: none;*/
+    /*margin-top: -20px !important;*/
+    top: 0px !important;
+    z-index: 10;
+    height: 5px;
 }

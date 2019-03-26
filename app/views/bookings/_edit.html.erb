@@ -1,4 +1,4 @@
-<div class="modal fade" id="edit_event">
+<div class="modal fade" id="edit_booking">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -7,17 +7,35 @@
                 aria-hidden="true">&times;</button>
       </div>
       <div class="modal-body">
-        <%= render 'form', event: @event %>
-        <%= link_to "Xóa", director_event_path, method: :delete, class: "btn btn-danger"  %>
+        <div class="modal-body">
+          <div class="form-horizontal form-event">
+            <div class="form-group">
+              <label class="col-sm-6 label-event">
+                <%= "Thời gian bắt đầu khám" %>:
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control start-date" id="booking_start_time" readonly>
+                <%#= f.text_field :start_time, class: "form-control start-date", readonly: true %>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-6 label-event">
+                <%= "Thời gian kết thúc khám" %>:
+              </label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control end-date" id="booking_end_time" readonly>
+                <%#= f.text_field :end_time, class: "form-control end-date", readonly: true %>
+              </div>
+            </div>
+        </div>
+        </div>
+
+        <%= link_to "Hủy lịch", booking_path, method: :delete, class: "btn btn-danger"  %>
       </div>
     </div>
   </div>
 </div>
 <script>
-    <%
-      start_time =  @event.start_date.strftime('%d/%m/%Y %H:%M')
-      end_time = @event.end_date.strftime('%d/%m/%Y %H:%M')
-    %>
-    $('#event_start_date').val("<%= start_time %>");
-    $('#event_end_date').val("<%= end_time %>");
+    $('#booking_start_time').val("<%= @booking.start_time.strftime('%d/%m/%Y %H:%M') %>");
+    $('#booking_end_time').val("<%= @booking.end_time.strftime('%d/%m/%Y %H:%M') %>");
 </script>

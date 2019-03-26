@@ -1,18 +1,26 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :load_booking, only: [:show, :edit, :update, :destroy]
 
   def index
     @bookings = Booking.all
-    @events = Event.all
+
   end
 
   def show
+    @events = Event.all
   end
 
   def new
-    event = Event.where(doctor_id: params[:doctor_id].to_i).where("events.start_date < ? and events.end_date > ? ", Time.at(params[:start].to_f/1000), Time.at(params[:end].to_f/1000))
-    event.each do |e|
-      @booking = Booking.new event_id: e.id
+    # binding.pry
+    event = Event.where(doctor_id: params[:doctor_id].to_i).where("events.start_date <= ? and events.end_date >= ? ", Time.zone.local_to_utc(Time.at(params[:start].to_f/1000)).strftime('%Y-%m-%d %H:%M'), Time.zone.local_to_utc(Time.at(params[:end].to_f/1000)).strftime('%Y-%m-%d %H:%M'))
+    # event = Event.where(doctor_id: params[:doctor_id].to_i).where("events.start_date < ? and events.end_date > ? ", '26-03-2019 09:30', '26-03-2019 10:00')
+    unless event.empty?
+      event.each do |e|
+        @booking = Booking.new(event_id: e.id)
+      end
+    else
+      @booking = Booking.new
     end
   end
 
@@ -20,50 +28,38 @@ class BookingsController < ApplicationController
   end
 
   def create
-    if  booking_params[:start_time] <= booking_params[:end_time]
-      if booking_params[:start_time] >= DateTime.current
-          @booking = Booking.new booking_params
-        binding.pry
-        if @booking.save
-            flash[:success] = "Successfully"
-            redirect_to bookings_path
+    if Booking.where(event_id: booking_params[:event_id].to_i).where("bookings.start_time <= ? and bookings.end_time >= ?", booking_params[:start_time].to_time, booking_params[:end_time].to_time).blank?
+      if  booking_params[:start_time] <= booking_params[:end_time]
+        if booking_params[:start_time].to_time >= DateTime.current
+          unless booking_params[:event_id].empty?
+            @booking = Booking.new booking_params
+            if @booking.save
+              flash[:success] = "Successfully"
+            else
+              flash[:error] = "Create fail!"
+            end
           else
-            flash[:error] = "Create fail!"
-            redirect_to bookings_path
+            flash[:error] = "Không có bác sĩ nào trong khung giờ này!"
           end
-      else
-        flash[:error] = "Không được tạo lịch ở quá khứ!"
-        redirect_to bookings_path
-      end
-    else
-      flash[:error] = "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!"
-      redirect_to bookings_path
-    end
-  end
-
-  def update
-    if  booking_params[:start_time] <= booking_params[:end_time]
-      if booking_params[:start_time] >= DateTime.current
-        if @booking.update_attributes booking_params
-          flash[:success] = "Update success!"
-          redirect_to bookings_path, turbolinks: false
         else
-          flash[:error] = "Update fail!"
-          redirect_to bookings_path, turbolinks: false
+          flash[:error] = "Không được tạo lịch ở quá khứ!"
         end
       else
-        flash[:error] = "Không được tạo lịch ở quá khứ!"
-        redirect_to bookings_path
+        flash[:error] = "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!"
       end
     else
-      flash[:error] = "Thời gian kết thúc phải lớn hơn thời gian bắt đầu!"
-      redirect_to bookings_path
+      flash[:error] = "Khung giờ này đã được đặt!"
     end
+    redirect_to bookings_path
   end
 
   def destroy
-    @booking.destroy
-    flash[:notice] = "Xóa thành công!"
+    if current_user.id == @booking.user_id
+      @booking.destroy
+      flash[:notice] = "Xóa thành công!"
+    else
+      flash[:error] = "Không thể xóa lịch của người khác!"
+    end
     redirect_to bookings_path
   end
 
