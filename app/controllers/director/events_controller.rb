@@ -17,9 +17,10 @@ module Director
     end
 
     def create
-      if  event_params[:start_date] <= event_params[:end_date]
+      if  event_params[:start_date].to_time <= event_params[:end_date].to_time
         if event_params[:start_date] >= DateTime.current
-          user_event = Event.where(doctor_id: 2).order(end_date: :asc).last
+          # binding.pry
+          user_event = Event.where(doctor_id: event_params[:doctor_id].to_i).order(end_date: :asc).last
           if user_event.nil? || user_event.end_date <= event_params[:start_date]
             @event = Event.new event_params
             if @event.save
