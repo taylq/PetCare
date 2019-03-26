@@ -13,7 +13,9 @@
 </div>
 <script>
     <%
+      # start_time =  Time.at(params[:start].to_f/1000).strftime('%d/%m/%Y %H:%M')
       start_time =  Time.zone.local_to_utc(Time.at(params[:start].to_f/1000)).strftime('%d/%m/%Y %H:%M')
+      # end_time = Time.at(params[:end].to_f/1000).strftime('%d/%m/%Y %H:%M')
       end_time = Time.zone.local_to_utc(Time.at(params[:end].to_f/1000)).strftime('%d/%m/%Y %H:%M')
     %>
     $('#booking_start_time').val("<%= start_time %>");

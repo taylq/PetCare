@@ -39,12 +39,9 @@ class ApplicationController < ActionController::Base
 
   def set_online
     if !!current_user
-      # using separate Redis database
-      # such as $redis_onlines = Redis.new db: 15
-      # value not need, only key
-      # $redis_onlines = Redis.new db: 15, driver: :hiredis
-      $redis_onlines.set(current_user.id, nil, ex: 10*60 )
-      # 'ex: 10*60' - set time to live - 10 minutes
+      $redis_onlines.set( "user:#{current_user.id}", nil, ex: 10*60 )
+    else
+      $redis_onlines.set( "ip:#{request.remote_ip}", nil, ex: 10*60 )
     end
   end
 end

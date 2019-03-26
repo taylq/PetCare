@@ -52,7 +52,7 @@ class User < ApplicationRecord
   end
 
   def online?
-    $redis_onlines.exists( self.id )
+    $redis_onlines.exists( "user:#{self.id}" )
   end
 
   class << self
