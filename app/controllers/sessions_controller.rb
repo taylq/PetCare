@@ -35,7 +35,7 @@ class SessionsController < Devise::SessionsController
   end
 
   def clear_from_signed_in_touch
-    $redis_onlines.del( "user:#{session[:user_id]}" )
+    $redis_onlines.del( "user:#{current_user.id}" )
   end
 
   def get_pre_login_url

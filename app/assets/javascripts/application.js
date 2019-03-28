@@ -110,6 +110,7 @@ initialize_calendar = function () {
       schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
       selectable: true,
       selectHelper: true,
+      timeZone: 'Hanoi',
       editable: true,
       eventLimit: true,
       aspectRatio: 3,

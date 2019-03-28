@@ -28,6 +28,10 @@ class BookingsController < ApplicationController
   end
 
   def create
+    # binding.pry
+    # booking_params[:start_time] = booking_params[:start_time].to_time
+    # booking_params[:end_time] = booking_params[:end_time].to_time
+    # if Booking.where(event_id: booking_params[:event_id].to_i).where("bookings.start_time::time <= ? and bookings.end_time::time >= ?", booking_params[:start_time].to_time, booking_params[:end_time].to_time).blank?
     if Booking.where(event_id: booking_params[:event_id].to_i).where("bookings.start_time <= ? and bookings.end_time >= ?", booking_params[:start_time].to_time, booking_params[:end_time].to_time).blank?
       if  booking_params[:start_time] <= booking_params[:end_time]
         if booking_params[:start_time].to_time >= DateTime.current
@@ -39,7 +43,7 @@ class BookingsController < ApplicationController
               flash[:error] = "Create fail!"
             end
           else
-            flash[:error] = "Không có bác sĩ nào trong khung giờ này!"
+            flash[:error] = "Bác sĩ không có lịch trong khung giờ này!"
           end
         else
           flash[:error] = "Không được tạo lịch ở quá khứ!"
