@@ -33,7 +33,7 @@ class PetsController < ApplicationController
       flash[:success] = "Pet updated!"
       redirect_to user_pet_path @user, @pet
     else
-      flash[:error] = "Pet update fail!"
+      flash[:error] = @pet.errors.full_messages.to_sentence
       render :edit
     end
   end

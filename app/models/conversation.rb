@@ -11,6 +11,18 @@ class Conversation < ApplicationRecord
     )
   end
 
+  scope :newest_messege, -> do
+    sql = "(select c.* from( "\
+      "select m.conversation_id as c_id, max(m.created_at) c_cre "\
+      "from PetCare_development.messages m "\
+      "group by m.conversation_id) as tb "\
+      "inner join PetCare_development.conversations as c on c.id = tb.c_id "\
+      "where c.sender_id = 2 or c.recipient_id = 2 "\
+      "order by tb.c_cre desc) as conversations"
+    query = connection.unprepared_statement{sql}
+    from(query)
+  end
+
   def self.get(sender_id, recipient_id)
     conversation = between(sender_id, recipient_id).first
     return conversation if conversation.present?
