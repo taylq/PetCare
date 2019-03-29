@@ -24,6 +24,10 @@
                     </div>
                     <div class="list-body">
                       <span class="message-author"><%= User.find_by_id(c.recipient_id).name %> </span>
+                      <% if !c.unread_message_count(current_user).zero? %>
+                        <span class="badge badge-pill bg-danger float-right">
+                          <%= c.unread_message_count(current_user) %></span>
+                      <% end %>
                       <span class="message-time"><%= c.messages.last.created_at.strftime("%d/%m/%Y %H:%M") %></span>
                       <div class="clearfix"></div>
                       <span class="message-content"><%= c.messages.last.body %></span>
@@ -40,6 +44,10 @@
                     </div>
                     <div class="list-body">
                       <span class="message-author"><%= User.find_by_id(c.sender_id).name %> </span>
+                      <% if !c.unread_message_count(current_user).zero? %>
+                        <span class="badge badge-pill bg-danger float-right">
+                          <%= c.unread_message_count(current_user) %></span>
+                      <% end %>
                       <span class="message-time"><%= c.messages.last.created_at.strftime("%d/%m/%Y %H:%M") %></span>
                       <div class="clearfix"></div>
                       <span class="message-content"><%= c.messages.last.body %></span>

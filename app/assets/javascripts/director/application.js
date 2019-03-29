@@ -116,9 +116,6 @@ initialize_calendar = function () {
 };
 $(document).ready(function () {
   initialize_calendar();
-});
-
-(function () {
     $(document).on('click', '.toggle-window', function (e) {
         e.preventDefault();
         var panel = $(this).parent().parent();
@@ -132,4 +129,5 @@ $(document).ready(function () {
             messages_list.scrollTop(height);
         }
     });
-})();
+});
+

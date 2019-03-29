@@ -39,7 +39,7 @@ $(document).click(function () {
     readURL(this);
   });
 });
-(function () {
+$(document).ready(function () {
     $(document).on('click', '.toggle-window', function (e) {
         e.preventDefault();
         var panel = $(this).parent().parent();
@@ -53,4 +53,4 @@ $(document).click(function () {
             messages_list.scrollTop(height);
         }
     });
-})();
+});
