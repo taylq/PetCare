@@ -3,9 +3,9 @@
   <div class="content">
     <div class="row">
       <%= render 'layouts/nurse/flash' %>
-        <div class="col-sm-4 col-3">
-            <h4 class="page-title"><%= t "users.index" %></h4>
-        </div>
+      <div class="col-sm-4 col-3">
+        <h4 class="page-title"><%= t "users.index" %></h4>
+      </div>
     </div>
 
     <div class="row">
@@ -18,20 +18,20 @@
           </div>
           <table id="example" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
             <thead>
-              <tr>
-                <th>#</th>
-                <th><%= t "users.new.name" %></th>
-                <th><%= t "sessions.new.email" %></th>
-              </tr>
+            <tr>
+              <th>#</th>
+              <th><%= t "users.new.name" %></th>
+              <th><%= t "sessions.new.email" %></th>
+            </tr>
             </thead>
             <tbody>
             <% @users.each_with_index do |user, i| %>
               <tr>
-  <td><%= i + 1 %></td>
-  <td><%= link_to user.name, nurse_user_path(user) %></td>
-  <td><%= user.email %></td>
-</tr>
-<% end %>
+                <td><%= i + 1 %></td>
+                <td><%= link_to user.name, nurse_user_path(user) %></td>
+                <td><%= user.email %></td>
+              </tr>
+            <% end %>
             </tbody>
           </table>
         </div>
@@ -39,10 +39,10 @@
     </div>
   </div>
 </div>
- <script>
-		$(document).ready(function() {
-    $('#example').DataTable({
-responsive: true
-    });
-} );
-	</script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable({
+            responsive: true
+        });
+    } );
+</script>
