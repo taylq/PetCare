@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title yield :page_title %></title>
+    <title><%= full_title yield(:page_title) %></title>
     <%= render "layouts/admin/default" %>
+    <%= favicon_link_tag asset_path('logo.png'), :rel => 'icon', :type =>  'image/png' %>
   </head>
   <body>
     <div class="main-wrapper">
