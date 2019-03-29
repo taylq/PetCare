@@ -1,18 +1,17 @@
-<% @conversations = Conversation.newest_messege %>
+<% @conversations = Conversation.newest_messege current_user.id %>
 <div class="page-wrapper">
-  <ul id="conversations-list" class="panel-default">
-    <%# @conversations.each do |conversation| %>
-    <%#= render 'conversations/conversation', conversation: conversation, user: current_user %>
-    <%# end %>
-    <% @conversations.each do |c| %>
-      <%= render 'conversations/conversation1', conversation: c, user: current_user %>
-    <% end %>
-  </ul>
   <div class="notification-box">
     <div class="msg-sidebar notifications msg-noti">
       <div class="topnav-dropdown-header">
         <span>Messages</span>
       </div>
+
+      <ul id="conversations-list" class="panel-default">
+        <% @conversations.each do |conversation| %>
+        <% render 'conversations/conversation1', conversation: conversation, user: current_user %>
+        <% end %>
+        <%#= render @conversations, user: current_user %>
+      </ul>
       <div class="drop-scroll msg-list-scroll">
         <ul class="list-box">
           <% @conversations.each do |c| %>

@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require activestorage
 //= require admin/popper.min
 //= require admin/bootstrap.min
 //= require admin/jquery.slimscroll
@@ -11,13 +10,16 @@
 //= require admin/dataTables.bootstrap4.min
 //= require admin/Chart.bundle
 //= require admin/app
-//= require toastr
+//= require activestorage
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
+//= require_tree ../channels
+//= require toastr
+
 var gStart = null, gEnd = null;
 $(document).click(function () {
-  $('.checkbox2').change(function () {
+    $('.checkbox2').change(function () {
     for (var i = 1; i <= $('#length').data('length'); i++) {
       if ($('#checkbox_check' + i).is(':checked')) {
         $('#data-form-prepend' + i).val('false');
@@ -61,7 +63,7 @@ initialize_calendar = function () {
       header: {
         left: 'prev,next today',
         center: 'title',
-        right: 'month,agendaWeek,agendaDay'
+        right: 'month'
       },
       selectable: true,
       selectHelper: true,
@@ -116,3 +118,18 @@ $(document).ready(function () {
   initialize_calendar();
 });
 
+(function () {
+    $(document).on('click', '.toggle-window', function (e) {
+        e.preventDefault();
+        var panel = $(this).parent().parent();
+        var messages_list = panel.find('.messages-list');
+
+        panel.find('.panel-body').toggle();
+        panel.attr('class', 'panel panel-default');
+
+        if (panel.find('.panel-body').is(':visible')) {
+            var height = messages_list[0].scrollHeight;
+            messages_list.scrollTop(height);
+        }
+    });
+})();

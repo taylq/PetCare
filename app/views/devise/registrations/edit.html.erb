@@ -4,38 +4,38 @@
                 <div class="account-box">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
             <div class="account-title">
-              <h3>Edit <%= resource_name.to_s.humanize %></h3>
+              <h3>Cập nhật thông tin</h3>
             </div>
             <%= devise_error_messages! %>
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :full_name, t("users.new.full_name") %>
-                <%= f.text_field :name, class: "form-control", placeholder: t("users.new.full_name") %>
+                <%= f.label :full_name, "Họ và tên" %><span class="required">*</span>
+                <%= f.text_field :name, class: "form-control", placeholder: "Họ và tên", required: true %>
               </div>
 
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :username, t("sessions.new.user_name") %>
-                <%= f.text_field :username, class: "form-control", placeholder: t("sessions.new.user_name") %>
+                <%= f.label :username, "Tên đăng nhập" %><span class="required">*</span>
+                <%= f.text_field :username, class: "form-control", placeholder: "Tên đăng nhập", required: true %>
               </div>
 
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :email, t("sessions.new.email") %>
+                <%= f.label :email, t("sessions.new.email") %><span class="required">*</span>
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control",
-                  placeholder: "Email" %>
+                  placeholder: "Email", required: true %>
               </div>
 
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :address, t("sessions.new.address") %>
-                <%= f.text_field :address, class: "form-control", placeholder: "address" %>
+                <%= f.label :address, "Địa chỉ" %><span class="required">*</span>
+                <%= f.text_field :address, class: "form-control", placeholder: "Địa chỉ", required: true %>
               </div>
 
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :phone, t("sessions.new.phone") %>
-                <%= f.number_field :phone, class: "form-control", placeholder: "Phone" %>
+                <%= f.label :phone, "Số điện thoại" %><span class="required">*</span>
+                <%= f.number_field :phone, class: "form-control", placeholder: "Số điện thoại", required: true %>
               </div>
 
               <div class="form-group" style="margin-bottom: 10px; position: relative">
-                <%= f.label :dob, t("sessions.new.dob") %>
-                <%= f.text_field :dob, class: "form-control datetimepicker25", placeholder: "Day Of Birth" %>
+                <%= f.label :dob, "Ngày sinh" %><span class="required">*</span>
+                <%= f.text_field :dob, class: "form-control datetimepicker25", placeholder: "Ngày sinh", required: true %>
               </div>
 
               <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -43,25 +43,25 @@
               <% end %>
 
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :password, t("users.new.password") %>
+                <%= f.label :password, "Mật khẩu mới" %>
                 <%= f.password_field :password, autocomplete: "new-password", class: "form-control",
-                  placeholder: "Password (leave blank if you don't want to change it)" %>
+                  placeholder: "Để trống nếu bạn không muốn thay đổi" %>
               </div>
 
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :password_confirmation, t("users.new.password_confirmation") %>
+                <%= f.label :password_confirmation, "Nhập lại mật khẩu" %>
                 <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control",
-                  placeholder: "Password Confirmation" %>
+                  placeholder: "Nhập lại mật khẩu" %>
               </div>
 
               <div class="form-group" style="margin-bottom: 10px">
-                <%= f.label :current_password, t("users.new.current_password") %>
+                <%= f.label :current_password, "Mật khẩu hiện tại" %><span class="required">*</span>
                 <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control",
-                  placeholder: "123456 is default password if you're login with google" %>
+                  placeholder: "123456 là mật khẩu mặc định khi bạn login bằng Google", required: true %>
               </div>
 
               <div class="actions" style="text-align:center">
-                <%= f.submit "Update", class: "btn btn-success" %>
+                <%= f.submit "Cập nhật", class: "btn btn-success" %>
               </div>
           <% end %>
                 </div>
