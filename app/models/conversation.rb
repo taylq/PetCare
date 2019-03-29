@@ -11,13 +11,13 @@ class Conversation < ApplicationRecord
     )
   end
 
-  scope :newest_messege, -> do
+  scope :newest_messege, ->(current_user) do
     sql = "(select c.* from( "\
       "select m.conversation_id as c_id, max(m.created_at) c_cre "\
-      "from PetCare_development.messages m "\
+      "from messages m "\
       "group by m.conversation_id) as tb "\
-      "inner join PetCare_development.conversations as c on c.id = tb.c_id "\
-      "where c.sender_id = 2 or c.recipient_id = 2 "\
+      "inner join conversations as c on c.id = tb.c_id "\
+      "where c.sender_id = #{current_user} or c.recipient_id = #{current_user} "\
       "order by tb.c_cre desc) as conversations"
     query = connection.unprepared_statement{sql}
     from(query)

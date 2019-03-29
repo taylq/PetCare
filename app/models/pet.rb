@@ -5,6 +5,5 @@ class Pet < ApplicationRecord
   has_many :medical_records, dependent: :destroy
 
   belongs_to :user
-  valid_pet = /\A[a-zA-Z0-9]*\z/
-  validates :name, presence: true, length: {minimum: 3, maximum: 20}, allow_nil: true, format: {with: valid_pet}
+  validates :name, presence: true, length: {minimum: 3, maximum: 30}, allow_nil: true
 end

@@ -13,6 +13,7 @@
  */
 
 
+
 .messages-list {
     max-height: 200px;
     overflow-y: auto;
@@ -69,15 +70,19 @@ ul {
 }
 .panel-default {
     border-color: #ddd;
-    width: 35%;
+    width: 18%;
     position: fixed;
     bottom: 0;
     z-index: 100;
     margin-bottom: 0;
-    right: 210px;
+    right: 305px;
 }
 
 #conversations-list {
     position: fixed;
     z-index: 5;
+}
+
+.row {
+    display: contents;
 }
