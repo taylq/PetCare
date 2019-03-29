@@ -13,10 +13,12 @@
             </div>
         </div>
           <ul id="conversations-list" class="panel-default">
-            <%# @conversations.each do |conversation| %>
-              <%#= render 'conversations/conversation', conversation: conversation, user: current_user %>
-            <%# end %>
-            <%= render @conversations, user: current_user %>
+            <% if @conversations.present? %>
+            <% @conversations.each do |conversation| %>
+              <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+            <% end %>
+            <% end %>
+            <%#= render @conversations, user: current_user %>
           </ul>
         <div class="content" style="background: #f6f6f6">
             <div class="container">

@@ -14,7 +14,7 @@ module Secretary
     def show
       @pets = @user.pets
       @conversations = Conversation.includes(:recipient, :messages)
-      .find(session[:conversations])
+      .find_by_id(session[:conversations])
     end
 
     private

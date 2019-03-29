@@ -10,6 +10,6 @@ class SearchesController < ApplicationController
     end
     @users = User.where(role: :doctor).where.not(id: current_user)
     @conversations = Conversation.includes(:recipient, :messages)
-      .find(session[:conversations])
+      .find_by_id(session[:conversations])
   end
 end

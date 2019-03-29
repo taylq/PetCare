@@ -30,6 +30,10 @@ class Conversation < ApplicationRecord
     create(sender_id: sender_id, recipient_id: recipient_id)
   end
 
+  def unread_message_count(current_user)
+    self.messages.where("user_id != ?", current_user.id).where(read: false).count
+  end
+
   def opposed_user(user)
     user == recipient ? sender : recipient
   end
