@@ -16,39 +16,37 @@
 //= require_tree ../channels
 
 $(document).click(function () {
-  $('.checkbox2').change(function () {
-    for (var i = 1; i <= $('#length').data('length'); i++) {
-      if ($('#checkbox_check' + i).is(':checked')) {
-        $('#data-form-prepend' + i).val('false');
-      } else {
-        $('#data-form-prepend' + i).val('true');
-      }
-    }
-  });
+    $('.checkbox2').change(function () {
+        for (var i = 1; i <= $('#length').data('length'); i++) {
+            if ($('#checkbox_check' + i).is(':checked')) {
+                $('#data-form-prepend' + i).val('false');
+            } else {
+                $('#data-form-prepend' + i).val('true');
+            }
+        }
+    });
 
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
-        $('#imagePreview').hide();
-        $('#imagePreview').fadeIn(650);
-      }
-      reader.readAsDataURL(input.files[0]);
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                $('#imagePreview').hide();
+                $('#imagePreview').fadeIn(650);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
     }
-  }
-  $("#imageUpload").change(function () {
-    readURL(this);
-  });
+
+    $("#imageUpload").change(function () {
+        readURL(this);
+    });
 
 });
 $(document).ready(function () {
-  $("#form-role").change(function () {
-    console.log("asda");
-    this.form.submit();
-  });
-})
-(function () {
+    $("#form-role").change(function () {
+        this.form.submit();
+    });
     $(document).on('click', '.toggle-window', function (e) {
         e.preventDefault();
         var panel = $(this).parent().parent();
@@ -62,4 +60,4 @@ $(document).ready(function () {
             messages_list.scrollTop(height);
         }
     });
-})();
+});

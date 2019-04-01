@@ -35,6 +35,7 @@ module Admin
     end
 
     def destroy
+      # binding.pry
       if @user.destroy
         flash[:success] = t "users.delete_success"
       else
