@@ -14,9 +14,9 @@
         </div>
           <ul id="conversations-list" class="panel-default">
             <% if @conversations.present? %>
-            <% @conversations.each do |conversation| %>
-              <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
-            <% end %>
+            <%# @conversations.each do |conversation| %>
+              <%= render 'conversations/conversation', conversation: @conversations, user: current_user %>
+            <%# end %>
             <% end %>
             <%#= render @conversations, user: current_user %>
           </ul>
