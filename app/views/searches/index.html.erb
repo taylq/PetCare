@@ -4,8 +4,8 @@
         <!-- Page Header -->
 
           <ul id="conversations-list">
-            <% @conversations.each do |conversation| %>
-              <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+            <% if @conversations.present? %>
+              <%= render 'conversations/conversation', conversation: @conversations, user: current_user %>
             <% end %>
           </ul>
         <div class="content" style="background: #f6f6f6">
