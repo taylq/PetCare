@@ -1,20 +1,13 @@
-<div class="blog-form col-sm-12 col-sm-offset-1">
-<p class="create-blog">create a blog</p>
+<div class="col-sm-12 col-sm-offset-1 about-doctor">
 <%= form_for @blog do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-    <div class="col-sm-12">
-      <%= f.text_field :title, placeholder: "Title", class: "col-sm-12" %>
-      <%= f.text_area :content, placeholder: "Compose new blog...", class: "col-sm-12" %>
+      <%= f.text_field :title, placeholder: "Tiêu đề", class: "form-control col-sm-12" %>
+      <%= f.text_area :content, placeholder: "Bạn có vấn đề gì?", class: "form-control col-sm-12", rows: 5 %>
     <img id='img-upload'/>
-    <div class="input-group col-sm-10 pull-left">
-        <span class="input-group-btn">
-            <span class="btn btn-default btn-file">
-                Browse… <%= f.file_field :image, id: "imgInp" %>
-            </span>
-        </span>
-        <input type="text" class="form-control" readonly>
+    <div class="custom-file">
+      <%= f.file_field :image, id: "imgInp", class: "custom-file-input" %>
     </div>
-      <%= f.submit "Post", class: "btn btn-primary col-sm-2 " %>
-    </div>
+    </br>
+      <%= f.submit "Gửi", class: "btn btn-success btn-block" %>
 <% end %>
 </div>

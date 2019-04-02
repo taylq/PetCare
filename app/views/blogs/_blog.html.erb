@@ -1,9 +1,9 @@
 <article class="blog">
-                            <h3 class="blog-title"><a href="<%= blog_path(blog) %>"><%= blog.title %></a>
-                            </h3>
-                            <div class="blog-info clearfix">
-                                <div class="post-left">
-                                    <ul>
+
+							<h3 class="blog-title"><a href="<%= blog_path(blog) %>"><%= blog.title %></a></h3>
+							<div class="blog-info clearfix">
+								<div class="post-left">
+									<ul>
                                         <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>
                                           <span><%= blog.created_at.strftime("%d/%m/%Y") %></span></a></li>
                                         <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>
@@ -11,33 +11,33 @@
                                         <li><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>
                                                 <span><%= blog.comments.count %></span></a></li>
                                     </ul>
-                                </div>
-                                <div class="dropdown dropdown-action pull-right">
+								</div>
+                                <div class="dropdown dropdown-action pull-right" style="margin-right: 45px;">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_patient"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                     </div>
                                 </div>
-                            </div>
+							</div>
                             <div class="blog-image">
-                                <div class="image">
-                                    <%= image_tag blog.image_url, size: 700 %>
-                                </div>
+                                <%= image_tag blog.image_url, size: 700, class: "img-responsive" %>
+
                             </div>
                             <div class="blog-content">
-                                <p><%= blog.content %></p>
+                                <p><%= blog.content %>.</p>
                                 <%= render "blogs/vote_form", blog: blog %>
+                                <a href="<%= blog_path(blog) %>" class="btn btn-primary read-more">Read More</a>
                             </div>
-                            <a href="<%= blog_path(blog) %>" class="btn btn-primary read-more">Read More</a>
                         </article>
+
 
 <div id="delete_patient" class="modal fade delete-modal" role="dialog">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-body text-center">
-						<h3>Are you sure want to delete this post?</h3>
-						<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+						<h3>Bạn có muốn xóa bài viết này?</h3>
+						<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Đóng</a>
 							<%= link_to "Xóa", blog_path(blog),method: :delete, class: "btn btn-danger" %>
 						</div>
 					</div>
