@@ -1,3 +1,3 @@
 class Desease < ApplicationRecord
-  enum pet_type: %i(dog cat)
+  enum pet_type: %i(chó mèo)
 end

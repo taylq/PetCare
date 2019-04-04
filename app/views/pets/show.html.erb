@@ -26,8 +26,7 @@
                                         <h2><%= @pet.name %></h2>
                     <% if @user == current_user %>
 										<a href="<%= edit_user_pet_path(current_user, @pet) %>" class="btn btn-primary">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>
-										<%= link_to user_pet_path(current_user),method: :delete,
-                      data: {confirm: t("comments.you_sure")}, class: "btn btn-danger" do %>
+										<%= link_to "#", data: {toggle: "modal", target: "#delete_patient"}, class: "btn btn-danger" do %>
                       Xóa Pet <span class="fa fa-trash"></span>
                       <% end %>
                     <% end %>
@@ -85,3 +84,17 @@
             </div>
         </div>
     </div>
+
+<div id="delete_patient" class="modal fade delete-modal" role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<h3>Bạn có muốn xóa pet này?</h3>
+						<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Đóng</a>
+							<%= link_to "Xóa", user_pet_path(current_user),method: :delete, class: "btn btn-danger" %>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>

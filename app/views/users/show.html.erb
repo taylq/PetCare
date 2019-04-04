@@ -52,7 +52,7 @@
 												<a href="<%= edit_user_registration_path(current_user) %>" class="btn btn-danger">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>
 											</td>
 											<td>
-												<a href="chat.html" class="btn btn-danger">Tin nhắn  <span class="fa fa-envelope"></span></a>
+												<a href="#" class="btn btn-danger">Tin nhắn  <span class="fa fa-envelope"></span></a>
 											</td>
 										</tr>
 										<br><br>
@@ -95,16 +95,15 @@
                         <h5><center><%= pet.name %></center></h5>
                       </div>
                     <% end %>
+					<div class="col-sm-12">
                     <hr>
-						<div class="about-doctor">
-                            <textarea class="form-control" rows="5" placeholder="Bạn có vấn đề gì ?"></textarea>
-							<br>
-							<div class="custom-file">
-								<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-							</div>
-							<br>
-							<button type="button" class="btn btn-success btn-block">Gửi</button>
-                        </div>
+					<h3>Bài viết</h3>
+						<% if @user == current_user %>
+                        <%= render "shared/blog_form" %>
+                        <% end %>
+						</br></br></br>
+                        <%= render "shared/feed" %>
+                    </div>
                     </div>
                 </div>
             </div>
