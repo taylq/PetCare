@@ -53,43 +53,66 @@
                 </div>
               </div>
               <h3><i>Điều trị</i></h3>
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <table class="table table-bordered table-condensed">
-                      <thead>
-                        <tr>
-                          <th scope="col" width="70px">STT</th>
-                          <th scope="col">Loại dịch vụ/thuốc</th>
-                          <th scope="col" width="100px">Số lượng</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <div data-length="<%= services.length %>" id="length">
-                          <% services.each_with_index do |service, index| %>
-                            <%= f.fields_for :medical_records_services, service.service_ids_of_medical_record(medical_record) || medical_record.medical_records_services.build do |ap| %>
-                              <tr>
-                                <td>
-                                  <h4><%= index + 1 %></h4>
-                                </td>
-                                <td><%= f.label service.name %>
-                                  <%= ap.check_box :service_id, {id: "checkbox_check#{service.id}",
-                                                                 class: "flat"}, service.id, 0 %>
-                                </td>
-                                <td><%= ap.number_field :quantity %></td>
-                                <%= ap.hidden_field :_destroy, id: "data-form-prepend#{service.id}" %>
-                              </tr>
-                            <% end %>
-                          <% end %>
-                        </div>
-                      </tbody>
-                    </table>
-                    <a class="btn btn-success" onclick="addRow('myTable')"><span class="fa fa-plus" style="color: white"></span></a>
+
+
+<div class="list-level">
+
+        <%= f.fields_for :medical_records_services do |ff| %>
+          <div class="div-level">
+
+            <div class="row group-input">
+              <div class="col-sm-5 col-level">
+                <div class="form-group">
+                  <label class="control-label label-level">
+                    Loại dịch vụ/thuốc
+                    <span class="required">*</span>
+                  </label>
+                  <div class="col-sm-12">
+                    <%= ff.select :service_id, Service.pluck(:name, :id), {}, class: "mdb-select md-form",
+                      required: true, searchable: "Tìm kiếm ..." %>
                   </div>
                 </div>
               </div>
+
+              <div class="col-sm-5 col-level">
+                <div class="form-group">
+                  <label class="control-label label-level">
+                    Số lượng
+                    <span class="required">*</span>
+                  </label>
+                  <div class="col-sm-12">
+                    <%= ff.number_field :quantity, class: "form-control", required: true %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div id="div-level-add"></div>
+      </div>
+
+<div class="col-sm-2 div-button-add">
+          <%= link_to "#", remote: true, class: "btn btn-primary", id: "create-level" do %>
+<i class="fa fa-plus"></i>
+          <% end %>
+        </div>
+
+
+
+
+
               <div class="col-sm-12 text-center m-t-20">
                 <%= f.submit "Save", class: "btn btn-primary submit-btn" %>
               </div>
         <% end %>
-        <%# <%= link_to "create bill", secretary_user_pet_medical_record_path(format: "pdf") %> %>
+         <script>
+    // Material Select Initialization
+    $(document).ready(function () {
+      $('#medical_record_medical_records_services_attributes_0_service_id').materialSelect();
+    });
+  </script>
+        <%# <%= link_to "create bill", secretary_user_pet_medical_record_path(format: "pdf") %>
+        <%= stylesheet_link_tag "mdb" %>
+<%= javascript_include_tag "add_remote_level", "mdb.min" %>
+
