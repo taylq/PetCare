@@ -106,7 +106,7 @@ var initialize_calendar;
 initialize_calendar = function () {
   $('#calendar').each(function () {
     var calendar = $(this);
-      calendar.fullCalendar({
+    calendar.fullCalendar({
       schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
       selectable: true,
       selectHelper: true,
@@ -136,16 +136,16 @@ initialize_calendar = function () {
       //         alert('Resource ID: ' + resourceObj.id);
       //
       //     },
-      select: function(start, end, jsEvent, view, resourceObj) {
+      select: function (start, end, jsEvent, view, resourceObj) {
         // debugger;
-          console.log(resourceObj.id);
-          $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceObj.id, function () {});
-          calendar.fullCalendar('unselect');
+        console.log(resourceObj.id);
+        $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceObj.id, function () { });
+        calendar.fullCalendar('unselect');
       },
 
-      eventClick: function(event, jsEvent, view) {
-          console.log(event);
-          $.getScript(event.edit_url, function() {});
+      eventClick: function (event, jsEvent, view) {
+        console.log(event);
+        $.getScript(event.edit_url, function () { });
       }
     });
   })
