@@ -5,6 +5,7 @@ module Doctor
     def new
       @medical_record = MedicalRecord.new
       @services = Service.all
+      @medical_records_services = @medical_record.medical_records_services.build
     end
 
     def create

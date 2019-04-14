@@ -1,48 +1,51 @@
 <div class="main-content">
 
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="page-title">
-                            <span>Desease</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Page Header -->
+  <div class="page-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="page-title">
+            <span>Desease</span>
+          </div>
         </div>
-        <section class="content departments">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="section-header text-center">
-                            <h2>Hãy nhập triệu chứng</h2>
-							<div class="line"></div>
-                            <div class="search-widget">
-                            <%= search_form_for @q, url: search_path, class: "search-form" do |f| %>
-                            <div class="input-group col-sm-4 col-sm-offset-4" >
-                                <%= f.search_field :symptom_cont, class: "form-control",
-                                    placeholder: "Search...", id: "search-custom", style: "width: 89%;" %>
-                                <%#= f.select :pet_type, type_choice, class: "form-control" %>
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button></div>
-                            <% end %>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
     </div>
-    <script>
+  </div>
+  <section class="content departments">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="section-header text-center">
+            <h2>Hãy nhập triệu chứng</h2>
+            <div class="line"></div>
+            <div class="search-widget">
+              <%= search_form_for @q, url: search_path, class: "search-form" do |f| %>
+                <div class="input-group col-sm-4 col-sm-offset-4">
+                  <%= f.search_field :symptom_cont, class: "form-control",
+                                     placeholder: "Search...", id: "search-custom", style: "width: 89%;" %>
+                  <%#= f.select :pet_type, type_choice, class: "form-control" %>
+                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
+              <% end %>
 
-$.getJSON("/search.json", function(data){
-    var availableTags = new Array();
-    $.each(data.items, function(i, val){
-        availableTags.push(val.symptom);
-    });
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script>
 
-    $("#search-custom").autocomplete({
-    source: availableTags
+    $.getJSON("/search.json", function (data) {
+        var availableTags = new Array();
+        $.each(data.items, function (i, val) {
+            availableTags.push(val.symptom);
+        });
+
+        $("#search-custom").autocomplete({
+            source: availableTags
+        });
     });
-});
 </script>
