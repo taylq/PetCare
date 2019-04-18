@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "mdb" %>
         <%= form_for [:doctor, user, pet, medical_record], class: "form" do |f| %>
             <div class="row">
                 <div class="col-sm-6">
@@ -113,6 +114,6 @@
     });
   </script>
         <%# <%= link_to "create bill", secretary_user_pet_medical_record_path(format: "pdf") %>
-        <%= stylesheet_link_tag "mdb" %>
+
 <%= javascript_include_tag "add_remote_level", "mdb.min" %>
 
