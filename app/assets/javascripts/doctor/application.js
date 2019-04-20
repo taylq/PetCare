@@ -11,7 +11,9 @@
 //= require admin/Chart.bundle
 //= require admin/app
 //= require activestorage
-//= require turbolinks
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/locale-all
 //= require_tree ../channels
 //= require toastr
 
@@ -41,7 +43,42 @@ $(document).click(function () {
     readURL(this);
   });
 });
+
+var initialize_calendar;
+initialize_calendar = function () {
+    $('#calendar').each(function () {
+        var calendar = $(this);
+        calendar.fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month'
+            },
+            selectable: true,
+            selectHelper: true,
+            editable: true,
+            eventLimit: true,
+            events: '/doctor/events',
+
+            eventRender: function (event, element) {
+                element.find(".fc-title").remove();
+                element.find(".fc-time").remove();
+                var new_description =
+                    event.start.format("DD/MM/YYYY HH:mm") + ' - '
+                    + event.real_end
+
+                ;
+                element.append(new_description).css("color", "white");
+            },
+
+            eventClick: function (event, jsEvent, view) {
+                $.getScript(event.edit_url, function () { });
+            }
+        });
+    })
+};
 $(document).ready(function () {
+    initialize_calendar();
     $(document).on('click', '.toggle-window', function (e) {
         e.preventDefault();
         var panel = $(this).parent().parent();

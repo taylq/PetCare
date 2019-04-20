@@ -1,0 +1,21 @@
+<div class="modal fade" id="new_event" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Create New Event</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form', event: @event %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+    <%
+      start_time =  Time.at(params[:start].to_f/1000).strftime('%d/%m/%Y %H:%M')
+      end_time = Time.at(params[:end].to_f/1000 - 60*60*24).strftime('%d/%m/%Y %H:%M')
+    %>
+    $('#event_start_date').val("<%= start_time %>");
+    $('#event_end_date').val("<%= end_time %>");
+</script>
