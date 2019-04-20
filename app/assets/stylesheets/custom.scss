@@ -109,3 +109,9 @@ img{
   position: fixed;
     z-index: 5;
 }
+
+.ui-autocomplete {
+  width: 500px;
+  height: 300px;
+  overflow-y: auto;
+}
