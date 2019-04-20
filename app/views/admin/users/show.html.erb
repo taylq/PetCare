@@ -1,11 +1,11 @@
 <div class="right_col" role="main">
   <div>
-    <div class="row top_tiles" style="margin: 10px 0;">
-      <div class="col-md-12 col-sm-12 col-xs-12 tile">
-        <aside class="col-md-4">
+    <div class="row top_tiles" style="margin: 80px 0;">
+      <div class="col-md-8 col-sm-8 col-xs-8 tile offset-sm-4">
+        <aside class="col-md-8">
           <section class="user_info">
             <h3>
-              <%= image_tag @user.gravatar_url, alt: @user.name %>
+              <%= image_tag @user.avatar_url , alt: @user.name %>
               <%= @user.name %>
             </h3>
           </section>
