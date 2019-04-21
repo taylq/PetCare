@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_103225) do
     t.string "address"
     t.string "phone"
     t.date "dob"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false

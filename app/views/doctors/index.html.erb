@@ -28,7 +28,7 @@
                     <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
                         <div class="doctor-list">
                             <div class="doctor-inner">
-                                <%= image_tag doctor.gravatar_url, alt: doctor.name, width: 400 %>
+                                <%= image_tag doctor.avatar_url, alt: doctor.name, width: 400 %>
                                 <div class="doctor-details">
                                     <div class="doctor-info">
                                         <h4 class="doctor-name"><a href="<%= user_path(doctor)%>">Dr. <%= doctor.name %></a></h4>

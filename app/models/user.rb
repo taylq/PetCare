@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_writer :login
   acts_as_voter
-
+  mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable, :rememberable, :validatable,
     :omniauthable, omniauth_providers: [:google_oauth2], authentication_keys: [:login]
   has_many :blogs, dependent: :destroy
