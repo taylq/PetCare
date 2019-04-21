@@ -1,7 +1,7 @@
 <div class="page-wrapper">
   <div class="content">
     <ul id="conversations-list">
-      <% @conversations.each do |conversation| %>
+      <% @conversations&.each do |conversation| %>
         <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
       <% end %>
     </ul>

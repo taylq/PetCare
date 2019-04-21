@@ -14,6 +14,7 @@
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
+//= require scheduler
 //= require_tree ../channels
 //= require toastr
 
@@ -49,29 +50,44 @@ initialize_calendar = function () {
   $('#calendar').each(function () {
     var calendar = $(this);
     calendar.fullCalendar({
-      header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: 'month'
-      },
+      schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
       selectable: true,
       selectHelper: true,
+      timeZone: 'Hanoi',
       editable: true,
       eventLimit: true,
-      events: '/doctor/events',
-
-      eventRender: function (event, element) {
-        element.find(".fc-title").remove();
-        element.find(".fc-time").remove();
-        var new_description =
-          event.start.format("DD/MM/YYYY HH:mm") + ' - '
-          + event.real_end
-
-          ;
-        element.append(new_description).css("color", "white");
+      aspectRatio: 3,
+      slotLabelFormat: ['H:mm'],
+      minTime: "07:00",
+      maxTime: "22:00",
+      header: {
+        left: "today prev,next",
+        center: "title",
+        right: "timelineDay"
+      },
+      nowIndicator: true,
+      defaultView: "timelineDay",
+      // resourceLabelText: "Bác sĩ",
+      // resources: '/doctors',
+      eventSources: ['/doctor/bookings', '/doctor/bookings/events'],
+      // eventReceive: function (event, view) {
+      //     var resourceId = event.resourceId;
+      // },
+      //     dayClick: function(date, jsEvent, view, resourceObj) {
+      //
+      //         alert('Date: ' + date.format());
+      //         alert('Resource ID: ' + resourceObj.id);
+      //
+      //     },
+      select: function (start, end, jsEvent, view, resourceObj) {
+        // debugger;
+        console.log(resourceObj.id);
+        $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceObj.id, function () { });
+        calendar.fullCalendar('unselect');
       },
 
       eventClick: function (event, jsEvent, view) {
+        console.log(event);
         $.getScript(event.edit_url, function () { });
       }
     });

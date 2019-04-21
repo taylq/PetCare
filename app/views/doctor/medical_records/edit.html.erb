@@ -1,5 +1,10 @@
- <%= stylesheet_link_tag "mdb" %>
-        <%= form_for [:doctor, user, pet, medical_record], class: "form" do |f| %>
+<div class="page-wrapper">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1>Hồ sơ bệnh án</h1>
+        <br><br>
+          <%= form_for [:doctor, user, pet, medical_record], class: "form" do |f| %>
             <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
@@ -89,26 +94,7 @@
             </div>
           </div>
         <% end %>
-
-        <div id="div-level-add"></div>
       </div>
-
-<div class="col-sm-2 div-button-add">
-          <%= link_to "#", remote: true, class: "btn btn-primary", id: "create-level" do %>
-<i class="fa fa-plus"></i>
-          <% end %>
-        </div>
-              <div class="col-sm-12 text-center m-t-20">
-                <%= f.submit "Save", class: "btn btn-primary submit-btn" %>
-              </div>
-        <% end %>
-         <script>
-    // Material Select Initialization
-    $(document).ready(function () {
-      $('#medical_record_medical_records_services_attributes_0_service_id').materialSelect();
-    });
-  </script>
-        <%# <%= link_to "create bill", secretary_user_pet_medical_record_path(format: "pdf") %>
-
-<%= javascript_include_tag "add_remote_level", "mdb.min" %>
-
+    </div>
+  </div>
+</div>

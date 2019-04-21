@@ -59,7 +59,7 @@
 											  <th scope="col">Ngày khám</th>
 											  <th scope="col">Bác sĩ</th>
 											  <th scope="col">Chẩn đoán</th>
-											  <th scope="col">#(not yet)</th>
+											  <th scope="col">#</th>
 											</tr>
 										  </thead>
 										  <tbody>
@@ -69,7 +69,7 @@
 											  <td><%= mr.created_at %></td>
 											  <td><%= User.find_by_id(mr.doctor_id).name %></td>
 											  <td><%= mr.description %></td>
-											  <td><%= link_to "Chi tiết", "#" %></td>
+											  <td><%= link_to "Chi tiết", nurse_user_pet_medical_record_path(mr.pet.user.id, mr.pet.id, mr.id) %></td>
 											</tr>
                     <% end %>
 										  </tbody>
