@@ -20,7 +20,9 @@
                                                 <h4>Chuẩn đoán: <%= @medical_record.description %></h4>
                                                 <h4>Trạng thái: <%= @medical_record.status %></h4>
                                             </div>
-
+                                            <div class="col-sm-4 pull-right">
+                                                <%= link_to "Chỉnh sửa", edit_nurse_user_pet_medical_record_path(@user.id, @pet.id, @medical_record.id), class: "btn btn-primary account-btn", style: "color: white"%>
+                                            </div>
                                         </div>
                                         <hr />
                                         <h3>Hướng điều trị</h3>

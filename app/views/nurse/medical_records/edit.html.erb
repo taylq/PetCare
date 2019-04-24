@@ -1,0 +1,98 @@
+<div class="page-wrapper">
+  <div class="content">
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h1>Hồ sơ bệnh án</h1>
+        <br><br>
+          <%= form_for [:nurse, @user, @pet, @medical_record], class: "form" do |f| %>
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= image_tag @pet.image_url, size: 170, style: "border-radius: 50%" %>
+                  </div>
+                </div>
+                <%= f.hidden_field :pet_id, value: @pet.id %>
+                <%= f.hidden_field :doctor_id, value: current_user.id %>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <h2><%= @pet.name %></h2>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label><i>Người khám :</i></label>
+                      </div>
+                      <div class="form-group">
+                        <label><i>Người nuôi :</i></label>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label><%= @current_user.name %></label>
+                      </div>
+                      <div class="form-group">
+                        <label><%= @user.name %> </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br><br>
+              <div class="row">
+
+              </div>
+              <br>
+              <h3><i>Thông tin khám bệnh</i></h3>
+              <br>
+                 <div>
+                                        <div class="row">
+                                            <div class="col-sm-8">
+                                                <h4>Triệu chứng: <%= @medical_record.result %></h4>
+                                                <h4>Chuẩn đoán: <%= @medical_record.description %></h4>
+                                            </div>
+                                            <div class="col-sm-4">
+                   <div class="form-group">
+                                <label class="display-block">Trạng thái</label>
+								<div class="form-check form-check-inline">
+                <% MedicalRecord.statuses.keys.each do |status| %>
+									<%= f.radio_button :status, status%>
+
+
+                  <%= status.parameterize.underscore %>
+                  <% end %>
+								</div>
+                            </div>
+                </div>
+                                        </div>
+                                        <hr />
+                                        <h3>Hướng điều trị</h3>
+                                        <table class="table">
+                                            <thead style="background-color: #66a3ff">
+                                                <tr style="color: white">
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col">Tên thuốc</th>
+                                                    <th scope="col">Số lượng</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            <% @medical_record.medical_records_services.each.with_index(1) do |sv, i| %>
+                                                <tr>
+                                                    <th scope="row"><%= i %></th>
+                                                    <td><%= sv.service.name %></td>
+                                                    <td><%= sv.quantity %></td>
+                                                </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+<%= f.hidden_field :result, value: @medical_record.result %>
+<%= f.hidden_field :description, value: @medical_record.description %>
+<div class="col-sm-12 text-center m-t-20">
+                <%= f.submit "Save", class: "btn btn-primary submit-btn" %>
+              </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
