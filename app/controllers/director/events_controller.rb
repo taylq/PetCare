@@ -76,7 +76,7 @@ module Director
     end
 
     def event_params
-      params.require(:event).permit(:doctor_id, :start_date, :end_date)
+      params.require(:event).permit(:doctor_id, :start_date, :end_date, :nurse_id)
     end
   end
 

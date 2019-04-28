@@ -7,7 +7,13 @@
                                         <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>
                                           <span><%= blog.created_at.strftime("%d/%m/%Y") %></span></a></li>
                                         <li><a href="<%= user_path(blog.user)%>"><i class="fa fa-user" aria-hidden="true"></i>
-                                          <span><%= blog.user.name %></span></a></li>
+                                          <span>
+                                          <% if blog.user.secretary? %>
+                                          Pet Care
+                                          <% else %>
+                                          <%= blog.user.name %>
+                                          <% end %>
+                                          </span></a></li>
                                         <li><a href="#"><i class="fa fa-comment" aria-hidden="true"></i>
                                                 <span><%= blog.comments.count %></span></a></li>
                                     </ul>

@@ -19,15 +19,15 @@
           <div class="section-header text-center">
             <h2>Hãy nhập triệu chứng</h2>
             <div class="line"></div>
-            <div class="search-widget">
-              <%= search_form_for @q, url: search_path, class: "search-form" do |f| %>
-                <div class="input-group col-sm-4 col-sm-offset-4">
-                  <%= f.search_field :symptom_cont, class: "form-control",
-                                     placeholder: "Search...", id: "search-custom", style: "width: 89%;" %>
+            <div class="search-error">
+                <div class=" col-sm-4 col-sm-offset-4">
+              <%= search_form_for @q, url: search_path, class: "error-search-form" do |f| %>
+                  <%= f.search_field :symptom_cont,
+                                     placeholder: "Search...", id: "search-custom", style: "width: 100%;" %>
                   <%#= f.select :pet_type, type_choice, class: "form-control" %>
-                  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                </div>
+                  <button type="submit"><i class="fa fa-search"></i></button>
               <% end %>
+						</div>
 
             </div>
           </div>

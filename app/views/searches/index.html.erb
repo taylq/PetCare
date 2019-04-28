@@ -30,13 +30,18 @@
         <div class="col-sm-4">
             <div class="panel panel-primary list-user">
               <div class="panel-heading">
-                <h3 class="panel-title">User list</h3>
+                <h3 class="panel-title">Bác sĩ</h3>
               </div>
               <div class="panel-body">
                 <ul class="overflow">
                   <% @users.each do |user| %>
-                    <li style="list-style-type: none;"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <% if user.online? %>
 
+
+                    <li style="color: green; margin-left: 20px"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <% else %>
+                    <li style="list-style-type:none; margin-left: 20px"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <% end %>
                   <% end %>
                 </ul>
               </div>

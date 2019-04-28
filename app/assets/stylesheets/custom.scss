@@ -111,7 +111,16 @@ img{
 }
 
 .ui-autocomplete {
-  width: 500px;
+  width: 380px;
   height: 300px;
-  overflow-y: auto;
+  white-space: nowrap;
+overflow-y: scroll; overflow-x: hidden;
+
+  li{
+    width: 300px;
+    list-style-type:none;
+    .ui-menu-item-wrapper{
+overflow: hidden;
+  text-overflow: ellipsis;
+  }}
 }

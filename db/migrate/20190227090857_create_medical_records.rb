@@ -3,6 +3,7 @@ class CreateMedicalRecords < ActiveRecord::Migration[5.2]
     create_table :medical_records do |t|
       t.integer :pet_id
       t.integer :doctor_id
+      t.integer :nurse_id
       t.text :result
       t.integer :status, default: 0
       t.text :description
