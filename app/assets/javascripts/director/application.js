@@ -17,9 +17,10 @@
 //= require_tree ../channels
 //= require toastr
 
-var gStart = null, gEnd = null;
+var gStart = null,
+  gEnd = null;
 $(document).click(function () {
-    $('.checkbox2').change(function () {
+  $('.checkbox2').change(function () {
     for (var i = 1; i <= $('#length').data('length'); i++) {
       if ($('#checkbox_check' + i).is(':checked')) {
         $('#data-form-prepend' + i).val('false');
@@ -75,10 +76,10 @@ initialize_calendar = function () {
         element.find(".fc-title").remove();
         element.find(".fc-time").remove();
         var new_description =
-          event.start.format("DD/MM/YYYY HH:mm") + ' - '
-          + event.real_end
+          event.start.format("HH:mm") + ' - ' +
+          event.real_end + "\n" + event.doctor.name
 
-          ;
+        ;
         element.append(new_description).css("color", "white");
       },
 
@@ -87,9 +88,14 @@ initialize_calendar = function () {
         console.log(start);
         gStart = start;
         gEnd = end;
+
+        if (end.isBefore(moment())) {
+          calendar.fullCalendar('unselect');
+          return false;
+        }
         $.getScript('/director/events/new?start=' + start + "&end=" + end,
-          function () { });
-        calendar.fullCalendar('unselect');
+          function () {});
+        // calendar.fullCalendar('unselect');
       },
 
       eventDrop: function (event, delta, revertFunc) {
@@ -109,25 +115,24 @@ initialize_calendar = function () {
       },
 
       eventClick: function (event, jsEvent, view) {
-        $.getScript(event.edit_url, function () { });
+        $.getScript(event.edit_url, function () {});
       }
     });
   })
 };
 $(document).ready(function () {
   initialize_calendar();
-    $(document).on('click', '.toggle-window', function (e) {
-        e.preventDefault();
-        var panel = $(this).parent().parent();
-        var messages_list = panel.find('.messages-list');
+  $(document).on('click', '.toggle-window', function (e) {
+    e.preventDefault();
+    var panel = $(this).parent().parent();
+    var messages_list = panel.find('.messages-list');
 
-        panel.find('.panel-body').toggle();
-        panel.attr('class', 'panel panel-default');
+    panel.find('.panel-body').toggle();
+    panel.attr('class', 'panel panel-default');
 
-        if (panel.find('.panel-body').is(':visible')) {
-            var height = messages_list[0].scrollHeight;
-            messages_list.scrollTop(height);
-        }
-    });
+    if (panel.find('.panel-body').is(':visible')) {
+      var height = messages_list[0].scrollHeight;
+      messages_list.scrollTop(height);
+    }
+  });
 });
-

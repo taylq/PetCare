@@ -14,7 +14,7 @@ module Nurse
       if @pet.save
         flash[:success] = "Success"
       else
-        flash[:danger] = "Fail"
+        flash[:error] = "Fail"
       end
       redirect_to user_pets_path(current_user)
     end
@@ -24,7 +24,7 @@ module Nurse
     def find_pet
       @user = User.find_by id: params[:user_id]
       return if @pet = @user.pets.find_by(id: params[:id])
-      flash[:danger] = t "users.find_fail"
+      flash[:error] = t "users.find_fail"
       redirect_to user_path(@user)
     end
 

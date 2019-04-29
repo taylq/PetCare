@@ -43,7 +43,7 @@ class BlogsController < ApplicationController
       flash[:success] = "Post updated"
       redirect_to blogs_path
     else
-      flash[:danger] = "Post update fail"
+      flash[:error] = "Post update fail"
       redirect_to blogs_path
     end
   end

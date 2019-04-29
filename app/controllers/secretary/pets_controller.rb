@@ -10,7 +10,7 @@ module Secretary
     def find_pet
       @user = User.find_by id: params[:user_id]
       return if @pet = @user.pets.find_by(id: params[:id])
-      flash[:danger] = t "users.find_fail"
+      flash[:error] = t "users.find_fail"
       redirect_to user_path(@user)
     end
   end

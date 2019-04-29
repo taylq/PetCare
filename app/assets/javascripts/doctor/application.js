@@ -82,13 +82,13 @@ initialize_calendar = function () {
       select: function (start, end, jsEvent, view, resourceObj) {
         // debugger;
         console.log(resourceObj.id);
-        $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceObj.id, function () { });
+        $.getScript('/bookings/new?start=' + start + "&end=" + end + "&doctor_id=" + resourceObj.id, function () {});
         calendar.fullCalendar('unselect');
       },
 
       eventClick: function (event, jsEvent, view) {
         console.log(event);
-        $.getScript(event.edit_url, function () { });
+        $.getScript(event.edit_url, function () {});
       }
     });
   })
