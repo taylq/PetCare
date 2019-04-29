@@ -1,23 +1,155 @@
-<div class="main-content">
-        <section class="section home-banner row-middle">
-            <div class="inner-bg"></div>
+<div class="main-content" style="background-color: #b3daff">
+		<div class="main-content error-wrapper">
+			<div class="content">
+				<div class="container">
+					<div class="error-box">
+                        <%= image_tag 'logo.png', width: 230, height: 170, style: "border-radius: 50%" %>
+						<%= search_form_for @q, url: search_path, class: "error-search-form" do |f| %>
+                  <%= f.search_field :symptom_cont,
+                                     placeholder: "Search...", id: "search-custom", style: "width: 100%;" %>
+                  <%#= f.select :pet_type, type_choice, class: "form-control" %>
+                  <button type="submit"><i class="fa fa-search"></i></button>
+              <% end %>
+
+						<h3 style="margin-top: 20px;">Có chuyện gì xảy ra với thú cưng của bạn vậy?</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+        <section class="section features">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9 col-sm-9">
-                        <div class="banner-content">
-                            <h1>Clean Medical Template</h1>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
-                            <a title="Consult" class="btn btn-primary consult-btn" href="appointment.html">Consult</a>
+                    <div class="col-xs-12">
+                        <div class="section-header text-center">
+                            <h3 class="header-title">Chúng tôi sẽ cung cấp cho bạn những gì?</h3>
+							<div class="line"></div>
+                            <p>
+                                Pet Care chúng tôi sẽ giúp bạn chăm sóc cũng như chữa trị cho thú cưng một cách chuẩn xác, dễ dàng và tiện lợi nhất
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-
+                <div class="row feature-row">
+                    <div class="col-sm-3">
+                        <div class="feature-box">
+							<div class="feature-img">
+                                <%= image_tag 'scope.png', size: 60 %>
+							</div>
+                            <h4>Chuẩn đoán bệnh</h4>
+							<p>Đưa ra chuẩn đoán của chúng tôi dựa trên những triệu chứng của thú cưng. Trao đổi trực tiếp với các bác sĩ để có thể giải đáp các thắc mắc của bạn.</p>
+                        </div>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="feature-box">
+							<div class="feature-img">
+                                <%= image_tag 'calender.svg', size: 60 %>
+							</div>
+                            <h4>Đặt lịch khám online</h4>
+							<p>Hệ thống đặt lịch khám dễ dàng, tiện lợi cho phép bạn sắp xếp cũng như theo dõi lịch hẹn khám thay vì phải mang thú cưng đến phòng khám và chờ đợi.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="feature-box">
+							<div class="feature-img">
+                                <%= image_tag 'record.png', size: 60 %>
+							</div>
+                            <h4>Bệnh án điện tử</h4>
+							<p>Cho phép bạn cũng như bác sĩ có thể dễ dàng xem các bệnh mà thú cưng đã và đang mắc phải, hữu ích trong việc chăm sóc và chữa trị.</p>
+                        </div>
+                    </div>
+					<div class="col-sm-3">
+                        <div class="feature-box">
+							<div class="feature-img">
+                                <%= image_tag 'social.png', size: 60 %>
+							</div>
+                            <h4>Mạng xã hội</h4>
+							<p>Các người dùng có thể giao lưu, chia sẻ nhưng điều thú vị trong quá trình nuôi thú.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+        <section class="section meet-doctors">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section-header text-center">
+                            <h3 class="header-title">Các dịch vụ</h3>
+                            <%= image_tag 'service.jpg', width: 230, height: "170" %>
+							<br><br><br>
+                            <i>
+                                Pet Care cung cấp các dịch vụ chăm sóc, chữa trị cho thú cưng
+                            </i>
+                        </div>
+                    </div>
+                </div>
+                <div id="our_doctor" class="owl-carousel text-center">
+                    <div class="item">
+                        <div class="doctor text-center">
+                                <%= image_tag 'khambenh.jpg', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Khám định kì</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                            <div class="doctor text-center">
+                                <%= image_tag 'cuthair.jpg', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Cắt tỉa lông</div>
+                            </div>
+                    </div>
+                    <div class="item">
+                        <div class="doctor text-center">
+                                <%= image_tag 'xquang.png', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Chụp X-Quang</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="doctor text-center">
+                                <%= image_tag 'tam.jpg', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Tắm rửa vệ sinh</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="doctor text-center">
+                                <%= image_tag 'cat.jpg', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Siêu âm</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="doctor text-center">
+                                <%= image_tag 'noisoi.jpg', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Nội soi</div>
+                        </div>
+                    </div>
 
+                    <div class="item">
+                        <div class="doctor text-center">
+                            <%= image_tag 'xetnghiem.jpg', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Xét nghiệm</div>
 
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="doctor text-center">
+                            <%= image_tag 'phauthuat.jpg', size: 150, class: "img-circle" %>
+                                <div class="doctors-name">Phẫu thuật</div>
 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
     </div>
+<script>
+
+    $.getJSON("/search.json", function (data) {
+        var availableTags = new Array();
+        $.each(data.items, function (i, val) {
+            availableTags.push(val.symptom);
+        });
+
+        $("#search-custom").autocomplete({
+            source: availableTags
+        });
+    });
+</script>

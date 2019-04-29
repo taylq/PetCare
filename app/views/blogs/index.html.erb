@@ -39,9 +39,9 @@
                     <% if user.online? %>
 
 
-                    <li style="color: green"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <li style="color: green; margin-left: 20px"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
                     <% else %>
-                    <li style="list-style-type:none"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
+                    <li style="list-style-type:none; margin-left: 20px"><%= link_to user.name, conversations_path(user_id: user), remote: true, method: :post %></li>
                     <% end %>
                   <% end %>
 						  </ul>

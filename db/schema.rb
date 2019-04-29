@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2019_03_25_103225) do
   create_table "bookings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
+    t.integer "pet_id"
+    t.text "note"
     t.datetime "start_time"
     t.datetime "end_time"
     t.datetime "created_at", null: false
@@ -70,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_103225) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "doctor_id"
+    t.integer "nurse_id"
     t.datetime "start_date"
     t.datetime "end_date"
     t.datetime "created_at", null: false
@@ -79,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_03_25_103225) do
   create_table "medical_records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "pet_id"
     t.integer "doctor_id"
+    t.integer "nurse_id"
     t.text "result"
     t.integer "status", default: 0
     t.text "description"
