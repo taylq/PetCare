@@ -118,3 +118,9 @@ span.message {
   white-space: nowrap;
   margin-left: 70px;
 }
+
+.badge {
+  background-color: red !important;
+  margin-top: -30px !important;
+  margin-left: -20px !important;
+}

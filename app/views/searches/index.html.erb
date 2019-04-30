@@ -14,12 +14,12 @@
                     <div class="col-sm-8">
                         <!-- Blog Post -->
                           <% @items.each do |item| %>
-  Name: <%= item.name %></br>
-  Pet Type: <%= item.pet_type %></br>
-  Symptom: <%= item.symptom %></br>
-  Reason: <%= item.reason %></br>
-  Treatment: <%= item.treatment %></br>
-  Description: <%= item.description %></br>
+  <h2><%= item.name %></h2>
+  <h4>Loài:</h4><p style="font-size: 16px"> <%= item.pet_type %></p>
+  <h4>Triệu chứng:</h4><p style="font-size: 16px">  <%= item.symptom %></p>
+  <h4>Mô tả chi tiết:</h4><p style="font-size: 16px">  <%= item.description %></p>
+  <h4>Nguyên nhân:</h4><p style="font-size: 16px">  <%= item.reason %></p>
+  <h4>Cách chữa trị:</h4><p style="font-size: 16px">  <%= item.treatment %></p>
 <div class="line"></div>
 <% end %>
 
@@ -30,7 +30,7 @@
         <div class="col-sm-4">
             <div class="panel panel-primary list-user">
               <div class="panel-heading">
-                <h3 class="panel-title">Bác sĩ</h3>
+                <h4 class="panel-title">Danh sách bác sĩ</h4>
               </div>
               <div class="panel-body">
                 <ul class="overflow">

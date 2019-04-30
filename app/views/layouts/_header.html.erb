@@ -37,7 +37,7 @@
 
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <i class="fa fa-comment"></i>
+                  <i class="fa fa-comment" style="color: #31d4eb"></i>
                   <span
                     class="label label-danger message"><% @conversations = Conversation.where("recipient_id = ? or sender_id = ?", current_user.id, current_user.id) %>
                     <% count = 0 %>
@@ -53,6 +53,7 @@
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
+                    <% @conversations = Conversation.newest_messege current_user.id %>
                       <% @conversations.each do |c| %>
                       <% unless c.recipient_id == current_user.id %>
                       <li>
@@ -61,6 +62,10 @@
                             <div class="pull-left">
                             <% user = User.find_by_id(c.recipient_id) %>
                               <%= image_tag user.avatar_url, size: 50, style: "border-radius: 50%" %>
+                              <% if c.unread_message_count(current_user) > 0%>
+                              <span class="badge badge-pill bg-danger float-right">
+                              <%= c.unread_message_count(current_user) %></span>
+                              <% end%>
                             </div>
                             <p style="margin-left: 55px;margin-right: 10px;"><%= User.find_by_id(c.recipient_id).name %>
                             <small class="pull-right">
@@ -68,8 +73,7 @@
                             </small></p>
                             </h5>
                             <% if !c.unread_message_count(current_user).zero? %>
-                            <span class="badge badge-pill bg-danger float-right">
-                              <%= c.unread_message_count(current_user) %></span>
+
                             <% end %>
                             <span class="message-content"><%= c.messages.last.body %></span>
                             <hr>
@@ -83,6 +87,10 @@
                             <div class="pull-left">
                             <% user = User.find_by_id(c.recipient_id) %>
                               <%= image_tag user.avatar_url, size: 50, style: "border-radius: 50%" %>
+                              <% if c.unread_message_count(current_user) > 0%>
+                              <span class="badge badge-pill bg-danger float-right">
+                              <%= c.unread_message_count(current_user) %></span>
+                              <% end %>
                             </div>
                             <p style="margin-left: 55px;margin-right: 10px;"><%= User.find_by_id(c.recipient_id).name %>
                             <small class="pull-right">
@@ -90,8 +98,7 @@
                             </small></p>
                             </h5>
                             <% if !c.unread_message_count(current_user).zero? %>
-                            <span class="badge badge-pill bg-danger float-right">
-                              <%= c.unread_message_count(current_user) %></span>
+
                             <% end %>
                             <span class="message-content"><%= c.messages.last.body %></span>
                             <hr>
