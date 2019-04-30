@@ -21,35 +21,6 @@
                     <h3 class="user-name m-t-0 m-b-0"><%= @user.name %></h3>
                     <br>
                     <div class="container">
-                      <div class="row">
-                        <div class="col-sm">
-                          <h2>
-                            <center><%= @user.blogs.count %></center>
-                          </h2>
-                        </div>
-                        <div class="col-sm">
-                          <h2>
-                            <center>10</center>
-                          </h2>
-                        </div>
-                        <div class="col-sm">
-                          <h2>
-                            <center>10</center>
-                          </h2>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm">
-                          <center><a href="#" class="badge badge-primary">Bài viết</a></center>
-                        </div>
-                        <div class="col-sm">
-                          <center><a href="#" class="badge badge-primary">Đang theo dõi</a></center>
-                        </div>
-                        <div class="col-sm">
-                          <center><a href="#" class="badge badge-primary">Người theo dõi</a></center>
-                        </div>
-                      </div>
-                      <br>
                       <% if @user == current_user %>
                         <div class="row">
                           <div class="col-sm">
@@ -129,11 +100,7 @@
                         </div>
                       </div>
                     <% end %>
-                    <div class="col-sm">
-                      <div class="profile-img">
-                        <a href="#"><span class="avatar fa fa-plus" alt=""></span></a>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>

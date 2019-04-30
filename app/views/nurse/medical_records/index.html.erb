@@ -20,14 +20,14 @@
 											</tr>
 										  </thead>
 										  <tbody>
-                      <% @medical_records = MedicalRecord.order(:created_at) %>
+                      <% @medical_records = MedicalRecord.where(nurse_id: current_user.id).order(:created_at) %>
                                           <% @medical_records.each_with_index do |mr, i| %>
 											<tr>
 											  <th scope="row"><%= i + 1 %></th>
 											  <td><%= mr.created_at.strftime("%d/%m/%Y %H:%M") %></td>
 											  <td><%= User.find_by_id(mr.doctor_id).name %></td>
 											  <td><%= mr.description %></td>
-											  <td><%= link_to "Chi tiết", secretary_user_pet_medical_record_path(mr.pet.user, mr.pet, mr) %></td>
+											  <td><%= link_to "Chi tiết", nurse_user_pet_medical_record_path(mr.pet.user, mr.pet, mr) %></td>
 											</tr>
                     <% end %>
 										  </tbody>

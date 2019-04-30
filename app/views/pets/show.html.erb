@@ -70,7 +70,7 @@
 								<tr>
                   <% @pet.medical_records.each_with_index do |mr, index| %>
                     <th scope="row"><%= index + 1 %></th>
-                    <td><%= mr.created_at %></td>
+                    <td><%= mr.created_at.strftime("%d/%m/%Y %H:%M") %></td>
                     <td><%= User.find_by(id: mr.doctor_id).name %></td>
                     <td><a href="<%= user_pet_medical_record_path(@user, @pet, mr) %>">Chi tiết<a></td>
                   <% end %>

@@ -53,7 +53,7 @@ module Nurse
     end
 
     def medical_record_params
-      params.require(:medical_record).permit :doctor_id, :pet_id, :result, :description, :status, medical_records_services_attributes: %i(id medical_record_id service_id quantity _destroy)
+      params.require(:medical_record).permit :nurse_id, :doctor_id, :pet_id, :result, :description, :status, medical_records_services_attributes: %i(id medical_record_id service_id quantity _destroy)
     end
   end
 end
