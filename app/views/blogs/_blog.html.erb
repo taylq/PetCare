@@ -23,8 +23,8 @@
                                 <div class="dropdown dropdown-action pull-right" style="margin-right: 45px;">
                                     <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_patient"><i class="fa fa-pencil m-r-5"></i> Chỉnh sửa </a>
-                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient"><i class="fa fa-trash-o m-r-5"></i> Xóa</a>
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_patient_<%= blog.id%>"><i class="fa fa-pencil m-r-5"></i> Chỉnh sửa </a>
+                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_patient_<%= blog.id%>"><i class="fa fa-trash-o m-r-5"></i> Xóa</a>
                                     </div>
                                 </div>
                                 <% end %>
@@ -41,7 +41,7 @@
                         </article>
 
 
-<div id="delete_patient" class="modal fade delete-modal" role="dialog">
+<div id="delete_patient_<%= blog.id%>" class="modal fade delete-modal" role="dialog">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-body text-center">
@@ -54,11 +54,11 @@
 			</div>
 
 		</div>
-<div id="edit_patient" class="modal fade delete-modal" role="dialog">
+<div id="edit_patient_<%= blog.id%>" class="modal fade delete-modal" role="dialog">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content" style="height: 300px">
 					<div class="modal-body text-center">
-						<h3>Edit Post</h3>
+						<h3>Chỉnh sửa bài viết</h3>
                         <%= form_for blog do |f| %>
                                 <div class="col-sm-12">
                                 <%= f.text_field :title, placeholder: "Title", class: "col-sm-12" %>

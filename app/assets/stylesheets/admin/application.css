@@ -45,6 +45,7 @@
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
+
 .panel-heading {
     padding: 10px 15px;
     border-bottom: 1px solid transparent;
@@ -52,13 +53,13 @@
     border-top-left-radius: 3px;
 }
 
-.panel-default > .panel-heading {
+.panel-default>.panel-heading {
     color: #333333;
     background-color: #f5f5f5;
     border-color: #ddd;
 }
 
-.panel-body{
+.panel-body {
     padding: 15px;
 }
 
@@ -67,6 +68,7 @@ ul {
     padding-left: 0px;
     list-style: none;
 }
+
 .panel-default {
     border-color: #ddd;
     width: 18%;
@@ -81,4 +83,3 @@ ul {
     position: fixed;
     z-index: 5;
 }
-

@@ -27,6 +27,7 @@ module Secretary
       @pet = @user.pets.find_by id: params[:pet_id]
       @medical_record = MedicalRecord.find_by id: params[:id]
       @doctor = User.find_by_id @medical_record.doctor_id
+      @nurse = User.find_by_id @medical_record.nurse_id
     end
   end
 end

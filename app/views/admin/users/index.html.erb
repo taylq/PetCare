@@ -19,8 +19,8 @@
 										<th>Tên</th>
 										<th>Địa chỉ</th>
 										<th>Email</th>
-										<th>Role</th>
-										<th class="text-right">Action</th>
+										<th>Vai trò</th>
+										<th class="text-right">Hành động</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -35,6 +35,18 @@
 
 <script>
 		$(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable({
+		"language": {
+			"oPaginate": {
+            "sFirst":    "Trang đầu",
+            "sLast":    "Trang cuối",
+            "sNext":    "Trang kế",
+            "sPrevious": "Trang trước"
+        },
+		"sSearch": "Tìm kiếm:",
+		"sInfo": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+		"sLengthMenu": "Hiển thị _MENU_ bản ghi"
+		}
+	});
 } );
 	</script>

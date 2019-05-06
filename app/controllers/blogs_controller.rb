@@ -18,10 +18,10 @@ class BlogsController < ApplicationController
   def create
     @blog = current_user.blogs.build blog_params
     if @blog.save
-      flash[:success] = "Post created!"
+      flash[:success] = "Thêm bài viết thành công!"
       redirect_to blogs_url
     else
-      flash[:error] = "Post create fail!"
+      flash[:error] = "Thêm bài viết thất bại!"
       @feed_items = []
       redirect_to root_path
     end
@@ -34,16 +34,16 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog.destroy
-    flash[:success] = "Post deleted"
+    flash[:success] = "Xóa bài viết thành công"
     redirect_to request.referrer || root_url
   end
 
   def update
     if @blog.update blog_params
-      flash[:success] = "Post updated"
+      flash[:success] = "Cập nhật thành công"
       redirect_to blogs_path
     else
-      flash[:error] = "Post update fail"
+      flash[:error] = "Cập nhật thất bại"
       redirect_to blogs_path
     end
   end

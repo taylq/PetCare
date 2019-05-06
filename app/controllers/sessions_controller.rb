@@ -45,13 +45,13 @@ class SessionsController < Devise::SessionsController
   def after_sign_in_path_for resource
     sign_in_url = url_for(action: "new", controller: "sessions", only_path: false, protocol: "http")
     if current_user.admin?
-      @referer_url = admin_dashboard_path
+      @referer_url = admin_users_path
     elsif current_user.doctor?
       @referer_url = doctor_dashboard_path
     elsif current_user.nurse?
       @referer_url = nurse_dashboard_path
     elsif current_user.director?
-      @referer_url = director_dashboard_path
+      @referer_url = director_events_path
     elsif current_user.secretary?
       @referer_url = secretary_dashboard_path
     else

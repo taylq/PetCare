@@ -24,9 +24,11 @@
                                     <div class="doctor-info">
                                         <h2><%= @user.name %></h2>
 										<tr>
+                                        <% if current_user == @user %>
 											<td>
 												<a href="<%= edit_user_registration_path(current_user) %>" class="btn btn-danger">Chỉnh sửa thông tin  <span class="fa fa-edit"></span></a>
 											</td>
+                                            <% end %>
 											<% unless current_user == @user %>
 											<td>
                           <%= link_to conversations_path(user_id: @user), class: "btn btn-danger", remote: true, method: :post do %>

@@ -56,6 +56,18 @@
 
 <script>
 		$(document).ready(function() {
-    $('#example132').DataTable();
+    $('#example132').DataTable({
+		"language": {
+			"oPaginate": {
+            "sFirst":    "Trang đầu",
+            "sLast":    "Trang cuối",
+            "sNext":    "Trang kế",
+            "sPrevious": "Trang trước"
+        },
+		"sSearch": "Tìm kiếm:",
+		"sInfo": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+		"sLengthMenu": "Hiển thị _MENU_ bản ghi"
+		}
+	});
 } );
 	</script>

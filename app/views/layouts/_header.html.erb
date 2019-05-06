@@ -85,14 +85,14 @@
                         <%= link_to conversations_path(user_id: User.find_by_id(c.sender_id).id), remote: true, method: :post do %>
 <h5>
                             <div class="pull-left">
-                            <% user = User.find_by_id(c.recipient_id) %>
+                            <% user = User.find_by_id(c.sender_id) %>
                               <%= image_tag user.avatar_url, size: 50, style: "border-radius: 50%" %>
                               <% if c.unread_message_count(current_user) > 0%>
                               <span class="badge badge-pill bg-danger float-right">
                               <%= c.unread_message_count(current_user) %></span>
                               <% end %>
                             </div>
-                            <p style="margin-left: 55px;margin-right: 10px;"><%= User.find_by_id(c.recipient_id).name %>
+                            <p style="margin-left: 55px;margin-right: 10px;"><%= User.find_by_id(c.sender_id).name %>
                             <small class="pull-right">
                             <i class="fa fa-clock-o"></i><%= c.messages.last.created_at.strftime("%d/%m/%Y %H:%M") %>
                             </small></p>
@@ -141,7 +141,7 @@
 
                   <% if user_signed_in? %>
                   <li><%= link_to "Hồ sơ", current_user, class: "dropdown-item" %></li>
-                  <li><%= link_to "Cài đặt", edit_user_registration_path, class: "dropdown-item" %>
+                  <li><%= link_to "Chỉnh sửa thông tin", edit_user_registration_path, class: "dropdown-item" %>
                   </li>
                   <li><%= link_to "Đăng xuất", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                   </li>
