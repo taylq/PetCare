@@ -4,37 +4,37 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Name <span class="text-danger">*</span></label>
+                        <label>Tên <span class="text-danger">*</span></label>
                         <%= f.text_field :name, class: "form-control" %>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Pet Type</label>
+                        <label>Loại thú cưng</label>
                         <%= f.select :pet_type, type_choice, {selected: desease.pet_type}, class: "select" %>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Symptom <span class="text-danger">*</span></label>
+                        <label>Triệu chứng <span class="text-danger">*</span></label>
                         <%= f.text_area :symptom, class: "form-control" %>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Reason <span class="text-danger">*</span></label>
+                        <label>Nguyên nhân <span class="text-danger">*</span></label>
                         <%= f.text_area :reason, class: "form-control" %>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Treatment</label>
+                        <label>Cách chữa trị</label>
                         <%= f.text_area :treatment, class: "form-control" %>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label>Description</label>
+                        <label>Mô tả</label>
                         <%= f.text_area :description, class: "form-control" %>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                 -->
             </div>
             <div class="m-t-20 text-center">
-                <%= f.submit "Save", class: "btn btn-primary submit-btn" %>
+                <%= f.submit "Lưu", class: "btn btn-primary submit-btn" %>
             </div>
         <% end %>
     </div>
