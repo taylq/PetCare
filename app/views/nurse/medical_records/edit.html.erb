@@ -12,7 +12,7 @@
                   </div>
                 </div>
                 <%= f.hidden_field :pet_id, value: @pet.id %>
-                <%= f.hidden_field :doctor_id, value: current_user.id %>
+                <%= f.hidden_field :nurse_id, value: current_user.id %>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <h2><%= @pet.name %></h2>
@@ -46,19 +46,19 @@
               <br>
                  <div>
                                         <div class="row">
-                                            <div class="col-sm-8">
+                                            <div class="col-sm-5">
                                                 <h4>Triệu chứng: <%= @medical_record.result %></h4>
                                                 <h4>Chuẩn đoán: <%= @medical_record.description %></h4>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-7">
                    <div class="form-group">
                                 <label class="display-block">Trạng thái</label>
 								<div class="form-check form-check-inline">
                 <% MedicalRecord.statuses.keys.each do |status| %>
-									<%= f.radio_button :status, status%>
-
-
-                  <%= status.parameterize.underscore %>
+                <label class="container1" style="padding-right: 30px"><%= t(status) %>
+                  <%= f.radio_button :status, status %>
+                  <span class="checkmark"></span>
+                </label>
                   <% end %>
 								</div>
                             </div>

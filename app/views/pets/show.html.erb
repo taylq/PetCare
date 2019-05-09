@@ -33,19 +33,19 @@
 										<br><br>
 										<table class="table">
 											<tr>
-												<td style="text-align: right"><h4>Chủ nhân :<h4></td>
+												<td style="text-align: right"><h4>Chủ nhân:<h4></td>
 												<td style="text-align: left"><a href="#"><h4 style="color: #66a3ff"><%= @user.name %><h4></a></td>
 											</tr>
 											<tr>
-												<td style="text-align: right"><h4>Loài :<h4></td>
+												<td style="text-align: right"><h4>Loài:<h4></td>
 												<td style="text-align: left"><h4><%= @pet.type_pet %><h4></td>
 											</tr>
 											<tr>
-												<td style="text-align: right"><h4>Day Of Birth :<h4></td>
+												<td style="text-align: right"><h4>Ngày sinh:<h4></td>
 												<td style="text-align: left"><h4><%= @pet.dob %><h4></td>
 											</tr>
 											<tr>
-												<td style="text-align: right"><h4>Giới tính :<h4></td>
+												<td style="text-align: right"><h4>Giới tính:<h4></td>
 												<td style="text-align: left"><h4><%= @pet.gender %><h4></td>
 											</tr>
 										</table>
@@ -70,7 +70,7 @@
 								<tr>
                   <% @pet.medical_records.each_with_index do |mr, index| %>
                     <th scope="row"><%= index + 1 %></th>
-                    <td><%= mr.created_at %></td>
+                    <td><%= mr.created_at.strftime("%d/%m/%Y %H:%M") %></td>
                     <td><%= User.find_by(id: mr.doctor_id).name %></td>
                     <td><a href="<%= user_pet_medical_record_path(@user, @pet, mr) %>">Chi tiết<a></td>
                   <% end %>

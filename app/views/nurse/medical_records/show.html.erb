@@ -11,6 +11,9 @@
                                     <br>
                                     <div>
                                         <h3>Bác Sĩ Chính: <a href="#" style="color: #66a3ff">Dr.<%= @doctor.name %></a></h3>
+                                        <% unless @medical_record.nurse_id.blank? %>
+                                        <h3>Y tá: <a href="#" style="color: #66a3ff"><%= User.find_by_id(@medical_record.nurse_id).name %></a></h3>
+                                        <% end %>
                                     </div>
                                     <div>
                                         <hr />
@@ -18,7 +21,7 @@
                                             <div class="col-sm-8">
                                                 <h4>Triệu chứng: <%= @medical_record.result %></h4>
                                                 <h4>Chuẩn đoán: <%= @medical_record.description %></h4>
-                                                <h4>Trạng thái: <%= @medical_record.status %></h4>
+                                                <h4>Trạng thái: <%= t @medical_record.status %></h4>
                                             </div>
                                             <div class="col-sm-4 pull-right">
                                                 <%= link_to "Chỉnh sửa", edit_nurse_user_pet_medical_record_path(@user.id, @pet.id, @medical_record.id), class: "btn btn-primary account-btn", style: "color: white"%>

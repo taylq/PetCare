@@ -12,10 +12,10 @@ module Doctor
       @medical_record = MedicalRecord.new medical_record_params
       if @medical_record.save
         Bill.create!(medical_record_id: @medical_record.id)
-        flash[:success] = "Create successfull"
+        flash[:success] = "Tạo mới thành công"
         redirect_to doctor_user_pet_path(@user, @pet)
       else
-        flash[:danger] = "Create fail"
+        flash[:error] = "Tạo mới thất bại"
         render :new
       end
     end

@@ -12,9 +12,9 @@ module Doctor
     def create
       @pet = Pet.new pet_params.merge(user_id: params[:user_id])
       if @pet.save
-        flash[:success] = "Success"
+        flash[:success] = "Tạo mới thành công"
       else
-        flash[:danger] = "Fail"
+        flash[:error] = "Tạo mới thất bại"
       end
       redirect_to user_pets_path(current_user)
     end
@@ -24,7 +24,7 @@ module Doctor
     def find_pet
       @user = User.find_by id: params[:user_id]
       return if @pet = @user.pets.find_by(id: params[:id])
-      flash[:danger] = t "users.find_fail"
+      flash[:error] = t "users.find_fail"
       redirect_to user_path(@user)
     end
 

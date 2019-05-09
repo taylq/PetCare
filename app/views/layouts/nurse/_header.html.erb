@@ -60,13 +60,15 @@
     </ul>
     <div class="drop-scroll msg-list-scroll">
       <ul class="list-box">
+       <% @conversations = Conversation.newest_messege current_user.id %>
         <% @conversations.each do |c| %>
           <% unless c.recipient_id == current_user.id %>
             <li>
               <%= link_to conversations_path(user_id: User.find_by_id(c.recipient_id).id), remote: true, method: :post do %>
                 <div class="list-item">
                   <div class="list-left">
-                    <span class="avatar">R</span>
+                    <span class="avatar"><% user = User.find_by_id(c.recipient_id) %>
+                              <%= image_tag user.avatar_url, size: 50, style: "border-radius: 50%" %></span>
                   </div>
                   <div class="list-body">
                     <span class="message-author"><%= User.find_by_id(c.recipient_id).name %> </span>
@@ -86,7 +88,8 @@
               <%= link_to conversations_path(user_id: User.find_by_id(c.sender_id).id), remote: true, method: :post do %>
                 <div class="list-item">
                   <div class="list-left">
-                    <span class="avatar">R</span>
+                    <span class="avatar"><% user = User.find_by_id(c.sender_id) %>
+                              <%= image_tag user.avatar_url, size: 50, style: "border-radius: 50%" %></span>
                   </div>
                   <div class="list-body">
                     <span class="message-author"><%= User.find_by_id(c.sender_id).name %> </span>

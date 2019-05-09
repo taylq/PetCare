@@ -4,7 +4,7 @@
     <div class="row">
       <%= render 'layouts/doctor/flash' %>
         <div class="col-sm-4 col-3">
-            <h4 class="page-title"><%= t "users.index" %></h4>
+            <h4 class="page-title">Danh sách người dùng</h4>
         </div>
     </div>
 
@@ -12,7 +12,7 @@
       <div class="col-md-12">
         <div class="table-responsive">
           <div>
-            <%= t "export.download" %>
+            Xuất báo cáo
             <%= link_to t("export.csv"), doctor_users_path(format: "csv", search: params[:search]) %> |
             <%= link_to t("export.excel"), doctor_users_path(format: "xls", search: params[:search]) %>
           </div>
@@ -20,7 +20,7 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th><%= t "users.new.name" %></th>
+                <th>Tên</th>
                 <th><%= t "sessions.new.email" %></th>
               </tr>
             </thead>
@@ -42,7 +42,17 @@
  <script>
 		$(document).ready(function() {
     $('#example').DataTable({
-responsive: true
-    });
+		"language": {
+			"oPaginate": {
+            "sFirst":    "Trang đầu",
+            "sLast":    "Trang cuối",
+            "sNext":    "Trang kế",
+            "sPrevious": "Trang trước"
+        },
+		"sSearch": "Tìm kiếm:",
+		"sInfo": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+		"sLengthMenu": "Hiển thị _MENU_ bản ghi"
+		}
+	});
 } );
 	</script>

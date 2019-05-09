@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def find_user
     return if @user = User.find_by(id: params[:id])
-    flash[:danger] = t "users.find_fail"
+    flash[:error] = t "users.find_fail"
     redirect_to users_path
   end
 

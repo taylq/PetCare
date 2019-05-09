@@ -11,7 +11,6 @@
 //= require admin/bootstrap-datetimepicker.min
 //= require admin/Chart.bundle
 //= require activestorage
-//= require turbolinks
 //= require toastr
 //= require_tree ../channels
 

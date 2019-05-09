@@ -24,10 +24,10 @@ module Director
           if user_event.nil? || user_event.end_date <= event_params[:start_date]
             @event = Event.new event_params
             if @event.save
-              flash[:success] = "Successfully"
+              flash[:success] = "Tạo lịch thành công"
               redirect_to director_events_path
             else
-              flash[:error] = "Create fail!"
+              flash[:error] = "Tạo lịch thất bại!"
               redirect_to director_events_path
             end
           else
@@ -48,10 +48,10 @@ module Director
       if  event_params[:start_date] <= event_params[:end_date]
         if event_params[:start_date] >= DateTime.current
           if @event.update_attributes event_params
-            flash[:success] = "Update success!"
+            flash[:success] = "Cập nhật thành công!"
             redirect_to director_events_path, turbolinks: false
           else
-            flash[:error] = "Update fail!"
+            flash[:error] = "Cập nhật thất bại!"
             redirect_to director_events_path, turbolinks: false
           end
         else

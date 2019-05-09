@@ -16,20 +16,21 @@ module Admin
 
     def update
       if @user.update_attributes user_params
-        flash[:success] = "User updated!"
+        flash[:success] = "Cập nhật thành công!"
+        redirect_to admin_users_path
       else
-        flash[:danger] = "User update fail!"
+        flash[:error] = "Cập nhật thất bại!"
+        redirect_to admin_users_path
       end
-      redirect_to admin_users_path
     end
 
     def create
       @user = User.new user_params
       if @user.save
-        flash[:success] = "User created!"
+        flash[:success] = "Tạo mới người dùng thành công!"
         redirect_to admin_users_path
       else
-        flash[:error] = "User create fail!"
+        flash[:error] = "Tạo mới người dùng thất bại!"
         redirect_to new_admin_user_path
       end
     end
@@ -37,9 +38,9 @@ module Admin
     def destroy
       # binding.pry
       if @user.destroy
-        flash[:success] = t "users.delete_success"
+        flash[:success] = "Xóa thành công"
       else
-        flash[:danger] = t "users.delete_fail"
+        flash[:error] = "Xóa thất bại"
       end
       redirect_to admin_users_path
     end
@@ -52,7 +53,7 @@ module Admin
 
     def find_user
       return if @user = User.find_by(id: params[:id])
-      flash[:danger] = t "books.find_fail"
+      flash[:error] = t "books.find_fail"
       redirect_to admin_users_path
     end
   end

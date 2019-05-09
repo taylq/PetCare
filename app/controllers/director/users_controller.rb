@@ -23,7 +23,7 @@ module Director
       if @user.update_attributes user_params
         flash[:success] = t "users.update_success"
       else
-        flash[:danger] = t "users.update_fail"
+        flash[:error] = t "users.update_fail"
       end
       redirect_to admin_users_path
     end
@@ -42,7 +42,7 @@ module Director
       if @user.destroy
         flash[:success] = t "users.delete_success"
       else
-        flash[:danger] = t "users.delete_fail"
+        flash[:error] = t "users.delete_fail"
       end
       redirect_to admin_users_path
     end
@@ -55,7 +55,7 @@ module Director
 
     def find_user
       return if @user = User.find_by(id: params[:id])
-      flash[:danger] = t "books.find_fail"
+      flash[:error] = t "books.find_fail"
       redirect_to admin_users_path
     end
   end

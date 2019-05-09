@@ -2,7 +2,7 @@
             <div class="content">
                 <div class="row">
                     <div class="col-sm-4 col-3">
-                        <h4 class="page-title">Doctors</h4>
+                        <h4 class="page-title">Danh sách bác sĩ</h4>
                     </div>
                 </div>
 				<div class="row">
@@ -11,10 +11,9 @@
 							<table class="table table-border table-striped custom-table m-b-0" id="example">
 								<thead>
 									<tr>
-										<th>Name</th>
-										<th>Address</th>
+										<th>Tên</th>
+										<th>Địa chỉ</th>
 										<th>Email</th>
-										<th class="text-right">Action</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -29,6 +28,18 @@
 
 <script>
 		$(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable({
+		"language": {
+			"oPaginate": {
+            "sFirst":    "Trang đầu",
+            "sLast":    "Trang cuối",
+            "sNext":    "Trang kế",
+            "sPrevious": "Trang trước"
+        },
+		"sSearch": "Tìm kiếm:",
+		"sInfo": "Hiển thị _START_ đến _END_ của _TOTAL_ bản ghi",
+		"sLengthMenu": "Hiển thị _MENU_ bản ghi"
+		}
+	});
 } );
 	</script>

@@ -1,8 +1,10 @@
 <div class="page-wrapper">
   <div class="content">
     <ul id="conversations-list">
+                      <% unless @user == current_user %>
       <% @conversations&.each do |conversation| %>
         <%= render 'conversations/conversation', conversation: conversation, user: current_user %>
+      <% end %>
       <% end %>
     </ul>
     <div class="card-box profile-header">
@@ -21,41 +23,13 @@
                     <h3 class="user-name m-t-0 m-b-0"><%= @user.name %></h3>
                     <br>
                     <div class="container">
-                      <div class="row">
-                        <div class="col-sm">
-                          <h2>
-                            <center><%= @user.blogs.count %></center>
-                          </h2>
-                        </div>
-                        <div class="col-sm">
-                          <h2>
-                            <center>10</center>
-                          </h2>
-                        </div>
-                        <div class="col-sm">
-                          <h2>
-                            <center>10</center>
-                          </h2>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-sm">
-                          <center><a href="#" class="badge badge-primary">Bài viết</a></center>
-                        </div>
-                        <div class="col-sm">
-                          <center><a href="#" class="badge badge-primary">Đang theo dõi</a></center>
-                        </div>
-                        <div class="col-sm">
-                          <center><a href="#" class="badge badge-primary">Người theo dõi</a></center>
-                        </div>
-                      </div>
-                      <br>
-                      <% if @user == current_user %>
                         <div class="row">
+                      <% if @user == current_user %>
                           <div class="col-sm">
-                            <h2><a href="<%= edit_secretary_user_path(current_user) %>" class="btn btn-danger">Chỉnh sửa
-                              thông tin <span class="fa fa-edit"></span></a></h2>
+                            <h2><%= link_to edit_user_registration_path, class: "btn btn-danger" do %>
+                              Chỉnh sửa thông tin <span class="fa fa-edit"></span><% end %></h2>
                           </div>
+                          <% else %>
                           <div class="col-sm">
                             <h2>
                               <%= link_to conversations_path(user_id: @user), remote: true, method: :post, class: "btn btn-danger" do %>
@@ -63,8 +37,8 @@
                               <% end %>
                             </h2>
                           </div>
-                        </div>
                       <% end %>
+                        </div>
                     </div>
                     <div>
 
@@ -104,7 +78,6 @@
     <div class="profile-tabs">
       <ul class="nav nav-tabs nav-tabs-bottom">
         <li class="nav-item"><a class="nav-link active" href="#pet-tab" data-toggle="tab">Thú Cưng</a></li>
-        <li class="nav-item"><a class="nav-link" href="#post-tab" data-toggle="tab">Bài Viết</a></li>
       </ul>
 
       <div class="tab-content">
@@ -129,27 +102,14 @@
                         </div>
                       </div>
                     <% end %>
-                    <div class="col-sm">
-                      <div class="profile-img">
-                        <a href="#"><span class="avatar fa fa-plus" alt=""></span></a>
-                      </div>
-                    </div>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="post-tab">
-          <textarea class="form-control" rows="5" id="comment" placeholder="Bạn có vấn đề gì ?"></textarea>
-          <br>
-          <div class="custom-file">
-            <input type="file" class="custom-file-input" id="validatedCustomFile">
-            <label class="custom-file-label" for="validatedCustomFile">Chọn file</label>
-          </div>
-          <br><br>
-          <button type="button" class="btn btn-success btn-block">Gửi</button>
-        </div>
+
       </div>
     </div>
   </div>

@@ -44,6 +44,7 @@ Rails.application.routes.draw do
 
     namespace :doctor do
       get "/dashboard", to: "base#dashboard"
+      resources :medical_records, only: :index
       resources :deseases
       resources :bookings
       resources :users do
@@ -66,6 +67,7 @@ Rails.application.routes.draw do
 
     namespace :nurse do
       get "/dashboard", to: "base#dashboard"
+      resources :medical_records, only: :index
       resources :pets
       resources :bookings
       resources :users do

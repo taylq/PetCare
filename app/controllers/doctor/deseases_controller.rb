@@ -12,10 +12,10 @@ module Doctor
     def create
       @desease = Desease.new desease_params
       if @desease.save
-        flash[:success] = "Success"
+        flash[:success] = "Thành công"
         redirect_to doctor_deseases_path
       else
-        flash[:danger] = "Fail"
+        flash[:error] = "Thất bại"
         render :new
       end
     end
@@ -28,7 +28,7 @@ module Doctor
       if @desease.update_attributes desease_params
         flash[:success] = "Cập nhật thành công"
       else
-        flash[:danger] = "Cập nhật thất bại"
+        flash[:error] = "Cập nhật thất bại"
       end
       redirect_to doctor_deseases_path
     end
@@ -37,7 +37,7 @@ module Doctor
       if @desease.destroy
         flash[:success] = "Xóa thành công"
       else
-        flash[:danger] = "Xóa thất bại"
+        flash[:error] = "Xóa thất bại"
       end
       redirect_to doctor_deseases_path
     end
@@ -46,7 +46,7 @@ module Doctor
 
     def find_desease
       return if @desease = Desease.find_by(id: params[:id])
-      flash[:danger] = "Không tìm thấy triệu chứng"
+      flash[:error] = "Không tìm thấy triệu chứng"
       redirect_to doctor_deseases_path
     end
 

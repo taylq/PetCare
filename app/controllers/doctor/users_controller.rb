@@ -21,7 +21,7 @@ module Doctor
 
     def find_user
       return if @user = User.find_by(id: params[:id])
-      flash[:danger] = t "books.find_fail"
+      flash[:error] = t "books.find_fail"
       redirect_to admin_users_path
     end
   end

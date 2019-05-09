@@ -4,13 +4,13 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Name <span class="text-danger">*</span></label>
+                                        <label>Họ và tên <span class="text-danger">*</span></label>
                                         <%= f.text_field :name, class: "form-control" %>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Username <span class="text-danger">*</span></label>
+                                        <label>Tên đăng nhập <span class="text-danger">*</span></label>
                                         <%= f.text_field :username, class: "form-control" %>
                                     </div>
                                 </div>
@@ -23,7 +23,7 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label>Role</label>
+                                        <label>Vai trò</label>
                                         <%= f.select :role, role_choice, {selected: @user.role}, class: "form-control" %>
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                             </div>
 
                             <div class="m-t-20 text-center">
-                                <%= f.submit "Submit", class: "btn btn-primary submit-btn" %>
+                                <%= f.submit "Lưu", class: "btn btn-primary submit-btn" %>
                             </div>
                         <% end %>
                     </div>

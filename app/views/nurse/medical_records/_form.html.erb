@@ -1,5 +1,5 @@
  <%= stylesheet_link_tag "mdb" %>
-        <%= form_for [:doctor, user, pet, medical_record], class: "form" do |f| %>
+        <%= form_for [:nurse, user, pet, medical_record], class: "form" do |f| %>
             <div class="row">
                 <div class="col-sm-6">
                   <div class="form-group">
@@ -7,7 +7,7 @@
                   </div>
                 </div>
                 <%= f.hidden_field :pet_id, value: pet.id %>
-                <%= f.hidden_field :doctor_id, value: current_user.id %>
+                <%= f.hidden_field :nurse_id, value: current_user.id %>
                 <div class="col-sm-6">
                   <div class="form-group">
                     <h2><%= pet.name %></h2>

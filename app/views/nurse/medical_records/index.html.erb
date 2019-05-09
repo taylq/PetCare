@@ -13,8 +13,6 @@
 										  <thead style="background-color: #66a3ff">
 											<tr style="color: white">
 											  <th scope="col">STT</th>
-											  <th scope="col">Chủ Pet</th>
-											  <th scope="col">Thú cưng</th>
 											  <th scope="col">Ngày khám</th>
 											  <th scope="col">Bác sĩ</th>
 											  <th scope="col">Chẩn đoán</th>
@@ -22,16 +20,14 @@
 											</tr>
 										  </thead>
 										  <tbody>
-                      <% @medical_records = MedicalRecord.where(status: 1).order(:created_at) %>
+                      <% @medical_records = MedicalRecord.where(nurse_id: current_user.id).order(:created_at) %>
                                           <% @medical_records.each_with_index do |mr, i| %>
 											<tr>
 											  <th scope="row"><%= i + 1 %></th>
-											  <td><%= link_to mr.pet.user.name, secretary_user_path(mr.pet.user.id) %></td>
-											  <td><%= link_to mr.pet.name, secretary_user_pet_path(mr.pet.user.id, mr.pet_id) %></td>
 											  <td><%= mr.created_at.strftime("%d/%m/%Y %H:%M") %></td>
 											  <td><%= User.find_by_id(mr.doctor_id).name %></td>
 											  <td><%= mr.description %></td>
-											  <td><%= link_to "Chi tiết", secretary_user_pet_medical_record_path(mr.pet.user, mr.pet, mr) %></td>
+											  <td><%= link_to "Chi tiết", nurse_user_pet_medical_record_path(mr.pet.user, mr.pet, mr) %></td>
 											</tr>
                     <% end %>
 										  </tbody>

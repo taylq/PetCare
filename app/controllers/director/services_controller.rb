@@ -21,7 +21,7 @@ module Director
       if @service.update_attributes service_params
         flash[:success] = "Cập nhật thành công"
       else
-        flash[:danger] = "Cập nhật thất bại"
+        flash[:error] = "Cập nhật thất bại"
       end
       redirect_to director_services_path
     end
@@ -30,7 +30,7 @@ module Director
       if @service.destroy
         flash[:success] = "Xóa thành công"
       else
-        flash[:danger] = "Xóa thất bại"
+        flash[:error] = "Xóa thất bại"
       end
       redirect_to director_services_path
     end
@@ -39,7 +39,7 @@ module Director
 
     def find_service
       return if @service = Service.find_by_id(params[:id])
-      flash[:danger] = "Không tìm thấy dịch vụ"
+      flash[:error] = "Không tìm thấy dịch vụ"
       redirect_to director_services_path
     end
 

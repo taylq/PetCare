@@ -4,10 +4,13 @@
                     <ul>
                         <li class="menu-title">Main</li>
                         <li class="<%= current_class? doctor_dashboard_path %>">
-                            <a href="<%= doctor_dashboard_path %>"><i class="fa fa-dashboard"></i> Dashboard</a>
+                            <a href="<%= doctor_dashboard_path %>"><i class="fa fa-calendar"></i> Lịch làm việc</a>
                         </li>
                         <li class="<%= current_class? doctor_deseases_path %>">
                             <a href="<%= doctor_deseases_path %>"><i class="fa fa-stethoscope"></i>Chẩn đoán</a>
+                        </li>
+                        <li class="<%= current_class? doctor_medical_records_path %>">
+                            <a href="<%= doctor_medical_records_path %>"><i class="fa fa-hospital-o"></i>Bệnh án</a>
                         </li>
                         <li class="<%= current_class? doctor_users_path %>">
                             <a href="<%= doctor_users_path %>"><i class="fa fa-user-md"></i>Người dùng</a>
